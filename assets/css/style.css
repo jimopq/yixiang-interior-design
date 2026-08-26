@@ -654,3 +654,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   letter-spacing:.2em;margin:0 0 18px;line-height:1.6;color:var(--ink);
 }
 .form-done p{margin:0;font-size:13.5px;color:var(--muted);line-height:2.1;letter-spacing:.08em}
+
+/* 表單提示中的行內按鈕 */
+.form .note .link{
+  color:var(--brand);text-decoration:underline;text-underline-offset:3px;
+  font:inherit;padding:0;cursor:pointer;
+}
+.form .note .link:hover{color:var(--ink)}

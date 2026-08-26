@@ -286,16 +286,32 @@
       btn.disabled = true; lbl.textContent = '傳送中…';
 
       fetch(url, { method: 'POST', headers: headers, body: payload })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json().catch(function () { return {}; }); })
+        .then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) {
+            if (!r.ok || j.success === false) {
+              var e = new Error(j.message || ('HTTP ' + r.status)); e.api = true; throw e;
+            }
+            return j;
+          });
+        })
         .then(function () {
           done('已收到您的諮詢', '我們會在一個工作天內與您聯繫。若急件請直接來電 03-358-5835。');
         })
-        .catch(function () {
+        .catch(function (err) {
+          /* 設定錯誤時留線索給維護的人，但不干擾訪客 */
+          if (window.console) console.warn('[表單] 送出失敗：' + err.message);
+
           btn.disabled = false; lbl.textContent = old;
+
+          /* 保險：詢問內容絕不因為設定失誤而消失，一鍵改用郵件送出 */
           var h = $('#formHint');
-          if (h) h.innerHTML = '※ 送出失敗，可能是網路問題。請改為 '
-            + '<a href="tel:0333585835">來電 03-358-5835</a> 或 '
-            + '<a href="mailto:' + (CFG.contactEmail || '') + '">直接寄信</a>給我們。';
+          if (h) {
+            h.innerHTML = '※ 系統送出失敗，但您填的內容都還在。'
+              + '<button type="button" class="link" id="mailFB">改用郵件寄出</button>'
+              + '，或直接來電 <a href="tel:0333585835">03-358-5835</a>。';
+            var fb = $('#mailFB', h);
+            if (fb) fb.addEventListener('click', function () { mailtoFallback(collect()); });
+          }
         });
     });
   }
