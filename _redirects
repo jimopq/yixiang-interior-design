@@ -1,0 +1,15 @@
+# 舊 Joomla 網址導向新頁面，保住既有 SEO 排名
+/index.php                      /                     301
+/index.php/about                /about.html           301
+/index.php/msg                  /about.html           301
+/index.php/service              /service.html         301
+/index.php/process              /service.html         301
+/index.php/contact              /contact.html         301
+/index.php/portfolio/*          /works.html           301
+/index.php/news/*               /about.html           301
+/about                          /about.html           301
+/msg                            /about.html           301
+/service                        /service.html         301
+/process                        /service.html         301
+/contact                        /contact.html         301
+/portfolio/*                    /works.html           301

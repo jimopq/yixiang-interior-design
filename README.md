@@ -74,10 +74,26 @@ cd image-design-web && python3 -m http.server 8899
 
 ## 部署（Cloudflare Pages）
 
-1. 把 `image-design-web/` 推上 GitHub
-2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git
-3. Build command 留空、Build output directory 填 `/`（純靜態，不需編譯）
-4. Custom domains 綁 `www.image.net.tw`
+程式碼已在私有 repo：**https://github.com/jimopq/yixiang-interior-design**
+
+1. Cloudflare Dashboard → **Workers & Pages** → Create → **Pages** → Connect to Git
+2. 授權 GitHub，選 `yixiang-interior-design`
+3. 設定：
+   - Framework preset：**None**
+   - Build command：**留空**
+   - Build output directory：**`/`**
+4. Save and Deploy，約一分鐘後會拿到 `xxx.pages.dev` 網址
+5. 確認沒問題後 → Custom domains → 綁 `www.image.net.tw`
+
+之後只要 `git push`，Cloudflare 會自動重新部署。
+
+### 已內含的上線設定
+
+| 檔案 | 作用 |
+|---|---|
+| `_headers` | 靜態資源長快取、HTML 即時更新、基本安全標頭 |
+| `_redirects` | 舊 Joomla 網址 301 導向新頁面，保住既有 SEO 排名 |
+| `robots.txt` / `sitemap.xml` | 搜尋引擎索引 |
 
 
 ---
