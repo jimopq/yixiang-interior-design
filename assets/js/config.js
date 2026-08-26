@@ -5,25 +5,30 @@
 window.SITE_CONFIG = {
 
   /* --- 諮詢表單收信 ------------------------------------------------------
-     以下兩個擇一填寫即可，兩個都留空時，表單會自動改用「開啟郵件軟體」的
-     方式送出（不會遺失客戶資料，只是需要客戶自己按寄出）。
+     三個擇一填寫即可。全部留空時，表單會改用「開啟郵件軟體」的方式送出
+     （欄位會預先填好，客戶資料不會遺失，只是需要客戶自己按寄出）。
 
-     方案 A｜Web3Forms（推薦，免註冊、免費、不限件數）
-       1. 到 https://web3forms.com 輸入 image238@hotmail.com
-       2. 信箱會收到一組 Access Key
-       3. 貼到下面 web3formsKey
+     ── 方案 A｜Google Apps Script（推薦：不需要任何第三方帳號）──────
+        用你自己的 Google 帳號當收信後端。每天 100 封額度，沒有月上限。
+        部署步驟見 tools/gmail-form-endpoint.gs 檔頭註解，約 2 分鐘。
+        完成後把「網頁應用程式網址」貼到 appsScriptUrl。
 
-     方案 B｜Formspree（免費版每月 50 封）
-       1. 到 https://formspree.io 註冊並建立 form
-       2. 複製它給的網址（形如 https://formspree.io/f/abcdwxyz）
-       3. 貼到下面 formspreeUrl
+     ── 方案 B｜Web3Forms ──────────────────────────────────────────
+        https://web3forms.com — 需註冊帳號並驗證信箱，免費版每月 250 封。
+        取得 Access Key 後貼到 web3formsKey。
+
+     ── 方案 C｜Formspree ─────────────────────────────────────────
+        https://formspree.io — 需註冊，免費版每月 50 封。
+        建立 form 後把網址（形如 https://formspree.io/f/abcdwxyz）
+        貼到 formspreeUrl。
   --------------------------------------------------------------------- */
+  appsScriptUrl: '',
   web3formsKey: '',
   formspreeUrl: '',
 
-  /* 表單送出後，副本要寄到哪個信箱（也是退回方案的收件人） */
+  /* 沒有設定上面任何一項時，表單退回用這個信箱寄出 */
   contactEmail: 'image238@hotmail.com',
 
-  /* 信件主旨前綴，方便客戶在信箱裡篩選 */
+  /* 信件主旨前綴，方便在信箱裡篩選 */
   mailSubject: '【官網諮詢】易向室內設計'
 };

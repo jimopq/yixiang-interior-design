@@ -243,7 +243,7 @@
   if (form) {
     /* 未設定收信服務時，顯示提醒（設定好之後這行會自動消失） */
     var hint = $('#formHint');
-    if (hint && !CFG.web3formsKey && !CFG.formspreeUrl) {
+    if (hint && !CFG.appsScriptUrl && !CFG.web3formsKey && !CFG.formspreeUrl) {
       hint.textContent = '※ 目前尚未接上收信服務，按下送出會改為開啟您的郵件軟體。'
                        + '設定方式見 assets/js/config.js。';
     }
@@ -266,15 +266,24 @@
       var lbl = $('span', btn) || btn;
       var old = lbl.textContent;
 
-      if (!CFG.web3formsKey && !CFG.formspreeUrl) { mailtoFallback(d); return; }
+      if (!CFG.appsScriptUrl && !CFG.web3formsKey && !CFG.formspreeUrl) {
+        mailtoFallback(d); return;
+      }
 
       var url, payload, headers = { 'Accept': 'application/json' };
-      if (CFG.web3formsKey) {
+      if (CFG.appsScriptUrl) {
+        url = CFG.appsScriptUrl;
+        payload = JSON.stringify(Object.assign({ _page: location.pathname }, d));
+        /* Apps Script 不處理 CORS preflight，用 text/plain 讓它維持
+           「簡單請求」，瀏覽器就不會先送 OPTIONS。doPost 一樣讀得到內容。 */
+        headers['Content-Type'] = 'text/plain;charset=utf-8';
+      } else if (CFG.web3formsKey) {
         url = 'https://api.web3forms.com/submit';
         payload = JSON.stringify(Object.assign({
           access_key: CFG.web3formsKey,
           subject: (CFG.mailSubject || '官網諮詢') + '｜' + d.name,
-          from_name: '易向室內設計官網'
+          from_name: '易向室內設計官網',
+          botcheck: ''
         }, d));
         headers['Content-Type'] = 'application/json';
       } else {

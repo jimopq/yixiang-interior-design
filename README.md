@@ -15,7 +15,8 @@ image-design-web/
 ├─ service.html          服務項目／收費標準／設計流程
 ├─ contact.html          雙據點資訊／諮詢表單／地圖
 ├─ build.py              頁面產生器（共用頁首頁尾，改版型時跑這支）
-├─ assets/js/config.js   ★ 上線設定：表單收信金鑰、聯絡信箱
+├─ assets/js/config.js   ★ 上線設定：表單收信端、聯絡信箱
+├─ tools/                Google Apps Script 收信端（方案 A 用）
 ├─ data/works.json       作品資料。新增案子只改這個檔，不用動版面
 └─ assets/
    ├─ css/style.css      設計系統（單一檔案，含所有 tokens 與元件）
@@ -67,7 +68,7 @@ cd image-design-web && python3 -m http.server 8899
 | 項目 | 說明 |
 |---|---|
 | **作品原圖** | 舊官網部分作品圖中央有客戶自己加的浮水印，放大後明顯。需向客戶索取無浮水印原檔替換 |
-| ~~表單收信~~ | ✅ 已完成。到 `assets/js/config.js` 填入一組金鑰即可啟用（見下方） |
+| ~~表單收信~~ | ✅ 程式已完成。到 `assets/js/config.js` 填入收信端即可啟用（見下方三個方案） |
 | **影片標題核對** | 四支 YouTube 影片已依縮圖內容對應，建議請客戶再確認一次 |
 | **作品分類資料** | 目前每件作品只有「案名 + 風格分類」。若能補上地區、坪數、年份、設計概念（如旗艦案例「合輝大璽」的規格），質感會再上一階 |
 | **網域與部署** | 建議 Cloudflare Pages，綁定現有網域 image.net.tw |
@@ -100,29 +101,46 @@ cd image-design-web && python3 -m http.server 8899
 
 ## 諮詢表單設定
 
-表單已寫好驗證、防機器人與送出成功畫面。**只要填一組金鑰就會開始收信**，
-在 `assets/js/config.js`：
+表單已寫好驗證、防機器人、送出成功畫面，以及**送出失敗時保住詢問內容**的補救機制。
+只要在 `assets/js/config.js` 填入三者其一就會開始收信。
 
-```js
-web3formsKey: '',   // 貼這裡就好
-formspreeUrl: '',
-```
+### 方案 A｜Google Apps Script（推薦）
 
-### 推薦：Web3Forms（免註冊、免費、不限件數）
+**不需要任何第三方帳號**，用自己的 Google 帳號當收信後端。
+每天 100 封額度，沒有月上限。
 
-1. 開 https://web3forms.com
-2. 輸入 `image238@hotmail.com`，按 Create Access Key
-3. 信箱會收到一組金鑰，貼到 `web3formsKey`
+1. 開 https://script.google.com → 新專案
+2. 貼上 `tools/gmail-form-endpoint.gs` 全部內容
+3. 改檔案裡的 `TO`（收件信箱）
+4. 部署 → 新增部署作業 → **網頁應用程式**
+   - 執行身分：**我**
+   - 誰可以存取：**任何人**（一定要選這個，否則網站呼叫不到）
+5. 授權 → 複製「網頁應用程式網址」
+6. 貼到 `config.js` 的 `appsScriptUrl`
 
-### 或：Formspree（免費版每月 50 封）
+驗證是否部署成功：直接用瀏覽器打開那個網址，應該看到
+`{"success":true,"message":"易向室內設計表單收信端運作中"}`。
 
-註冊後建立 form，把它給的網址（形如 `https://formspree.io/f/abcdwxyz`）
-貼到 `formspreeUrl`。
+### 方案 B｜Web3Forms
 
-### 兩個都不填會怎樣
+https://web3forms.com — **需要註冊帳號並驗證信箱**，免費版**每月 250 封**。
+取得 Access Key 後貼到 `web3formsKey`。
+
+### 方案 C｜Formspree
+
+https://formspree.io — 需註冊，免費版每月 50 封。
+建立 form 後把網址貼到 `formspreeUrl`。
+
+### 三個都不填會怎樣
 
 表單不會壞掉 —— 按下送出會開啟訪客自己的郵件軟體，並把所有欄位
 （姓名／電話／Email／需求類型／坪數／地區／需求說明）預先填好，
 收件人是 `contactEmail`。客戶資料不會遺失，只是多一個按「寄出」的步驟。
 
-表單頁面下方會自動顯示提醒文字，設定好金鑰後那行提醒會自己消失。
+表單下方會自動顯示提醒文字，設定好之後那行提醒會自己消失。
+
+### 送出失敗時
+
+若金鑰貼錯或服務異常，表單**不會**清空。使用者填的內容全部保留，
+提示列會出現「改用郵件寄出」按鈕，一鍵帶著完整內容開啟郵件軟體。
+實際的 API 錯誤訊息會輸出到瀏覽器 console，方便排查。
