@@ -73,6 +73,31 @@ cd image-design-web && python3 -m http.server 8899
 | **作品分類資料** | 目前每件作品只有「案名 + 風格分類」。若能補上地區、坪數、年份、設計概念（如旗艦案例「合輝大璽」的規格），質感會再上一階 |
 | **網域與部署** | 建議 Cloudflare Pages，綁定現有網域 image.net.tw |
 
+## 分支
+
+| 分支 | 用途 |
+|---|---|
+| `main` | **正式版**。robots.txt 允許索引、含 sitemap，給 Cloudflare Pages 用 |
+| `preview` | **提案預覽版**。全站 `noindex,nofollow` + robots.txt Disallow，給 GitHub Pages 用 |
+
+預覽網址：https://jimopq.github.io/yixiang-interior-design/
+
+`preview` 加了 noindex 是為了避免預覽站被搜尋引擎索引，與客戶正式站
+image.net.tw 內容重複而互相稀釋排名。
+
+**不要把 `preview` 合併回 `main`** —— 那會把 noindex 帶進正式站。
+要更新預覽站，方向是相反的：
+
+```bash
+git checkout preview && git merge main && git push && git checkout main
+```
+
+客戶確認後、正式站上線時，可以直接刪掉 `preview` 分支並把 repo 轉回私有：
+
+```bash
+gh repo edit --visibility private --accept-visibility-change-consequences
+```
+
 ## 部署（Cloudflare Pages）
 
 程式碼已在私有 repo：**https://github.com/jimopq/yixiang-interior-design**
