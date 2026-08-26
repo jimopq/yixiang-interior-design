@@ -1,0 +1,841 @@
+{
+ "categories": [
+  {
+   "slug": "classic",
+   "name": "奢華新古典風",
+   "en": "NEO CLASSIC",
+   "count": 26
+  },
+  {
+   "slug": "zen",
+   "name": "自然人文禪風",
+   "en": "ZEN & NATURE",
+   "count": 21
+  },
+  {
+   "slug": "modern",
+   "name": "現代素雅休閒風",
+   "en": "MODERN CALM",
+   "count": 21
+  },
+  {
+   "slug": "compact",
+   "name": "小坪數溫馨宅",
+   "en": "COMPACT LIVING",
+   "count": 12
+  },
+  {
+   "slug": "public",
+   "name": "公共空間",
+   "en": "PUBLIC SPACE",
+   "count": 6
+  }
+ ],
+ "works": [
+  {
+   "id": "103",
+   "title": "莫蘭迪新古典",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-103.jpg",
+   "featured": true
+  },
+  {
+   "id": "63",
+   "title": "古典餘韻",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-63.jpg",
+   "featured": true
+  },
+  {
+   "id": "97",
+   "title": "低調奢華",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-97.jpg",
+   "featured": true
+  },
+  {
+   "id": "102",
+   "title": "沈博絕麗",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-102.jpg",
+   "featured": false
+  },
+  {
+   "id": "64",
+   "title": "拾光",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-64.jpg",
+   "featured": false
+  },
+  {
+   "id": "18",
+   "title": "上林苑",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-18.jpg",
+   "featured": false
+  },
+  {
+   "id": "92",
+   "title": "尊貴榮華",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-92.jpg",
+   "featured": true
+  },
+  {
+   "id": "96",
+   "title": "步月登雲",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-96.jpg",
+   "featured": true
+  },
+  {
+   "id": "93",
+   "title": "月明如晝",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-93.jpg",
+   "featured": false
+  },
+  {
+   "id": "84",
+   "title": "幽蘭恬靜",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-84.jpg",
+   "featured": false
+  },
+  {
+   "id": "74",
+   "title": "灰寓恬靜",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-74.jpg",
+   "featured": false
+  },
+  {
+   "id": "48",
+   "title": "層層疊韻",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-48.jpg",
+   "featured": false
+  },
+  {
+   "id": "59",
+   "title": "如此美好",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-59.jpg",
+   "featured": false
+  },
+  {
+   "id": "13",
+   "title": "一曲大調",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-13.jpg",
+   "featured": false
+  },
+  {
+   "id": "12",
+   "title": "一品",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-12.jpg",
+   "featured": false
+  },
+  {
+   "id": "19",
+   "title": "時尚英倫",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-19.jpg",
+   "featured": false
+  },
+  {
+   "id": "58",
+   "title": "富繪饗宴",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-58.jpg",
+   "featured": false
+  },
+  {
+   "id": "67",
+   "title": "天倫美景",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-67.jpg",
+   "featured": false
+  },
+  {
+   "id": "20",
+   "title": "逆光光景",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-20.jpg",
+   "featured": false
+  },
+  {
+   "id": "21",
+   "title": "迴旋",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-21.jpg",
+   "featured": false
+  },
+  {
+   "id": "22",
+   "title": "詠桃",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-22.jpg",
+   "featured": false
+  },
+  {
+   "id": "23",
+   "title": "賦馨",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-23.jpg",
+   "featured": false
+  },
+  {
+   "id": "24",
+   "title": "名毅一山",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-24.jpg",
+   "featured": false
+  },
+  {
+   "id": "25",
+   "title": "群青群輕",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-25.jpg",
+   "featured": false
+  },
+  {
+   "id": "26",
+   "title": "互助典藏",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-26.jpg",
+   "featured": false
+  },
+  {
+   "id": "87",
+   "title": "梨雨",
+   "cat": "classic",
+   "catName": "奢華新古典風",
+   "catEn": "NEO CLASSIC",
+   "img": "assets/works/cover-87.jpg",
+   "featured": false
+  },
+  {
+   "id": "88",
+   "title": "圓滿起點",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-88.jpg",
+   "featured": false
+  },
+  {
+   "id": "90",
+   "title": "青峰錦",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-90.jpg",
+   "featured": true
+  },
+  {
+   "id": "98",
+   "title": "文。榮璽",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-98.jpg",
+   "featured": true
+  },
+  {
+   "id": "106",
+   "title": "華悅",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-106.jpg",
+   "featured": true
+  },
+  {
+   "id": "89",
+   "title": "如畫",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-89.jpg",
+   "featured": false
+  },
+  {
+   "id": "107",
+   "title": "文藝氣息",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-107.jpg",
+   "featured": false
+  },
+  {
+   "id": "91",
+   "title": "清新晨沐",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-91.jpg",
+   "featured": false
+  },
+  {
+   "id": "101",
+   "title": "謙釀玉翠",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-101.jpg",
+   "featured": true
+  },
+  {
+   "id": "55",
+   "title": "登岳",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-55.jpg",
+   "featured": false
+  },
+  {
+   "id": "68",
+   "title": "洗鍊文宅",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-68.jpg",
+   "featured": false
+  },
+  {
+   "id": "27",
+   "title": "泊木",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-27.jpg",
+   "featured": false
+  },
+  {
+   "id": "77",
+   "title": "日。向度",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-77.jpg",
+   "featured": false
+  },
+  {
+   "id": "46",
+   "title": "揮毫筆鋒",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-46.jpg",
+   "featured": false
+  },
+  {
+   "id": "62",
+   "title": "實蝕淬鍊",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-62.jpg",
+   "featured": false
+  },
+  {
+   "id": "66",
+   "title": "凝。刻紋",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-66.jpg",
+   "featured": false
+  },
+  {
+   "id": "71",
+   "title": "歸墨",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-71.jpg",
+   "featured": false
+  },
+  {
+   "id": "60",
+   "title": "逐靜嚮往",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-60.jpg",
+   "featured": false
+  },
+  {
+   "id": "14",
+   "title": "極致人文",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-14.jpg",
+   "featured": false
+  },
+  {
+   "id": "28",
+   "title": "雅築一室",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-28.jpg",
+   "featured": false
+  },
+  {
+   "id": "29",
+   "title": "近靜洗鍊",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-29.jpg",
+   "featured": false
+  },
+  {
+   "id": "47",
+   "title": "墨花旋舞",
+   "cat": "zen",
+   "catName": "自然人文禪風",
+   "catEn": "ZEN & NATURE",
+   "img": "assets/works/cover-47.jpg",
+   "featured": false
+  },
+  {
+   "id": "114",
+   "title": "書香星巴克",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-114.jpg",
+   "featured": false
+  },
+  {
+   "id": "115",
+   "title": "樸澍安居",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-115.jpg",
+   "featured": true
+  },
+  {
+   "id": "105",
+   "title": "人文君悅",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-105.jpg",
+   "featured": true
+  },
+  {
+   "id": "61",
+   "title": "樸石五五侘",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-61.jpg",
+   "featured": true
+  },
+  {
+   "id": "86",
+   "title": "寶徠北歐",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-86.jpg",
+   "featured": true
+  },
+  {
+   "id": "110",
+   "title": "現代橫濱",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-110.jpg",
+   "featured": true
+  },
+  {
+   "id": "113",
+   "title": "得意山莊",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-113.jpg",
+   "featured": true
+  },
+  {
+   "id": "112",
+   "title": "輕奢禮御",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-112.jpg",
+   "featured": false
+  },
+  {
+   "id": "104",
+   "title": "人文璞園",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-104.jpg",
+   "featured": false
+  },
+  {
+   "id": "99",
+   "title": "奢華謙釀",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-99.jpg",
+   "featured": false
+  },
+  {
+   "id": "70",
+   "title": "北歐森林",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-70.jpg",
+   "featured": false
+  },
+  {
+   "id": "94",
+   "title": "輕奢雲朵",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-94.jpg",
+   "featured": false
+  },
+  {
+   "id": "95",
+   "title": "咏竹",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-95.jpg",
+   "featured": false
+  },
+  {
+   "id": "75",
+   "title": "航揚",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-75.jpg",
+   "featured": false
+  },
+  {
+   "id": "15",
+   "title": "品築不凡",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-15.jpg",
+   "featured": false
+  },
+  {
+   "id": "69",
+   "title": "一室光",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-69.jpg",
+   "featured": false
+  },
+  {
+   "id": "30",
+   "title": "格雷調",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-30.jpg",
+   "featured": false
+  },
+  {
+   "id": "31",
+   "title": "明水大觀",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-31.jpg",
+   "featured": false
+  },
+  {
+   "id": "32",
+   "title": "素雅空間",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-32.jpg",
+   "featured": false
+  },
+  {
+   "id": "128",
+   "title": "文岳龍藏",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-128.jpg",
+   "featured": true
+  },
+  {
+   "id": "130",
+   "title": "皓御",
+   "cat": "modern",
+   "catName": "現代素雅休閒風",
+   "catEn": "MODERN CALM",
+   "img": "assets/works/cover-130.jpg",
+   "featured": true
+  },
+  {
+   "id": "129",
+   "title": "弧光靜謐",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-129.jpg",
+   "featured": false
+  },
+  {
+   "id": "117",
+   "title": "書畫墨硯",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-117.jpg",
+   "featured": false
+  },
+  {
+   "id": "118",
+   "title": "桃裡紅厝",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-118.jpg",
+   "featured": false
+  },
+  {
+   "id": "119",
+   "title": "品硯雨花",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-119.jpg",
+   "featured": false
+  },
+  {
+   "id": "120",
+   "title": "荷沐莊園",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-120.jpg",
+   "featured": false
+  },
+  {
+   "id": "121",
+   "title": "品硯欶石",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-121.jpg",
+   "featured": false
+  },
+  {
+   "id": "122",
+   "title": "品硯京綠",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-122.jpg",
+   "featured": false
+  },
+  {
+   "id": "123",
+   "title": "品硯烏金",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-123.jpg",
+   "featured": false
+  },
+  {
+   "id": "124",
+   "title": "品硯黛綠",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-124.jpg",
+   "featured": false
+  },
+  {
+   "id": "125",
+   "title": "品硯蒼青",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-125.jpg",
+   "featured": false
+  },
+  {
+   "id": "126",
+   "title": "陽光蔚藍",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-126.jpg",
+   "featured": false
+  },
+  {
+   "id": "127",
+   "title": "君悅秋色",
+   "cat": "compact",
+   "catName": "小坪數溫馨宅",
+   "catEn": "COMPACT LIVING",
+   "img": "assets/works/cover-127.jpg",
+   "featured": false
+  },
+  {
+   "id": "108",
+   "title": "三峽一期",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-108.jpg",
+   "featured": false
+  },
+  {
+   "id": "65",
+   "title": "馥築公共空間",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-65.jpg",
+   "featured": true
+  },
+  {
+   "id": "43",
+   "title": "三峽北大特區公共空間1",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-43.jpg",
+   "featured": false
+  },
+  {
+   "id": "17",
+   "title": "高鐵南路公共空間",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-17.jpg",
+   "featured": false
+  },
+  {
+   "id": "44",
+   "title": "三峽北大特區公共空間2",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-44.jpg",
+   "featured": false
+  },
+  {
+   "id": "45",
+   "title": "三峽北大特區公共空間3",
+   "cat": "public",
+   "catName": "公共空間",
+   "catEn": "PUBLIC SPACE",
+   "img": "assets/works/cover-45.jpg",
+   "featured": false
+  }
+ ],
+ "flagship": {
+  "name": "合輝大璽",
+  "sub": "現代輕奢住宅",
+  "cat": "住宅空間設計",
+  "location": "桃園市",
+  "area": "約 55 坪",
+  "style": "現代輕奢 × 溫潤木質",
+  "budget": "每坪 3.6 萬元起",
+  "concept": "以淺色木質、石材紋理與柔和曲線為設計語彙，透過開放式客餐廳整合、弧形天花與大面採光，打造兼具舒適感與生活儀式感的現代住宅空間。",
+  "highlights": [
+   "開放設計",
+   "收納機能",
+   "質感生活"
+  ],
+  "gallery": [
+   "assets/case/hehui-01.jpg",
+   "assets/case/hehui-02.jpg",
+   "assets/case/hehui-03.jpg",
+   "assets/case/hehui-04.jpg",
+   "assets/case/hehui-05.jpg",
+   "assets/case/hehui-06.jpg",
+   "assets/case/hehui-07.jpg",
+   "assets/case/hehui-08.jpg",
+   "assets/case/hehui-09.jpg",
+   "assets/case/hehui-10.jpg",
+   "assets/case/hehui-11.jpg",
+   "assets/case/hehui-12.jpg",
+   "assets/case/hehui-13.jpg",
+   "assets/case/hehui-14.jpg"
+  ]
+ }
+}
