@@ -40,7 +40,7 @@ def head(cur, title, desc, og="assets/hero/h05.jpg"):
  % (h, ' class="on"' if h==cur else '', e, c)
  for h,e,c in NAV) + '''
   </nav>
-  <a class="head-cta" href="contact.html">免費諮詢丈量</a>
+  <a class="head-cta" href="contact.html">免費諮詢</a>
   <button class="burger" aria-label="選單"><i></i><i></i><i></i></button>
 </header>
 '''
@@ -137,10 +137,10 @@ write('works.html',
     <p class="eyebrow center rv">Next Step</p>
     <h2 class="h-sec rv rv-d1">看到喜歡的空間了嗎</h2>
     <p class="lede rv rv-d2" style="text-align:center;margin-inline:auto">
-      告訴我們您的坪數、格局與生活習慣，我們會安排免費的現場丈量與初步討論。
+      告訴我們您的坪數、格局與生活習慣，我們會先與您進行一次免費的初步諮詢。
     </p>
     <div class="btn-row center rv rv-d3">
-      <a class="btn btn-light" href="contact.html"><span>預約免費丈量</span><span>→</span></a>
+      <a class="btn btn-light" href="contact.html"><span>預約免費諮詢</span><span>→</span></a>
     </div>
   </div>
 </section>
@@ -230,7 +230,7 @@ write('about.html',
 # ---------------------------------------------------------------- 服務與流程
 write('service.html',
   head('service.html','服務與收費標準｜易向室內設計 YIXIANG INTERIOR DESIGN',
-       '易向室內設計服務項目涵蓋住宅空間、商業空間、建築公共空間、接待中心實品屋與舊屋翻新，並提供免費諮詢與丈量服務。',
+       '易向室內設計服務項目涵蓋住宅空間、商業空間、建築公共空間、接待中心實品屋與舊屋翻新，並提供免費初步諮詢。',
        'assets/hero/h15.jpg')
   + page_head('assets/hero/h15.jpg','Service','服務與流程','服務與流程')
   + '''
@@ -247,7 +247,7 @@ write('service.html',
       <article class="svc-i rv rv-d2"><p class="no">03</p><h3>建築公共空間</h3><p>大廳、交誼廳與公設整體規劃，提升建案整體質感與價值。</p></article>
       <article class="svc-i rv"><p class="no">04</p><h3>接待中心・實品屋</h3><p>掌握銷售節奏與客層想像，以空間敘事創造成交動能。</p></article>
       <article class="svc-i rv rv-d1"><p class="no">05</p><h3>舊屋翻新</h3><p>從管線結構到格局重整，讓老屋重新符合現代生活需求。</p></article>
-      <article class="svc-i rv rv-d2"><p class="no">06</p><h3>免費諮詢與丈量</h3><p>初次接觸不收費，先聊需求、看現場，再談設計與預算。</p></article>
+      <article class="svc-i rv rv-d2"><p class="no">06</p><h3>免費初步諮詢</h3><p>初次需求溝通不收費，先了解您的想法與預算方向，再談後續。</p></article>
     </div>
   </div>
 </section>
@@ -266,9 +266,9 @@ write('service.html',
       <article class="fee rv rv-d1"><p class="no">02</p><h3>工程合約</h3>
         <p class="amt">個案報價</p>
         <ul><li>依高質感的施工品質</li><li>再依據坪數大小、風格規劃</li><li>施工項目及立面材質的差異</li><li>完整提報工程總預算</li></ul></article>
-      <article class="fee rv rv-d2"><p class="no">03</p><h3>諮詢與丈量</h3>
+      <article class="fee rv rv-d2"><p class="no">03</p><h3>初步諮詢</h3>
         <p class="amt">免費</p>
-        <ul><li>初步需求溝通不收費</li><li>現場丈量與拍照留底不收費</li><li>提供初步專業建議與預算方向</li></ul></article>
+        <ul><li>初步需求溝通不收費</li><li>提供初步專業建議與預算方向</li><li>說明後續設計與工程的計價方式</li></ul></article>
     </div>
     <p class="note rv">※ 以上為易向室內設計之計價原則，實際金額以雙方簽訂之設計合約與工程合約為準。</p>
   </div>
@@ -305,7 +305,7 @@ write('service.html',
 # ---------------------------------------------------------------- 聯絡我們
 write('contact.html',
   head('contact.html','聯絡我們｜易向室內設計 YIXIANG INTERIOR DESIGN',
-       '易向室內設計台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。免費諮詢與丈量服務。',
+       '易向室內設計台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。免費初步諮詢。',
        'assets/hero/h17.jpg')
   + page_head('assets/hero/h17.jpg','Contact','聯絡我們','聯絡我們')
   + '''
@@ -314,7 +314,7 @@ write('contact.html',
     <div class="sec-head center">
       <p class="eyebrow center rv">Our Offices</p>
       <h2 class="h-sec rv rv-d1">台北 ・ 桃園 雙據點</h2>
-      <p class="lede rv rv-d2" style="text-align:center">初次諮詢與現場丈量皆不收費，歡迎先來電或留下資料。</p>
+      <p class="lede rv rv-d2" style="text-align:center">初次諮詢不收費，歡迎先來電或留下資料。</p>
     </div>
     <div class="offices rv">
       <div class="office">
