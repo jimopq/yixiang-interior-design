@@ -14,7 +14,7 @@ NAV = [
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
- '&family=Noto+Sans+TC:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500;600&display=swap" rel="stylesheet">')
+ '&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">')
 
 SITE = "易向室內設計 YIXIANG INTERIOR DESIGN"
 
@@ -32,7 +32,13 @@ def bg_css(spec):
 
 def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None):
     css = bg_css(bg) if bg else ''
-    pl = f'<link rel="preload" as="image" href="{preload}" fetchpriority="high">' if preload else ''
+    if preload:
+        sm = preload.replace('/1600/', '/900/')
+        pl = ('<link rel="preload" as="image" href="%s" media="(min-width:721px)" fetchpriority="high">'
+              '<link rel="preload" as="image" href="%s" media="(max-width:720px)" fetchpriority="high">'
+              % (preload, sm))
+    else:
+        pl = ''
     nav = "\n".join(
         '    <a href="%s"%s><span class="en">%s</span><span class="ch">%s</span></a>'
         % (h, ' class="on"' if h == cur else '', e, c)
