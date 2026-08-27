@@ -9,23 +9,30 @@
 
 ```
 image-design-web/
-├─ index.html            首頁（首屏／理念／旗艦案例／精選作品／獎項／服務／流程／聯絡）
-├─ about.html            關於易向（理念／數字／國際獎項／媒體專訪影片）
-├─ works.html            作品總覽（86 件・五種風格分類篩選・燈箱瀏覽）
-├─ service.html          服務項目／收費標準／設計流程
-├─ contact.html          雙據點資訊／諮詢表單／地圖
-├─ build.py              頁面產生器（共用頁首頁尾，改版型時跑這支）
-├─ assets/js/config.js   ★ 上線設定：表單收信端、聯絡信箱
-├─ tools/                Google Apps Script 收信端（方案 A 用）
-├─ data/works.json       作品資料。新增案子只改這個檔，不用動版面
+├─ index.html            首頁（首屏／理念／精選作品／案例導引／獎項／LINE）
+├─ about.html            關於易向（理念、數字、國際獎項、媒體專訪影片）
+├─ works.html            作品總覽（86 件・五類篩選・每頁 12 件分頁・燈箱）
+├─ case.html             精選案例 合輝大璽（規格、設計概念、14 張圖庫）
+├─ service.html          服務項目與收費標準
+├─ process.html          設計流程（六階段）
+├─ contact.html          雙據點資訊、LINE、地圖
+├─ build.py              ★ 頁面產生器。改版型、改文案都動這支，然後 python3 build.py
+├─ data/works.json       ★ 作品資料。新增案子只改這個檔
+├─ tools/
+│  ├─ make-thumbs.sh     ★ 產生多尺寸縮圖
+│  └─ gmail-form-endpoint.gs  （保留備用，目前表單已改為 LINE 導流）
 └─ assets/
-   ├─ css/style.css      設計系統（單一檔案，含所有 tokens 與元件）
-   ├─ js/main.js         互動（頁首、選單、輪播、進場動畫、篩選、燈箱）
-   ├─ brand/             Logo（白／深色透明去背）與獎項標章
-   ├─ hero/              首屏與內頁頁首大圖（14 張，取自提案簡報）
-   ├─ case/              旗艦案例「合輝大璽」圖庫（14 張）
-   └─ works/             86 件作品封面（取自舊官網，已壓至 1600px）
+   ├─ css/style.css      設計系統（單一檔案）
+   ├─ js/config.js       ★ 上線設定：LINE 連結
+   ├─ js/main.js         互動（選單、輪播、篩選、分頁、燈箱、LINE 灌入）
+   ├─ brand/             Logo 與獎項標章
+   ├─ hero/  900｜1600   主視覺（首屏與各頁頁首）
+   ├─ case/  800｜1200   精選案例圖庫（主目錄 1600 供燈箱）
+   └─ works/ 400｜800｜1200  作品封面（主目錄 1600 供燈箱）
 ```
+
+**所有頁面都由 `build.py` 產生**，頁首、頁尾、導覽列、LINE 區塊只有一份定義。
+不要直接改 .html —— 下次跑 build.py 會被蓋掉。
 
 ## 本機預覽
 
@@ -124,48 +131,49 @@ gh repo edit --visibility private --accept-visibility-change-consequences
 
 ---
 
-## 諮詢表單設定
+## LINE 設定
 
-表單已寫好驗證、防機器人、送出成功畫面，以及**送出失敗時保住詢問內容**的補救機制。
-只要在 `assets/js/config.js` 填入三者其一就會開始收信。
+網站的名單收集已改為**直接導向 LINE 官方帳號**，不再使用表單。
+頁首按鈕、每頁底部的 CTA 區塊、頁尾連結、手機底部固定列，全部吃同一個設定值。
 
-### 方案 A｜Google Apps Script（推薦）
+在 `assets/js/config.js`：
 
-**不需要任何第三方帳號**，用自己的 Google 帳號當收信後端。
-每天 100 封額度，沒有月上限。
+```js
+lineUrl: '',   // 例：https://lin.ee/xxxxxxx
+lineId: '',    // 顯示用文字，例：@image-design
+```
 
-1. 開 https://script.google.com → 新專案
-2. 貼上 `tools/gmail-form-endpoint.gs` 全部內容
-3. 改檔案裡的 `TO`（收件信箱）
-4. 部署 → 新增部署作業 → **網頁應用程式**
-   - 執行身分：**我**
-   - 誰可以存取：**任何人**（一定要選這個，否則網站呼叫不到）
-5. 授權 → 複製「網頁應用程式網址」
-6. 貼到 `config.js` 的 `appsScriptUrl`
+`lineUrl` 從 LINE Official Account Manager →「增加好友人數」取得。
 
-驗證是否部署成功：直接用瀏覽器打開那個網址，應該看到
-`{"success":true,"message":"易向室內設計表單收信端運作中"}`。
+**留空也不會壞**：所有 LINE 按鈕會自動改成撥打電話（`fallbackTel`），
+並在 CTA 區塊下方顯示一行設定提醒。設定好之後提醒會自己消失。
 
-### 方案 B｜Web3Forms
+---
 
-https://web3forms.com — **需要註冊帳號並驗證信箱**，免費版**每月 250 封**。
-取得 Access Key 後貼到 `web3formsKey`。
+## 圖片
 
-### 方案 C｜Formspree
+這是這個站最重的部分，所以做了多尺寸切換。
 
-https://formspree.io — 需註冊，免費版每月 50 封。
-建立 form 後把網址貼到 `formspreeUrl`。
+| 用途 | 尺寸 | 說明 |
+|---|---|---|
+| 格線縮圖 | 400 / 800 / 1200 | 由 `srcset` 交給瀏覽器依螢幕與 DPR 挑 |
+| 頁首／首屏大圖 | 900 / 1600 | 手機吃 900，桌機吃 1600 |
+| 燈箱 | 1600（主目錄） | 使用者點開才載入 |
 
-### 三個都不填會怎樣
+**新增作品的流程：**
 
-表單不會壞掉 —— 按下送出會開啟訪客自己的郵件軟體，並把所有欄位
-（姓名／電話／Email／需求類型／坪數／地區／需求說明）預先填好，
-收件人是 `contactEmail`。客戶資料不會遺失，只是多一個按「寄出」的步驟。
+1. 把原圖丟進 `assets/works/`，命名 `cover-<id>.jpg`
+2. 執行 `bash tools/make-thumbs.sh`
+3. 在 `data/works.json` 的 `works` 陣列加一筆
+4. `python3 build.py`
 
-表單下方會自動顯示提醒文字，設定好之後那行提醒會自己消失。
+### 兩個踩過的坑，改動時要注意
 
-### 送出失敗時
+**srcset 的階梯不能有斷層。** 桌機視網膜下卡片是 409px、DPR 2，需要約 818px。
+若最大階只到 800，瀏覽器會直接跳去抓 1600 原圖（約 300KB／張）。
+`sizes` 宣告成 28vw 讓它落在 800 這一階，實測初始載入從 1804KB 降到 387KB。
 
-若金鑰貼錯或服務異常，表單**不會**清空。使用者填的內容全部保留，
-提示列會出現「改用郵件寄出」按鈕，一鍵帶著完整內容開啟郵件軟體。
-實際的 API 錯誤訊息會輸出到瀏覽器 console，方便排查。
+**CSS 自訂屬性裡的相對路徑，是相對於 CSS 檔而不是 HTML。**
+把 `--bg:url(assets/hero/...)` 寫在 HTML、在 `assets/css/style.css` 裡用 `var(--bg)`，
+瀏覽器會解析成 `/assets/css/assets/hero/...` 而整個主視覺變黑。
+所以頁首背景改用 `build.py` 寫進 HTML `<head>` 的 `<style>` 區塊。

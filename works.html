@@ -8,30 +8,36 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="作品總覽｜易向室內設計 YIXIANG INTERIOR DESIGN">
 <meta property="og:description" content="易向室內設計作品總覽，收錄奢華新古典風、自然人文禪風、現代素雅休閒風、小坪數溫馨宅與公共空間共 86 件完工實績。">
-<meta property="og:image" content="assets/hero/h09.jpg">
+<meta property="og:image" content="assets/hero/1600/h09.jpg">
 <link rel="icon" href="assets/brand/logo-purple.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+TC:wght@200;300;400;500&family=Noto+Serif+TC:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="assets/css/style.css">
+<style>.page-head{background-image:url(assets/hero/1600/h09.jpg)}@media(max-width:720px){.page-head{background-image:url(assets/hero/900/h09.jpg)}}</style>
 </head>
 <body>
 
 <header class="site-head">
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
-    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計">
-    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計">
+    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計" width="520" height="125">
+    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計" width="520" height="125">
   </a>
   <nav class="nav">
     <a href="index.html"><span class="en">Home</span><span class="ch">首頁</span></a>
     <a href="about.html"><span class="en">About</span><span class="ch">關於易向</span></a>
     <a href="works.html" class="on"><span class="en">Works</span><span class="ch">作品總覽</span></a>
-    <a href="service.html"><span class="en">Service</span><span class="ch">服務流程</span></a>
+    <a href="case.html"><span class="en">Case</span><span class="ch">精選案例</span></a>
+    <a href="service.html"><span class="en">Service</span><span class="ch">服務收費</span></a>
+    <a href="process.html"><span class="en">Process</span><span class="ch">設計流程</span></a>
     <a href="contact.html"><span class="en">Contact</span><span class="ch">聯絡我們</span></a>
   </nav>
-  <a class="head-cta" href="contact.html">免費諮詢</a>
+  <a class="head-cta line-cta" data-line href="#" target="_blank" rel="noopener">
+    <span class="ico" aria-hidden="true"></span>LINE 諮詢
+  </a>
   <button class="burger" aria-label="選單"><i></i><i></i><i></i></button>
 </header>
 
-<section class="page-head" style="background-image:url(assets/hero/h09.jpg)">
+<section class="page-head">
   <div class="wrap">
     <p class="eyebrow rv in">Works</p>
     <h1 class="rv in rv-d1">作品總覽</h1>
@@ -44,22 +50,25 @@
     <div class="sec-head center">
       <p class="eyebrow center rv">Portfolio</p>
       <h2 class="h-sec rv rv-d1">完工實績 <span class="thin">共 <span id="wcount">86</span> 件</span></h2>
-      <p class="lede rv rv-d2" style="text-align:center">點選任一件作品可放大檢視。使用左右方向鍵可連續瀏覽。</p>
+      <p class="lede rv rv-d2" style="text-align:center">點選任一件作品可放大檢視，左右方向鍵可連續瀏覽。</p>
     </div>
     <div class="filters" id="filters"></div>
     <div class="grid" id="allworks"></div>
+    <nav class="pager" id="pager" aria-label="作品分頁"></nav>
   </div>
 </section>
 
-<section class="sec sec-dark">
+<section class="sec line-band">
   <div class="wrap-n" style="text-align:center">
-    <p class="eyebrow center rv">Next Step</p>
+    <p class="eyebrow center rv">Let's Talk</p>
     <h2 class="h-sec rv rv-d1">看到喜歡的空間了嗎</h2>
-    <p class="lede rv rv-d2" style="text-align:center;margin-inline:auto">
-      告訴我們您的坪數、格局與生活習慣，我們會先與您進行一次免費的初步諮詢。
-    </p>
-    <div class="btn-row center rv rv-d3">
-      <a class="btn btn-light" href="contact.html"><span>預約免費諮詢</span><span>→</span></a>
+    <p class="lede rv rv-d2" style="text-align:center;margin-inline:auto">加 LINE 告訴我們您的坪數與格局，我們會給您初步的規劃方向與預算範圍。</p>
+    <div class="line-box rv rv-d3">
+      <a class="btn-line" data-line href="#" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true"></span>
+        <span class="tx"><b>加入官方 LINE</b><i data-line-id>@易向室內設計</i></span>
+      </a>
+      <p class="line-alt">或直接來電　<a href="tel:0333585835">桃園 03-358-5835</a>　·　<a href="tel:0225955532">台北 02-2595-5532</a></p>
     </div>
   </div>
 </section>
@@ -68,7 +77,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計">
+        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計" width="520" height="125">
         <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計二十餘年。</p>
       </div>
       <div>
@@ -76,7 +85,9 @@
         <ul class="foot-list">
           <li><a href="about.html">關於易向</a></li>
           <li><a href="works.html">作品總覽</a></li>
+          <li><a href="case.html">精選案例</a></li>
           <li><a href="service.html">服務與收費</a></li>
+          <li><a href="process.html">設計流程</a></li>
           <li><a href="contact.html">聯絡我們</a></li>
         </ul>
       </div>
@@ -86,6 +97,7 @@
           <li><a href="tel:0225955532">台北 02-2595-5532</a></li>
           <li><a href="tel:0333585835">桃園 03-358-5835</a></li>
           <li><a href="mailto:image238@hotmail.com">image238@hotmail.com</a></li>
+          <li><a data-line href="#" target="_blank" rel="noopener">官方 LINE</a></li>
           <li><a href="https://www.facebook.com/profile.php?id=100075962749629" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
       </div>
@@ -98,8 +110,8 @@
 </footer>
 
 <div class="dock">
+  <a class="line" data-line href="#" target="_blank" rel="noopener" aria-label="LINE 諮詢">LINE</a>
   <a href="tel:0333585835" aria-label="撥打電話">撥打電話</a>
-  <a href="mailto:image238@hotmail.com" aria-label="來信諮詢">來信諮詢</a>
 </div>
 
 <div class="lb" id="lb">

@@ -1,15 +1,26 @@
-# 靜態資源長快取（檔名改變才會失效）
-/assets/*
+# 圖片與品牌資產：檔名固定、內容不變，可長快取
+/assets/works/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/hero/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/case/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/brand/*
   Cache-Control: public, max-age=31536000, immutable
 
-# HTML 每次都重新驗證，改版立即生效
+# CSS / JS：檔名沒有 hash，改版後必須讓回訪者立刻拿到新版
+# （原本併在 /assets/* 的 immutable 規則裡，會導致改版對舊訪客無效）
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
 /data/*
   Cache-Control: public, max-age=300
 
-# 基本安全標頭
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
