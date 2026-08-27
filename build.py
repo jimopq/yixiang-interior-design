@@ -14,7 +14,7 @@ NAV = [
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
- '&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">')
+ '&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">')
 
 SITE = "易向室內設計 YIXIANG INTERIOR DESIGN"
 

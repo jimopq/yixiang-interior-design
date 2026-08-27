@@ -70,19 +70,22 @@
   };
   reveal();
 
+  /* 手機判斷用 innerWidth，不用 matchMedia —— 某些內嵌／模擬環境下
+     兩者量到的寬度不一致，innerWidth 才是實際排版寬度。 */
+  var isSmall = function () { return (window.innerWidth || 1200) <= 720; };
+
   /* ---- 首屏輪播：第一張直接載入，其餘等閒置再抓 ---- */
   var bg = $('.hero-bg');
   if (bg) {
     var figs = $$('figure', bg), i = 0;
     /* 手機只輪播兩張：每張約 90KB，四張在行動網路上不值得 */
-    if (window.matchMedia('(max-width:720px)').matches && figs.length > 2) {
+    if (isSmall() && figs.length > 2) {
       figs.slice(2).forEach(function (f) { f.remove(); });
       figs = figs.slice(0, 2);
     }
     var start = function () {
       /* 行內樣式的相對路徑以文件為基準，不會踩到 CSS 變數的解析陷阱 */
-      var dir = window.matchMedia('(max-width:720px)').matches
-        ? 'assets/hero/900/' : 'assets/hero/1600/';
+      var dir = isSmall() ? 'assets/hero/900/' : 'assets/hero/1600/';
       figs.forEach(function (f) {
         if (f.dataset.bg) f.style.backgroundImage = 'url(' + dir + f.dataset.bg + ')';
       });

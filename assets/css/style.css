@@ -69,7 +69,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .eyebrow.center::after{content:"";width:26px;height:1px;background:var(--brand);opacity:.55;flex:none}
 
 .h-sec{
-  font-family:var(--serif);font-weight:500;
+  font-family:var(--serif);font-weight:400;
   font-size:clamp(26px,3.5vw,42px);line-height:1.55;letter-spacing:.16em;
   margin:0 0 28px;color:var(--ink);
 }
@@ -157,7 +157,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   backdrop-filter:blur(1.5px);
 }
 .hero h1{
-  font-family:var(--serif);font-weight:300;
+  font-family:var(--serif);font-weight:400;
   font-size:clamp(28px,5.4vw,60px);line-height:1.5;letter-spacing:.3em;
   margin:0;text-indent:.3em;
 }
@@ -201,7 +201,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .page-head .eyebrow{color:#E4CD9E}
 .page-head .eyebrow::before{background:var(--gold-soft)}
 .page-head h1{
-  font-family:var(--serif);font-weight:300;
+  font-family:var(--serif);font-weight:400;
   font-size:clamp(28px,4.4vw,48px);letter-spacing:.22em;margin:0;line-height:1.5;
 }
 .crumb{margin:20px 0 0;font-size:11.5px;letter-spacing:.2em;opacity:.72}
@@ -222,7 +222,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* --- 理念（大字襯線引言） ----------------------------------------------- */
 .philo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
 .philo-q{
-  font-family:var(--serif);font-weight:300;
+  font-family:var(--serif);font-weight:400;
   font-size:clamp(19px,2.05vw,26px);line-height:2.05;letter-spacing:.12em;
   color:var(--ink);margin:0;text-wrap:balance;
 }
@@ -463,7 +463,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   position:absolute;left:0;right:0;bottom:clamp(20px,4vw,44px);text-align:center;color:#fff;
 }
 .lb-cap .k{font-family:var(--display);font-size:10px;letter-spacing:.34em;color:var(--gold-soft);margin:0 0 8px}
-.lb-cap h3{font-family:var(--serif);font-weight:300;font-size:clamp(17px,2vw,24px);letter-spacing:.22em;margin:0}
+.lb-cap h3{font-family:var(--serif);font-weight:400;font-size:clamp(17px,2vw,24px);letter-spacing:.22em;margin:0}
 .lb-x{position:absolute;top:clamp(18px,3vw,34px);right:clamp(18px,3vw,34px);width:40px;height:40px;color:#fff}
 .lb-x::before,.lb-x::after{content:"";position:absolute;left:8px;right:8px;top:19px;height:1px;background:#fff}
 .lb-x::before{transform:rotate(45deg)}.lb-x::after{transform:rotate(-45deg)}
