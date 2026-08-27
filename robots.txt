@@ -1,4 +1,3 @@
+# 提案預覽站，禁止索引
 User-agent: *
-Allow: /
-
-Sitemap: https://www.image.net.tw/sitemap.xml
+Disallow: /
