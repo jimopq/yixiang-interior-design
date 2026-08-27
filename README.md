@@ -93,10 +93,28 @@ cd image-design-web && python3 -m http.server 8899
 image.net.tw 內容重複而互相稀釋排名。
 
 **不要把 `preview` 合併回 `main`** —— 那會把 noindex 帶進正式站。
-要更新預覽站，方向是相反的：
+
+更新預覽站不要用 merge（頁面都是產生出來的，很容易衝突），
+直接由 main 重建：
 
 ```bash
-git checkout preview && git merge main && git push && git checkout main
+git checkout preview
+git reset --hard main
+# 重新套上 noindex 與 robots.txt Disallow
+python3 - <<'EOF'
+import glob
+for f in glob.glob('*.html'):
+    s = open(f, encoding='utf-8').read()
+    if 'name="robots"' in s: continue
+    s = s.replace('<meta name="viewport" content="width=device-width,initial-scale=1">',
+                  '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
+                  '<meta name="robots" content="noindex,nofollow">')
+    open(f, 'w', encoding='utf-8').write(s)
+EOF
+printf 'User-agent: *\nDisallow: /\n' > robots.txt
+rm -f sitemap.xml && touch .nojekyll
+git add -A && git commit -m "預覽分支：由 main 重建" && git push --force-with-lease
+git checkout main
 ```
 
 客戶確認後、正式站上線時，可以直接刪掉 `preview` 分支並把 repo 轉回私有：
