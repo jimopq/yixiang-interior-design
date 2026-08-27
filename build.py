@@ -1,6 +1,21 @@
 # -*- coding: utf-8 -*-
 """易向室內設計 — 靜態頁產生器。所有頁面共用同一份頁首／頁尾／元件。"""
 
+import hashlib
+
+
+def asset_ver(path):
+    """回傳檔案內容的 8 碼 hash，接在 ?v= 後面當 cache-busting 版本號。
+    檔案一變、URL 就變，不依賴任何人記得手動改版號，也不受
+    GitHub Pages／Cloudflare Pages 各自的快取策略差異影響。"""
+    return hashlib.md5(open(path, 'rb').read()).hexdigest()[:8]
+
+
+CSS_V = asset_ver('assets/css/style.css')
+JS_V = asset_ver('assets/js/main.js')
+CFG_V = asset_ver('assets/js/config.js')
+
+
 NAV = [
     ("index.html",   "Home",    "首頁"),
     ("about.html",   "About",   "關於易向"),
@@ -57,7 +72,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 <link rel="icon" href="assets/brand/logo-purple.png">
 {FONTS}
 {pl}
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v={CSS_V}">
 {css}
 </head>
 <body>
@@ -110,7 +125,7 @@ def line_band(title="想聊聊您的空間嗎", sub="加 LINE 直接對話，不
 '''
 
 
-FOOT = '''
+FOOT = f'''
 <footer class="site-foot">
   <div class="wrap">
     <div class="foot-top">
@@ -160,8 +175,8 @@ FOOT = '''
   <div class="lb-cap"><p class="k" id="lbK"></p><h3 id="lbT"></h3></div>
 </div>
 
-<script src="assets/js/config.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/config.js?v={CFG_V}"></script>
+<script src="assets/js/main.js?v={JS_V}"></script>
 </body>
 </html>
 '''
