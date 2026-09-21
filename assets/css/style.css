@@ -752,3 +752,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .nav{display:none}
   .burger{display:block}
 }
+
+/* --- 辦公室外觀照 ------------------------------------------------------- */
+.office-fig{margin:30px 0 0}
+.office-fig img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.office-fig figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.office-fig figcaption span{color:var(--faint);letter-spacing:.06em}
+
+/* --- 雜誌報導清單 ------------------------------------------------------- */
+.press{margin-top:clamp(44px,5vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--line)}
+.press-h{font-family:var(--serif);font-size:clamp(17px,1.6vw,21px);letter-spacing:.18em;margin:0 0 22px;color:var(--ink)}
+.press ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,64px)}
+.press li{padding:16px 0 16px 22px;border-bottom:1px solid var(--line-soft);position:relative;
+  font-size:14px;letter-spacing:.14em;color:var(--ink-soft)}
+.press li::before{content:"";position:absolute;left:0;top:50%;width:10px;height:1px;background:var(--accent)}
+@media (max-width:720px){.press ul{grid-template-columns:1fr}}

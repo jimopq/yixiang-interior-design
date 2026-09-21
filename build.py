@@ -387,6 +387,7 @@ write('about.html',
         <p class="philo-q rv rv-d2">室內設計的真諦不在譁眾取寵，而是來自於居住者<em>發自內心的認同與肯定</em>。</p>
         <div class="rv rv-d3" style="margin-top:32px">
           <p>從事室內設計二十多個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
+          <p>多一份設想溝通，多一份細膩思維。以人性為室內設計的主軸，創造空間設計新價值。</p>
           <p>以無限的巧思及創新讓家的收納與美感合而為一，從細膩動人的設計觀點及高品質的施工，重新定義家人的互動。</p>
           <p>注重完美的線條比例，更在乎客戶的生活體驗與需求。我們不會強迫您的感官定義，更不會堅持學院派的理論。</p>
         </div>
@@ -426,6 +427,15 @@ write('about.html',
     </div>
     <div class="vids">
 ''' + vid_html + '''
+    </div>
+    <div class="press rv">
+      <p class="press-h">幸福空間雜誌報導</p>
+      <ul>
+        <li>人文時尚　華美的空間饗宴</li>
+        <li>質感入室　鋪敘大宅光感奢華</li>
+        <li>大膽打造　完美獨特</li>
+        <li>框塑古典　生活愜意退休寓所</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -591,6 +601,13 @@ write('contact.html',
           <dt>電話</dt><dd><a href="tel:0333585835">03-358-5835</a></dd>
           <dt>傳真</dt><dd>03-358-0377</dd>
         </dl>
+        <figure class="office-fig">
+          <img src="assets/office/taoyuan-700.jpg"
+            srcset="assets/office/taoyuan-700.jpg 700w, assets/office/taoyuan.jpg 1200w"
+            sizes="(max-width:720px) 92vw, 42vw" width="1200" height="900"
+            alt="易向室內設計 桃園公司外觀，經國路 719 號" loading="lazy">
+          <figcaption>桃園公司外觀　<span>街景影像 © Google（暫用，待實拍替換）</span></figcaption>
+        </figure>
       </div>
     </div>
   </div>
