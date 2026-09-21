@@ -31,7 +31,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
  '&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">')
 
-SITE = "易向室內設計 YIXIANG INTERIOR DESIGN"
+SITE = "易向室內設計 IMAGE DESIGN"
 
 
 
@@ -69,7 +69,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{og}">
-<link rel="icon" href="assets/brand/logo-purple.png">
+<link rel="icon" href="assets/brand/favicon.png">
 {FONTS}
 {pl}
 <link rel="stylesheet" href="assets/css/style.css?v={CSS_V}">
@@ -79,8 +79,8 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 
 <header class="site-head">
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
-    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計" width="520" height="125">
-    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計" width="520" height="125">
+    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計" width="916" height="164">
+    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計" width="916" height="164">
   </a>
   <nav class="nav">
 {nav}
@@ -130,7 +130,7 @@ FOOT = f'''
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計" width="520" height="125">
+        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計" width="916" height="164">
         <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計二十餘年。</p>
       </div>
       <div>
@@ -156,7 +156,7 @@ FOOT = f'''
       </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 易向室內設計 YIXIANG INTERIOR DESIGN</span>
+      <span>© 2026 易向室內設計 IMAGE DESIGN</span>
       <span>台北市南京東路二段137號14樓 ・ 桃園市桃園區經國路719號1樓</span>
     </div>
   </div>
@@ -273,7 +273,7 @@ write('index.html',
   <div class="hero-in">
     <div class="hero-frame">
       <h1>讓家　成為情感與心靈的寄託</h1>
-      <p class="sub">Yixiang Interior Design</p>
+      <p class="sub">Image Design</p>
     </div>
     <p class="tag">台北 ・ 桃園　｜　二十餘年專業經驗</p>
   </div>
