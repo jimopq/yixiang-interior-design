@@ -260,7 +260,7 @@ def write(name, body):
 # ============================================================ 首頁（精簡版）
 write('index.html',
   head('index.html', f'{SITE}｜台北室內設計・桃園室內設計',
-       '易向室內設計，深耕室內設計二十餘年。台北、桃園雙據點，專營住宅空間、商業空間、接待中心實品屋與舊屋翻新。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
+       '易向室內設計，深耕室內設計二十餘年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
        preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
   + '''
 <section class="hero">
@@ -501,7 +501,7 @@ write('service.html',
     <div class="sec-head">
       <p class="eyebrow rv">Service</p>
       <h2 class="h-sec rv rv-d1">服務項目</h2>
-      <p class="lede rv rv-d2">從住宅到商業空間，從新成屋到舊屋翻新，易向提供完整的設計與工程一條龍服務。</p>
+      <p class="lede rv rv-d2">從住宅到商業空間，從預售屋客變、新成屋到舊屋翻新，易向提供完整的設計與工程一條龍服務。</p>
     </div>
     <div class="svc">
 ''' + svc_html() + '''
