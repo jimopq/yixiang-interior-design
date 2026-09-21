@@ -204,11 +204,12 @@ FLOW = [
 
 SERVICES = [
     ("01", "住宅空間", "依生活動線與收納需求量身規劃，兼顧美感與日常實用。"),
-    ("02", "商業空間", "以品牌調性為核心，打造具識別度且符合營運效率的場域。"),
-    ("03", "建築公共空間", "大廳、交誼廳與公設整體規劃，提升建案整體質感與價值。"),
-    ("04", "接待中心・實品屋", "掌握銷售節奏與客層想像，以空間敘事創造成交動能。"),
-    ("05", "舊屋翻新", "從管線結構到格局重整，讓老屋重新符合現代生活需求。"),
-    ("06", "免費初步諮詢", "初次需求溝通不收費，先了解您的想法與預算方向，再談後續。"),
+    ("02", "客變設計", "預售屋交屋前的格局、水電與建材變更規劃，省下交屋後拆除重做的成本。"),
+    ("03", "舊屋翻新", "從管線結構到格局重整，讓老屋重新符合現代生活需求。"),
+    ("04", "商業空間", "以品牌調性為核心，打造具識別度且符合營運效率的場域。"),
+    ("05", "建築公共空間", "大廳、交誼廳與公設整體規劃，提升建案整體質感與價值。"),
+    ("06", "接待中心・實品屋", "掌握銷售節奏與客層想像，以空間敘事創造成交動能。"),
+    ("07", "免費初步諮詢", "初次需求溝通不收費，先了解您的想法與預算方向，再談後續。"),
 ]
 
 AWARDS = [
@@ -236,8 +237,9 @@ def svc_html():
     out = []
     for n, (no, t, d) in enumerate(SERVICES):
         delay = ' rv-d%d' % (n % 3) if n % 3 else ''
-        out.append('      <article class="svc-i rv%s"><p class="no">%s</p>'
-                   '<h3>%s</h3><p>%s</p></article>' % (delay, no, t, d))
+        wide = ' wide' if n == len(SERVICES) - 1 and len(SERVICES) % 3 == 1 else ''
+        out.append('      <article class="svc-i%s rv%s"><p class="no">%s</p>'
+                   '<h3>%s</h3><p>%s</p></article>' % (wide, delay, no, t, d))
     return "\n".join(out)
 
 
@@ -490,7 +492,7 @@ write('case.html',
 # ============================================================ 服務與收費
 write('service.html',
   head('service.html', f'服務項目與收費標準｜{SITE}',
-       '易向室內設計服務項目涵蓋住宅空間、商業空間、建築公共空間、接待中心實品屋與舊屋翻新，並提供免費初步諮詢。',
+       '易向室內設計服務項目涵蓋住宅空間、客變設計、舊屋翻新、商業空間、建築公共空間與接待中心實品屋，並提供免費初步諮詢。',
        'assets/hero/1600/h15.jpg', bg=('.page-head', 'h15.jpg'))
   + page_head('assets/hero/1600/h15.jpg', 'Service', '服務與收費', '服務與收費')
   + '''
@@ -515,15 +517,15 @@ write('service.html',
       <p class="lede rv rv-d2">收費透明，簽約前完整說明。以下為一般情況的計價方式，實際金額依現場條件與設計內容調整。</p>
     </div>
     <div class="fees">
-      <article class="fee rv"><p class="no">01</p><h3>設計合約</h3>
-        <p class="amt">6,000 – 8,000<small>元 / 坪</small></p>
-        <ul><li>住宅依室內面積計價</li><li>依實際施作面積及風格差異不同計算</li><li>商業空間、辦公室需視個案而定</li></ul></article>
-      <article class="fee rv rv-d1"><p class="no">02</p><h3>工程合約</h3>
-        <p class="amt">個案報價</p>
-        <ul><li>依高質感的施工品質</li><li>再依據坪數大小、風格規劃</li><li>施工項目及立面材質的差異</li><li>完整提報工程總預算</li></ul></article>
-      <article class="fee rv rv-d2"><p class="no">03</p><h3>初步諮詢</h3>
+      <article class="fee rv"><p class="no">01</p><h3>初步諮詢</h3>
         <p class="amt">免費</p>
         <ul><li>初步需求溝通不收費</li><li>提供初步專業建議與預算方向</li><li>說明後續設計與工程的計價方式</li></ul></article>
+      <article class="fee rv rv-d1"><p class="no">02</p><h3>設計合約</h3>
+        <p class="amt">6,000 – 8,000<small>元 / 坪</small></p>
+        <ul><li>住宅依室內面積計價</li><li>依實際施作面積及風格差異不同計算</li><li>商業空間、辦公室需視個案而定</li></ul></article>
+      <article class="fee rv rv-d2"><p class="no">03</p><h3>工程合約</h3>
+        <p class="amt">個案報價</p>
+        <ul><li>依高質感的施工品質</li><li>再依據坪數大小、風格規劃</li><li>施工項目及立面材質的差異</li><li>完整提報工程總預算</li></ul></article>
     </div>
     <p class="note rv">※ 以上為易向室內設計之計價原則，實際金額以雙方簽訂之設計合約與工程合約為準。</p>
     <div class="btn-row rv">
@@ -594,17 +596,6 @@ write('contact.html',
   </div>
 </section>
 ''' + line_band('加 LINE 最快', '傳張平面圖或現況照片，我們會先給您初步方向。不用填表單、不用留電話。')
-  + '''
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="maps rv">
-      <iframe title="台北公司地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=台北市南京東路二段137號&output=embed"></iframe>
-      <iframe title="桃園公司地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=桃園市桃園區經國路719號&output=embed"></iframe>
-    </div>
-  </div>
-</section>
-''' + FOOT)
+  + FOOT)
 
 print('done.')
