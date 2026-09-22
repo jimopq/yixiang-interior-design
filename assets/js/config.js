@@ -15,8 +15,8 @@ window.SITE_CONFIG = {
 
      lineUrl 留空時，所有 LINE 按鈕會自動改成撥打電話，不會出現死連結。
   --------------------------------------------------------------------- */
-  lineUrl: '',
-  lineId: '',
+  lineUrl: 'https://lin.ee/qPgxb0N',
+  lineId: '@633qonhi',
 
   /* 沒有 LINE 時的退路，以及頁尾聯絡資訊 */
   fallbackTel: '0333585835',
