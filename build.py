@@ -23,6 +23,7 @@ NAV = [
     ("case.html",    "Case",    "精選案例"),
     ("service.html", "Service", "服務收費"),
     ("process.html", "Process", "設計流程"),
+    ("blog.html",    "Blog",    "設計筆記"),
     ("contact.html", "Contact", "聯絡我們"),
 ]
 
@@ -56,7 +57,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
         pl = ''
     nav = "\n".join(
         '    <a href="%s"%s><span class="en">%s</span><span class="ch">%s</span></a>'
-        % (h, ' class="on"' if h == cur else '', e, c)
+        % (h, ' class="on"' if (h == cur or (h == 'blog.html' and cur.startswith('blog-'))) else '', e, c)
         for h, e, c in NAV)
     return f'''<!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -141,6 +142,7 @@ FOOT = f'''
           <li><a href="case.html">精選案例</a></li>
           <li><a href="service.html">服務與收費</a></li>
           <li><a href="process.html">設計流程</a></li>
+          <li><a href="blog.html">設計筆記</a></li>
           <li><a href="contact.html">聯絡我們</a></li>
         </ul>
       </div>
@@ -616,3 +618,138 @@ write('contact.html',
   + FOOT)
 
 print('done.')
+
+# ============================================================ 設計筆記（部落格）
+# 內容依據：客戶既有的服務項目、設計流程、收費標準與 YouTube 影片主題。
+# 沒有出現在客戶素材裡的具體案例、數字、承諾一律不寫。
+POSTS = [
+ dict(slug="blog-pre-sale-customization", date="2026-09-18", cat="客變設計", en="Pre-sale Customization",
+  title="預售屋客變，交屋前最值得花的一次時間",
+  excerpt="牆還沒砌、管線還沒埋，這時候改格局幾乎不用拆。客變能改什麼、什麼時候要決定、常見的三個取捨。",
+  cover="assets/case/1200/hehui-05.jpg", cover_sm="assets/case/800/hehui-05.jpg",
+  body='''
+<p>買預售屋的人常以為裝潢是交屋之後的事。但有一個時間點，比交屋後任何一次裝修都划算，就是建商開放「客變」的那幾週。</p>
+<h2>客變改的是還沒蓋出來的東西</h2>
+<p>客變是在建商施工前，依住戶需求調整格局、水電位置與部分建材。牆還沒砌、管線還沒埋，改動幾乎不需要拆除。同樣一道牆，客變階段是「不要砌」，交屋後就是「打掉再補」，差的是拆除費、清運費、重做的工資，還有工期。</p>
+<h2>通常能改的三類</h2>
+<ul>
+<li><strong>格局</strong>：非結構的隔間牆可以取消或移位。常見的是把封閉廚房打開成餐廚一體、兩房併成一大房。</li>
+<li><strong>水電</strong>：插座、開關、給排水與冷氣排水的位置。這一項最容易被低估，交屋後想加一個插座，牆面就要重新切割修補。</li>
+<li><strong>建材退換</strong>：建商標配的地磚、廚具、衛浴可以退掉折價，換成自己選的。</li>
+</ul>
+<h2>什麼時候要決定</h2>
+<p>客變有期限，通常在結構體施工前，建商會通知一段時間讓住戶提交變更。這段時間往往只有幾週，而完整的客變需要先有平面規劃，才知道牆要不要動、插座要放哪裡。所以收到建商通知再開始找設計師，時間會非常趕。比較好的順序是簽約後就先討論，客變期一到直接提交。</p>
+<h2>三個常見的取捨</h2>
+<p><strong>退建材不一定划算。</strong>建商的折讓金額通常低於市價，退掉之後自己買不見得便宜，要算過再決定。</p>
+<p><strong>開放式格局要顧到油煙與冷氣。</strong>餐廚打通很受歡迎，但抽油煙機的能力和冷氣的坪數配置要一起看。</p>
+<p><strong>不要為了「以後可能」多留。</strong>每個位置都多留一組插座，牆面會很亂。依實際的家具配置決定，比憑想像保險。</p>
+<p>易向的客變服務從平面規劃開始，會把水電點位與家具位置一起畫出來，再協助整理成建商要的變更文件。初步諮詢不收費，若您剛簽約，歡迎在客變期之前先聊聊。</p>
+'''),
+ dict(slug="blog-storage-entry-living-study", date="2026-09-10", cat="收納規劃", en="Storage Planning",
+  title="玄關、客廳、書房：收納要先想動線，再想櫃子",
+  excerpt="收納做不好，通常不是櫃子不夠，是東西放的位置跟人的動線對不上。從進門到坐下，三個空間的收納怎麼想。",
+  cover="assets/hero/1600/h13.jpg", cover_sm="assets/hero/900/h13.jpg", video="AegVGxrSr7k",
+  body='''
+<p>很多人一提到收納就想到「多做幾個櫃子」。但實際住進去之後，最常出現的狀況是櫃子很多、東西還是堆在外面。問題通常不在容量，在位置。</p>
+<h2>玄關：東西在哪裡脫，就在哪裡收</h2>
+<p>進門的前三步會發生的事：脫鞋、放鑰匙、掛外套、放包。這四樣東西的收納若不在進門的動線上，就會落在最近的一張椅子上。玄關櫃的重點不是做多大，是鞋子有沒有地方換、常穿的那幾雙能不能不彎腰就拿到、鑰匙和包有沒有一個固定的平台。</p>
+<p>如果玄關深度不夠，可以用一道矮櫃兼坐凳，或把鞋櫃做成懸空，下方留放常穿鞋的空間，視覺上也不會壓迫。</p>
+<h2>客廳：先決定要藏什麼，再決定要露什麼</h2>
+<p>客廳是全家共用的空間，收納的東西最雜：遙控器、充電線、小孩的玩具、雜誌、備用的抱枕毯子。全部關進櫃子，客廳會很冷；全部露出來，會很亂。</p>
+<p>做法是分兩層。天天用、不好看的東西（線材、遙控器、玩具）進抽屜或有門的櫃體；願意讓人看到的東西（書、擺件、植物）放開放層架。電視櫃通常是最好的分界，下方封閉、上方開放。</p>
+<h2>書房：桌面淨空靠的是牆面</h2>
+<p>書房的收納要解決兩件事：書和文件的量，以及桌面能不能保持乾淨。書櫃做整面牆通常比做兩個獨立的櫃子有效率，也比較不會有零碎的畸零角。桌面則要有一個「暫放區」，不然文件會一直累積在桌上。</p>
+<p>如果書房也是工作室或客房，收納要能把工作的東西完整收起來，空間才能切換。這種情況下有門的櫃子會比開放層架實用。</p>
+<h2>從設計師自己的家看</h2>
+<p>這集影片是易向設計師打開自己家的玄關、客廳與書房，逐一說明當初為什麼這樣規劃。實際住過的空間，比示範屋更能看出哪些收納真的有用。</p>
+'''),
+ dict(slug="blog-morandi-quiet-luxury", date="2026-09-02", cat="風格解析", en="Style Notes",
+  title="莫蘭迪色的低調奢華：把彩度降下來，把質感放上去",
+  excerpt="灰調的色彩為什麼耐看、怎麼跟石材與金屬搭配、以及莫蘭迪色最常被做壞的一種方式。",
+  cover="assets/works/1200/cover-103.jpg", cover_sm="assets/works/800/cover-103.jpg", video="WYuW_FUWt28",
+  body='''
+<p>莫蘭迪色這幾年在住宅設計裡很常見。名字來自義大利畫家 Giorgio Morandi，他的靜物畫用的都是加了灰的色彩：灰粉、灰藍、灰綠、米灰。這些顏色彩度低、明度中等，彼此放在一起不會搶。</p>
+<h2>為什麼耐看</h2>
+<p>高彩度的顏色第一眼很吸引人，但天天看會累。低彩度的顏色沒有那個第一眼，卻能讓空間裡的其他東西被看見：木紋的走向、石材的紋理、光線在牆面上的變化。莫蘭迪色的作用是退到後面當背景，讓材質站到前面。</p>
+<h2>跟材質怎麼搭</h2>
+<p>因為顏色本身安靜，材質就要有表情。常見的搭法是：</p>
+<ul>
+<li><strong>石材</strong>：帶灰白紋理的大理石或石英石，跟灰調的牆面同一個色溫，紋理會變成主角。</li>
+<li><strong>金屬</strong>：拉絲的鈦金或古銅，用在門框、櫃體收邊或燈具，份量要少，是點不是面。</li>
+<li><strong>木質</strong>：偏灰或偏白的木皮比黃木好搭，避免色溫打架。</li>
+<li><strong>布料</strong>：絨布、亞麻這類有毛面的材質，能讓低彩度的顏色有深淺變化。</li>
+</ul>
+<h2>最常被做壞的方式</h2>
+<p>整個空間全部用同一個灰調，沒有明暗、沒有材質變化。結果不是低調，是平。莫蘭迪色需要對比才會立起來：淺灰牆配深色的櫃體、霧面的牆配亮面的石材、粉灰的沙發配一盞黑鐵的燈。彩度可以低，明暗差不能沒有。</p>
+<h2>設計師專訪</h2>
+<p>這集影片是易向設計師以一個實際完成的案子，說明莫蘭迪色在住宅裡怎麼配、材質怎麼選。</p>
+'''),
+]
+
+def post_card(p_, n):
+    return ('      <a class="post-card rv%s" href="%s.html">'
+            '<div class="ph"><img src="%s" srcset="%s 800w, %s 1200w" sizes="(max-width:720px) 92vw, 46vw" alt="%s" loading="lazy"></div>'
+            '<div class="post-meta"><span>%s</span><time datetime="%s">%s</time></div>'
+            '<h2>%s</h2><p>%s</p><span class="more">閱讀全文　→</span></a>'
+            % (' rv-d%d' % (n % 3) if n % 3 else '', p_['slug'], p_['cover_sm'], p_['cover_sm'], p_['cover'],
+               p_['title'], p_['cat'], p_['date'], p_['date'].replace('-', '.'), p_['title'], p_['excerpt']))
+
+write('blog.html',
+  head('blog.html', f'設計筆記｜{SITE}',
+       '易向室內設計的設計筆記：客變、收納、風格與居家規劃的實用觀點。',
+       'assets/hero/1600/h21.jpg', bg=('.page-head', 'h21.jpg'))
+  + page_head('assets/hero/h21.jpg', 'Blog', '設計筆記', '設計筆記')
+  + '''
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">Journal</p>
+      <h2 class="h-sec rv rv-d1">設計筆記</h2>
+      <p class="lede rv rv-d2" style="text-align:center">把我們在案場與客戶討論時最常被問到的事，寫成一篇一篇的短文。</p>
+    </div>
+    <div class="post-grid">
+''' + "\n".join(post_card(p_, n) for n, p_ in enumerate(POSTS)) + '''
+    </div>
+  </div>
+</section>
+''' + line_band() + FOOT)
+
+for n, p_ in enumerate(POSTS):
+    others = [q for q in POSTS if q is not p_][:2]
+    video = ('''
+    <div class="post-video"><div class="vid-fr"><iframe src="https://www.youtube.com/embed/%s" title="%s"
+      loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div></div>
+''' % (p_['video'], p_['title'])) if p_.get('video') else ''
+    write(p_['slug'] + '.html',
+      head(p_['slug'] + '.html', f"{p_['title']}｜{SITE}", p_['excerpt'], p_['cover'])
+      + '''
+<article class="post">
+  <header class="post-head">
+    <div class="wrap-n">
+      <p class="crumb rv in"><a href="index.html">首頁</a> ／ <a href="blog.html">設計筆記</a> ／ %s</p>
+      <p class="eyebrow rv in rv-d1">%s</p>
+      <h1 class="rv in rv-d2">%s</h1>
+      <p class="post-meta rv in rv-d3"><time datetime="%s">%s</time><span>易向室內設計</span></p>
+    </div>
+  </header>
+  <figure class="post-cover rv in">
+    <img src="%s" srcset="%s 800w, %s 1200w" sizes="(max-width:1080px) 100vw, 1080px" alt="%s" fetchpriority="high">
+  </figure>
+  <div class="wrap-n post-body">
+%s%s
+  </div>
+</article>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <p class="eyebrow rv">More</p>
+    <h2 class="h-sec rv rv-d1">其他筆記</h2>
+    <div class="post-grid">
+%s
+    </div>
+  </div>
+</section>
+''' % (p_['cat'], p_['en'], p_['title'], p_['date'], p_['date'].replace('-', '.'),
+       p_['cover_sm'], p_['cover_sm'], p_['cover'], p_['title'], p_['body'], video,
+       "\n".join(post_card(q, i) for i, q in enumerate(others)))
+      + line_band() + FOOT)

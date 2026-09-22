@@ -5,4 +5,8 @@
   <url><loc>https://www.image.net.tw/about.html</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.image.net.tw/service.html</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.image.net.tw/contact.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.image.net.tw/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.image.net.tw/blog-pre-sale-customization.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.image.net.tw/blog-storage-entry-living-study.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.image.net.tw/blog-morandi-quiet-luxury.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>
