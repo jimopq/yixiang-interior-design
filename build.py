@@ -606,7 +606,7 @@ write('contact.html',
             srcset="assets/office/taoyuan-700.jpg 700w, assets/office/taoyuan.jpg 1200w"
             sizes="(max-width:720px) 92vw, 42vw" width="1200" height="900"
             alt="易向室內設計 桃園公司外觀，經國路 719 號" loading="lazy">
-          <figcaption>桃園公司外觀　<span>街景影像 © Google（暫用，待實拍替換）</span></figcaption>
+          <figcaption>桃園公司外觀</figcaption>
         </figure>
       </div>
     </div>
