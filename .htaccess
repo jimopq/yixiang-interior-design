@@ -1,0 +1,76 @@
+# ==========================================================================
+# 易向室內設計 — Apache 設定（廠商虛擬主機用）
+# 純靜態站，不需要 PHP 與資料庫。這個檔案負責：
+#   1. 舊 Joomla 網址 301 轉到新頁面（保住既有搜尋排名）
+#   2. 強制 https + www（與舊站的正規網址一致）
+#   3. 快取、壓縮、安全標頭
+#   4. 擋掉不該對外的原始檔
+# ==========================================================================
+
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# --- 正規網址：http → https、無 www → www -------------------------------
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://www.image.net.tw%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^image\.net\.tw$ [NC]
+RewriteRule ^ https://www.image.net.tw%{REQUEST_URI} [R=301,L]
+
+# --- 舊 Joomla 網址 → 新頁面 --------------------------------------------
+# 舊站同一頁有 /index.php/about 與 /about 兩種寫法，兩種都接。
+# QSD：丟掉舊網址後面的 ?query，避免帶進新頁面。
+RewriteRule ^index\.php/?$                       /             [R=301,L,QSD]
+RewriteRule ^(index\.php/)?about/?$              /about.html   [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?msg[0-9]*/?$          /about.html   [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?news(/.*)?$           /about.html   [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?service/?$            /service.html [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?process/?$            /process.html [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?contact/?$            /contact.html [R=301,L,NC,QSD]
+RewriteRule ^(index\.php/)?portfolio(/.*)?$      /works.html   [R=301,L,NC,QSD]
+
+# --- 不該對外的原始檔 -----------------------------------------------------
+RewriteRule ^(build\.py|README\.md|_headers|_redirects|tools(/.*)?|\.git(/.*)?)$ - [F,L]
+</IfModule>
+
+# --- 快取 -------------------------------------------------------------------
+# 圖片：檔名固定、內容不變，快取一年
+# CSS / JS：網址帶內容 hash（?v=），內容一改網址就變，也可以長快取
+# HTML：每次重新驗證，改版立即生效
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png  "access plus 1 year"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType application/json "access plus 5 minutes"
+ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+<IfModule mod_headers.c>
+<FilesMatch "\.(jpg|jpeg|png|webp|svg|css|js)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+<FilesMatch "\.html$">
+  Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+# 安全標頭
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# --- 壓縮 -------------------------------------------------------------------
+# 用 SetOutputFilter 而不是 AddOutputFilterByType：後者需要 mod_filter，
+# 主機沒開的話整站會 500；前者是核心指令，只要有 mod_deflate 就能用。
+<IfModule mod_deflate.c>
+<FilesMatch "\.(html|css|js|json|svg|xml)$">
+  SetOutputFilter DEFLATE
+</FilesMatch>
+</IfModule>

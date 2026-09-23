@@ -123,7 +123,37 @@ git checkout main
 gh repo edit --visibility private --accept-visibility-change-consequences
 ```
 
-## 部署（Cloudflare Pages）
+## 部署（廠商虛擬主機：Apache + PHP 7.4 + MariaDB）
+
+**這個站不需要 PHP 也不需要資料庫**，上傳檔案就能跑。廠商給的 PHP／MySQL
+規格是給舊 Joomla 用的，新站用不到。
+
+1. 執行 `bash tools/package.sh`，會在上一層資料夾產生
+   `易向官網_上傳用_日期.zip`（只包網站本體，不含原始碼與 git）
+2. 用 cPanel 檔案管理員或 FTP，把 zip 解壓到網站根目錄
+   （通常是 `public_html/`），**要包含 `.htaccess`**（隱藏檔，記得顯示）
+3. 舊 Joomla 的檔案要先清掉或搬走，尤其是 `index.php`——
+   `.htaccess` 已設 `DirectoryIndex index.html`，但留著舊檔容易混淆
+4. 開 https://www.image.net.tw/ 確認首頁；再開
+   https://www.image.net.tw/index.php/about 確認會轉到 `/about.html`
+
+### .htaccess 負責的事
+
+| 功能 | 說明 |
+|---|---|
+| 舊網址 301 轉址 | `/index.php/about`、`/about`、`/portfolio/*`、`/news/*` 等舊 Joomla 網址全部轉到新頁面，保住既有搜尋排名 |
+| 強制 https + www | 與舊站的正規網址一致 |
+| 快取 | 圖片與 CSS/JS 快取一年（CSS/JS 網址帶內容 hash，改版自動失效）；HTML 每次重新驗證 |
+| 壓縮、安全標頭 | gzip、nosniff、Referrer-Policy、X-Frame-Options |
+| 擋原始檔 | `build.py`、`tools/`、`README.md`、`.git` 對外回 403 |
+
+已用 Apache 2.4 本機實測過全部規則。壓縮刻意用 `SetOutputFilter` 而非
+`AddOutputFilterByType`——後者需要 `mod_filter`，主機沒開會整站 500。
+
+若廠商是 nginx 而不是 Apache，`.htaccess` 不會生效，需要改寫成 nginx 的
+`location` 規則，請再告訴我。
+
+## 部署（Cloudflare Pages，備案）
 
 程式碼已在私有 repo：**https://github.com/jimopq/yixiang-interior-design**
 
