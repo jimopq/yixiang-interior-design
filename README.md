@@ -179,6 +179,17 @@ gh repo edit --visibility private --accept-visibility-change-consequences
 
 ---
 
+## 精選案例
+
+資料在 `data/cases.json`，每案一筆：意境案名、原案名、地區、格局、坪數、風格、
+材質、設計概念、封面與**已排序**的圖庫（`gallery` 順序就是頁面順序，`room` 相同的
+連續項目會自動加上空間標題）。排序原則：客餐廳 → 廚房 → 玄關走道 → 書房 → 主臥 →
+次臥 → 更衣室 → 衛浴。
+
+圖片放 `assets/cases/<slug>/01.jpg …`（主檔 1600px），跑 `tools/make-thumbs.sh`
+產生 800／1200。`python3 build.py` 會產出索引 `case.html` 與每案的 `case-<slug>.html`，
+首頁導引讀第一案。
+
 ## LINE 設定
 
 網站的名單收集已改為**直接導向 LINE 官方帳號**，不再使用表單。

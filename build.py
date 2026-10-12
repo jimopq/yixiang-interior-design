@@ -2,6 +2,9 @@
 """易向室內設計 — 靜態頁產生器。所有頁面共用同一份頁首／頁尾／元件。"""
 
 import hashlib
+import json
+CASES = json.load(open('data/cases.json', encoding='utf-8'))['cases']
+FEAT = CASES[0]
 
 
 def asset_ver(path):
@@ -329,12 +332,12 @@ write('index.html',
 </section>
 
 <section class="sec-teaser">
-  <a class="teaser" href="case.html">
-    <img src="assets/case/800/hehui-01.jpg" alt="合輝大璽 現代輕奢住宅" loading="lazy">
+  <a class="teaser" href="case-''' + FEAT['slug'] + '''.html">
+    <img src="''' + FEAT['dir'] + '''/800/''' + FEAT['cover'] + '''" srcset="''' + FEAT['dir'] + '''/800/''' + FEAT['cover'] + ''' 800w, ''' + FEAT['dir'] + '''/1200/''' + FEAT['cover'] + ''' 1200w" sizes="100vw" alt="''' + FEAT['name'] + ''' ''' + FEAT['sub'] + '''" loading="lazy">
     <div class="teaser-tx">
       <p class="k">Featured Project</p>
-      <h2>合輝大璽</h2>
-      <p class="st">現代輕奢住宅　｜　桃園　｜　約 55 坪</p>
+      <h2>''' + FEAT['name'] + '''</h2>
+      <p class="st">''' + FEAT['sub'] + '''　｜　''' + FEAT['area'] + '''　｜　''' + FEAT['ping'] + '''</p>
       <span class="more">看完整案例　→</span>
     </div>
   </a>
@@ -465,41 +468,110 @@ write('works.html',
 ''' + line_band('看到喜歡的空間了嗎', '加 LINE 告訴我們您的坪數與格局，我們會給您初步的規劃方向與預算範圍。') + FOOT)
 
 # ============================================================ 精選案例
+# 資料在 data/cases.json：案名、規格、材質、設計概念與已排序的圖庫。
+# 索引頁 case.html 列出全部；每案產生 case-<slug>.html。
+
+def case_img(c, f, eager=False, alt=''):
+    d = c['dir']
+    return ('<img src="%s/800/%s" srcset="%s/800/%s 800w, %s/1200/%s 1200w" '
+            'sizes="(max-width:720px) 92vw, (max-width:1080px) 46vw, 30vw" alt="%s"%s decoding="async">'
+            % (d, f, d, f, d, f, alt, '' if eager else ' loading="lazy"'))
+
+def case_card(c, n):
+    return ('      <a class="card g-w rv%s" href="case-%s.html">'
+            '<div class="ph">%s</div>'
+            '<div class="card-txt"><p class="k">%s　·　%s</p><h3>%s</h3><p class="m">%s</p></div></a>'
+            % (' rv-d%d' % (n % 3) if n % 3 else '', c['slug'],
+               case_img(c, c['cover'], eager=n < 3, alt=c['name'] + ' ' + c['sub']),
+               c['area'], c['ping'], c['name'], c['style']))
+
+def case_gallery(c):
+    out = []; last = None; n = 0
+    for g in c['gallery']:
+        if g.get('room') and g['room'] != last:
+            out.append('      <h3 class="room-h">%s</h3>' % g['room']); last = g['room']
+        out.append('      <a class="card g-w rv%s" href="%s/%s" data-full="%s/%s" data-title="%s">'
+                   '<div class="ph">%s</div></a>'
+                   % (' rv-d%d' % (n % 3) if n % 3 else '', c['dir'], g['f'], c['dir'], g['f'],
+                      c['name'] + '｜' + (g.get('room') or c['sub']),
+                      case_img(c, g['f'], eager=n < 3, alt='%s %s 第 %d 張' % (c['name'], g.get('room', ''), n + 1))))
+        n += 1
+    return "\n".join(out)
+
+CASE_LB = line_band('想要類似的規劃嗎', '加 LINE 傳給我們您的平面圖或現況照片，我們會依您的坪數與需求給出初步方向。')
+
+INDEX_BODY = """
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">Case Studies</p>
+      <h2 class="h-sec rv rv-d1">完整案例 <span class="thin">共 %d 件</span></h2>
+      <p class="lede rv rv-d2" style="text-align:center">每一案都附上格局、坪數、風格與使用材質，從客餐廳一路看到臥室與衛浴。</p>
+    </div>
+    <div class="grid">
+%s
+    </div>
+  </div>
+</section>
+""" % (len(CASES), "\n".join(case_card(c, n) for n, c in enumerate(CASES)))
+
 write('case.html',
-  head('case.html', f'精選案例 合輝大璽｜{SITE}',
-       '合輝大璽・現代輕奢住宅，桃園住宅空間設計，約 55 坪。以淺色木質、石材紋理與柔和曲線為設計語彙，開放式客餐廳整合、弧形天花與大面採光。',
-       'assets/case/hehui-01.jpg')
-  + '<style>.page-head{background-image:url(assets/case/1200/hehui-01.jpg)}'
-    '@media(max-width:720px){.page-head{background-image:url(assets/case/800/hehui-01.jpg)}}</style>'
-  + page_head('assets/case/hehui-01.jpg', 'Featured Project', '合輝大璽', '精選案例')
-  + '''
+  head('case.html', '精選案例｜' + SITE,
+       '易向室內設計精選案例：台北、桃園住宅空間完整實績，含格局、坪數、風格與使用材質。',
+       CASES[0]['dir'] + '/' + CASES[0]['cover'], bg=('.page-head', 'h23.jpg'))
+  + page_head('assets/hero/h23.jpg', 'Projects', '精選案例', '精選案例')
+  + INDEX_BODY + CASE_LB + FOOT)
+
+CASE_BODY = """
 <section class="sec">
   <div class="wrap">
     <div class="case-lead">
       <div class="rv">
         <p class="eyebrow">Project Info</p>
-        <h2 class="h-sec">合輝大璽 <span class="thin">現代輕奢住宅</span></h2>
-        <p class="lede">以淺色木質、石材紋理與柔和曲線為設計語彙，透過開放式客餐廳整合、弧形天花與大面採光，打造兼具舒適感與生活儀式感的現代住宅空間。</p>
+        <h2 class="h-sec">%(name)s <span class="thin">%(sub)s</span></h2>
+        <p class="lede">%(concept)s</p>
       </div>
-      <dl class="case-spec rv rv-d1">
-        <dt>Type</dt><dd>住宅空間設計</dd>
-        <dt>Location</dt><dd>桃園市</dd>
-        <dt>Area</dt><dd>約 55 坪</dd>
-        <dt>Style</dt><dd>現代輕奢 × 溫潤木質</dd>
-      </dl>
+      <dl class="case-spec rv rv-d1">%(spec)s</dl>
     </div>
-    <div class="case-tags rv rv-d2" style="justify-content:center;margin-top:38px">
-      <span>開放設計</span><span>收納機能</span><span>質感生活</span>
+    <div class="case-mat rv rv-d2">
+      <p class="k">Materials　使用材質</p>
+      <div class="case-tags">%(tags)s</div>
     </div>
   </div>
 </section>
 
 <section class="sec sec-alt" style="padding-top:0">
   <div class="wrap">
-    <div class="case-grid" id="caseGrid"></div>
+    <div class="case-grid grid" data-lightbox>
+%(gallery)s
+    </div>
+    %(nav)s
   </div>
 </section>
-''' + line_band('想要類似的規劃嗎', '加 LINE 傳給我們您的平面圖或現況照片，我們會依您的坪數與需求給出初步方向。') + FOOT)
+"""
+
+for n, c in enumerate(CASES):
+    prev_ = CASES[n - 1] if n > 0 else None
+    next_ = CASES[n + 1] if n < len(CASES) - 1 else None
+    spec = [('地區', c['area']), ('格局', c.get('layout', '')), ('坪數', c['ping']), ('風格', c['style'])]
+    nav = '<nav class="case-nav rv">'
+    nav += ('<a class="prev" href="case-%s.html"><span class="k">上一案</span><b>%s</b></a>' % (prev_['slug'], prev_['name'])) if prev_ else '<span></span>'
+    nav += '<a class="all" href="case.html">全部案例</a>'
+    nav += ('<a class="next" href="case-%s.html"><span class="k">下一案</span><b>%s</b></a>' % (next_['slug'], next_['name'])) if next_ else '<span></span>'
+    nav += '</nav>'
+    body = CASE_BODY % dict(
+        name=c['name'], sub=c['sub'], concept=c['concept'],
+        spec="".join('<dt>%s</dt><dd>%s</dd>' % kv for kv in spec if kv[1]),
+        tags="".join('<span>%s</span>' % m for m in c.get('materials', [])),
+        gallery=case_gallery(c), nav=nav)
+    write('case-%s.html' % c['slug'],
+      head('case-%s.html' % c['slug'], '%s｜%s｜精選案例｜%s' % (c['name'], c['sub'], SITE),
+           '%s・%s，%s %s，%s。%s' % (c['name'], c['sub'], c['area'], c['ping'], c['style'], c['concept'][:60]),
+           c['dir'] + '/' + c['cover'])
+      + '<style>.page-head{background-image:url(%s/1200/%s)}@media(max-width:720px){.page-head{background-image:url(%s/800/%s)}}</style>'
+        % (c['dir'], c['cover'], c['dir'], c['cover'])
+      + page_head('', 'Case Study', c['name'], '<a href="case.html">精選案例</a> ／ ' + c['name'])
+      + body + CASE_LB + FOOT)
 
 # ============================================================ 服務與收費
 write('service.html',

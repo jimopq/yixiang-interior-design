@@ -45,6 +45,7 @@ gen () {                     # gen <目錄> <階梯...>
 
 gen assets/works 400 800 1200
 gen assets/case  800 1200
+for d in assets/cases/*/; do gen "${d%/}" 800 1200; done
 gen assets/hero  900 1600
 
 echo

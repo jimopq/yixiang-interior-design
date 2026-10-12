@@ -212,25 +212,16 @@
     });
   }
 
-  /* ---- 精選案例圖庫 ---- */
-  var cg = $('#caseGrid');
-  if (cg) {
-    load(function (d) {
-      var f = d.flagship; if (!f) return;
-      var g = f.gallery.map(function (src, n) {
-        return { id: 'c' + n, img: src, title: f.name, catName: f.sub, catEn: 'Featured Project' };
-      });
-      cg.innerHTML = g.map(function (w, n) {
-        var file = w.img.split('/').pop();
-        var set = 'assets/case/800/' + file + ' 800w, assets/case/1200/' + file + ' 1200w';
-        return '<a class="card g-w rv' + (n % 3 ? ' rv-d' + (n % 3) : '') + '" href="#" data-id="' + w.id + '">' +
-               '<div class="ph"><img src="assets/case/800/' + file + '" srcset="' + set + '" sizes="' + SIZES + '"' +
-               ' alt="' + f.name + ' 第 ' + (n + 1) + ' 張"' +
-               (n < 3 ? '' : ' loading="lazy"') + ' decoding="async"></div></a>';
-      }).join('');
-      reveal(cg); bindCards(cg, g);
+  /* ---- 精選案例圖庫：HTML 已靜態輸出，這裡只接燈箱 ---- */
+  $$('[data-lightbox]').forEach(function (root) {
+    var list = $$('.card[data-full]', root).map(function (a, n) {
+      return { id: 'g' + n, img: a.dataset.full, title: a.dataset.title.split('｜')[0],
+               catName: a.dataset.title.split('｜')[1] || '', catEn: 'Case Study' };
     });
-  }
+    $$('.card[data-full]', root).forEach(function (a, n) {
+      a.addEventListener('click', function (e) { e.preventDefault(); open(list, 'g' + n); });
+    });
+  });
 
   /* ---- 燈箱 ---- */
   var lb = $('#lb'), lbImg = $('#lbImg'), lbK = $('#lbK'), lbT = $('#lbT');
