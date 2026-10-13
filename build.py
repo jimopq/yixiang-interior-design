@@ -35,7 +35,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
  '&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">')
 
-SITE = "易向室內設計 IMAGE DESIGN"
+SITE = "易向室內設計・澤向室內裝修工程有限公司"
 
 
 
@@ -83,8 +83,8 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 
 <header class="site-head">
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
-    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計" width="916" height="164">
-    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計" width="916" height="164">
+    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
+    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
   </a>
   <nav class="nav">
 {nav}
@@ -122,7 +122,7 @@ def line_band(title="想聊聊您的空間嗎", sub="加 LINE 直接對話，不
         <span class="ico" aria-hidden="true"></span>
         <span class="tx"><b>加入官方 LINE</b><i data-line-id>@易向室內設計</i></span>
       </a>
-      <p class="line-alt">或直接來電　<a href="tel:0333585835">桃園 03-358-5835</a>　·　<a href="tel:0225955532">台北 02-2595-5532</a></p>
+      <p class="line-alt">或直接來電　<a href="tel:0225955532">台北 02-2595-5532</a>　·　<a href="tel:0333585835">桃園 03-358-5835</a></p>
     </div>
   </div>
 </section>
@@ -134,7 +134,8 @@ FOOT = f'''
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計" width="916" height="164">
+        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
+        <p class="co">易向室內設計｜澤向室內裝修工程有限公司</p>
         <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計二十餘年。</p>
       </div>
       <div>
@@ -161,7 +162,7 @@ FOOT = f'''
       </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 易向室內設計 IMAGE DESIGN</span>
+      <span>© 2026 易向室內設計｜澤向室內裝修工程有限公司</span>
       <span>台北市南京東路二段137號14樓 ・ 桃園市桃園區經國路719號1樓</span>
     </div>
   </div>
@@ -169,7 +170,7 @@ FOOT = f'''
 
 <div class="dock">
   <a class="line" data-line href="#" target="_blank" rel="noopener" aria-label="LINE 諮詢">LINE</a>
-  <a href="tel:0333585835" aria-label="撥打電話">撥打電話</a>
+  <a href="tel:0225955532" aria-label="撥打電話">撥打電話</a>
 </div>
 
 <div class="lb" id="lb">
@@ -265,9 +266,12 @@ def write(name, body):
 # ============================================================ 首頁（精簡版）
 write('index.html',
   head('index.html', f'{SITE}｜台北室內設計・桃園室內設計',
-       '易向室內設計，深耕室內設計二十餘年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
+       '易向室內設計（澤向室內裝修工程有限公司），深耕室內設計二十餘年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
        preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
   + '''
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5532","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","2020 義大利 A′ Design Award 銀獎"]}
+</script>
 <section class="hero">
   <div class="hero-bg">
     <figure class="on"></figure>
@@ -376,7 +380,7 @@ vid_html = "\n".join(
 
 write('about.html',
   head('about.html', f'關於易向｜{SITE}',
-       '易向室內設計深耕二十餘年，榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
+       '易向室內設計（澤向室內裝修工程有限公司）深耕二十餘年，榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
        'assets/hero/1600/h11.jpg', bg=('.page-head', 'h11.jpg'))
   + page_head('assets/hero/1600/h11.jpg', 'About Us', '關於易向', '關於易向')
   + '''
@@ -449,7 +453,7 @@ write('about.html',
 # ============================================================ 作品總覽（分頁）
 write('works.html',
   head('works.html', f'作品總覽｜{SITE}',
-       '易向室內設計作品總覽，收錄奢華新古典風、自然人文禪風、現代素雅休閒風、小坪數溫馨宅與公共空間共 86 件完工實績。',
+       '易向室內設計（澤向室內裝修工程有限公司）作品總覽，收錄奢華新古典風、自然人文禪風、現代素雅休閒風、小坪數溫馨宅與公共空間共 86 件完工實績。',
        'assets/hero/1600/h09.jpg', bg=('.page-head', 'h09.jpg'))
   + page_head('assets/hero/1600/h09.jpg', 'Works', '作品總覽', '作品總覽')
   + '''
@@ -506,7 +510,7 @@ INDEX_BODY = """
     <div class="sec-head center">
       <p class="eyebrow center rv">Case Studies</p>
       <h2 class="h-sec rv rv-d1">完整案例 <span class="thin">共 %d 件</span></h2>
-      <p class="lede rv rv-d2" style="text-align:center">每一案都附上格局、坪數、風格與使用材質，從客餐廳一路看到臥室與衛浴。</p>
+      <p class="lede rv rv-d2" style="text-align:center">每一個家，都從一次好好的傾聽開始。走進這些空間，看看光線、材質與日常，是怎麼被溫柔地安放。</p>
     </div>
     <div class="grid">
 %s
@@ -517,7 +521,7 @@ INDEX_BODY = """
 
 write('case.html',
   head('case.html', '精選案例｜' + SITE,
-       '易向室內設計精選案例：台北、桃園住宅空間完整實績，含格局、坪數、風格與使用材質。',
+       '易向室內設計（澤向室內裝修工程有限公司）精選案例：台北、桃園住宅空間完整實績，含格局、坪數、風格與使用材質。',
        CASES[0]['dir'] + '/' + CASES[0]['cover'], bg=('.page-head', 'h23.jpg'))
   + page_head('assets/hero/h23.jpg', 'Projects', '精選案例', '精選案例')
   + INDEX_BODY + CASE_LB + FOOT)
@@ -576,7 +580,7 @@ for n, c in enumerate(CASES):
 # ============================================================ 服務與收費
 write('service.html',
   head('service.html', f'服務項目與收費標準｜{SITE}',
-       '易向室內設計服務項目涵蓋住宅空間、客變設計、舊屋翻新、商業空間、建築公共空間與接待中心實品屋，並提供免費初步諮詢。',
+       '易向室內設計（澤向室內裝修工程有限公司）服務項目涵蓋住宅空間、客變設計、舊屋翻新、商業空間、建築公共空間與接待中心實品屋，並提供免費初步諮詢。',
        'assets/hero/1600/h15.jpg', bg=('.page-head', 'h15.jpg'))
   + page_head('assets/hero/1600/h15.jpg', 'Service', '服務與收費', '服務與收費')
   + '''
@@ -611,7 +615,7 @@ write('service.html',
         <p class="amt">個案報價</p>
         <ul><li>依高質感的施工品質</li><li>再依據坪數大小、風格規劃</li><li>施工項目及立面材質的差異</li><li>完整提報工程總預算</li></ul></article>
     </div>
-    <p class="note rv">※ 以上為易向室內設計之計價原則，實際金額以雙方簽訂之設計合約與工程合約為準。</p>
+    <p class="note rv">※ 以上為易向室內設計（澤向室內裝修工程有限公司）之計價原則，實際金額以雙方簽訂之設計合約與工程合約為準。</p>
     <div class="btn-row rv">
       <a class="btn btn-brand" href="process.html"><span>看設計流程</span><span>→</span></a>
     </div>
@@ -622,7 +626,7 @@ write('service.html',
 # ============================================================ 設計流程
 write('process.html',
   head('process.html', f'設計流程｜{SITE}',
-       '易向室內設計的六階段設計流程：初步溝通、現場丈量、圖面繪製、立面及建材討論、進場施工、完成交屋。每一步都留下可確認的紀錄。',
+       '易向室內設計（澤向室內裝修工程有限公司）的六階段設計流程：初步溝通、現場丈量、圖面繪製、立面及建材討論、進場施工、完成交屋。每一步都留下可確認的紀錄。',
        'assets/hero/1600/h19.jpg', bg=('.page-head', 'h19.jpg'))
   + page_head('assets/hero/1600/h19.jpg', 'Design Flow', '設計流程', '設計流程')
   + '''
@@ -646,7 +650,7 @@ write('process.html',
 # ============================================================ 聯絡我們
 write('contact.html',
   head('contact.html', f'聯絡我們｜{SITE}',
-       '易向室內設計台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
+       '易向室內設計（澤向室內裝修工程有限公司）台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
        'assets/hero/1600/h17.jpg', bg=('.page-head', 'h17.jpg'))
   + page_head('assets/hero/1600/h17.jpg', 'Contact', '聯絡我們', '聯絡我們')
   + '''
@@ -768,7 +772,7 @@ def post_card(p_, n):
 
 write('blog.html',
   head('blog.html', f'設計筆記｜{SITE}',
-       '易向室內設計的設計筆記：客變、收納、風格與居家規劃的實用觀點。',
+       '易向室內設計（澤向室內裝修工程有限公司）的設計筆記：客變、收納、風格與居家規劃的實用觀點。',
        'assets/hero/1600/h21.jpg', bg=('.page-head', 'h21.jpg'))
   + page_head('assets/hero/h21.jpg', 'Blog', '設計筆記', '設計筆記')
   + '''
@@ -801,7 +805,7 @@ for n, p_ in enumerate(POSTS):
       <p class="crumb rv in"><a href="index.html">首頁</a> ／ <a href="blog.html">設計筆記</a> ／ %s</p>
       <p class="eyebrow rv in rv-d1">%s</p>
       <h1 class="rv in rv-d2">%s</h1>
-      <p class="post-meta rv in rv-d3"><time datetime="%s">%s</time><span>易向室內設計</span></p>
+      <p class="post-meta rv in rv-d3"><time datetime="%s">%s</time><span>易向室內設計｜澤向室內裝修工程有限公司</span></p>
     </div>
   </header>
   <figure class="post-cover rv in">

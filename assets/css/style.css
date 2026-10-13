@@ -832,3 +832,4 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .case-nav{grid-template-columns:1fr 1fr}
   .case-nav .all{grid-column:1/-1;justify-self:center;order:3}
 }
+.site-foot .co{font-size:12.5px;letter-spacing:.14em;color:#B5AFB8;margin:0 0 10px}
