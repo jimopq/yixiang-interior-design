@@ -225,6 +225,10 @@ AWARDS = [
      "全球具指標性的國際設計獎項，表彰建築、室內、產品與品牌設計領域之創新與卓越表現。"),
     ("2020", "法國 Novum Design Award", "Gold Winner 金獎",
      "評選涵蓋設計品質、創新性、原創性、技術性與執行力五項標準，金獎為最高等級。"),
+    ("", "ADA 第八屆亞洲設計獎", "獲獎作品",
+     "由二十一世紀室內設計與建築協會主辦，匯集亞洲各地住宅與商業空間作品的年度設計競賽。"),
+    ("", "北京創新中國設計獎", "獲獎作品",
+     "聚焦華人設計圈的創新表現，表彰空間設計領域具原創性與實踐力的作品。"),
 ]
 
 
@@ -270,7 +274,7 @@ write('index.html',
        preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
   + '''
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5532","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","2020 義大利 A′ Design Award 銀獎"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5532","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
 </script>
 <section class="hero">
   <div class="hero-bg">
@@ -350,6 +354,51 @@ write('index.html',
 </section>
 ''' + line_band() + FOOT)
 
+
+# ============================================================ 幸福空間雜誌報導
+# 內頁掃描來自舊站 /msg2；每篇各自一組燈箱，點縮圖直向翻閱。
+PRESS = [
+    ("retire",   "框塑古典　生活愜意退休寓所", 2,
+     "退休生活自然是要過得愜意自在。居住台北的屋主，兒女皆成家立業，退休後在桃園買下這間頂級大宅，結合社區內完善多元的公共設施，以招待所、度假中心為設計概念，打造出休閒、社交兼具的退休宅。"),
+    ("wood",     "木的藝術層次　鋪陳自然人文宅邸", 2,
+     "藝術佳作端放櫃體兩側展示層架，透過背牆處光暈投射，在玄關處揭開藝術人文宅邸的序幕。木化石電視牆搭配刻溝規劃的沙發背牆，日光敞朗中，特意不成套的沙發組與木製貴妃椅，描繪隨興不拘泥的人文風尚。"),
+    ("soft",     "剛柔交替　重塑人文大宅風華", 2,
+     "開闊的無隔間設計，讓動線多向悠遊，並以精采、多材質拼接的牆面做為序曲，低彩度客訂家具搭配烘焙拿鐵色短毛毯，讓每一個步伐、每一次停留，都是讚嘆。"),
+    ("humanist", "人文時尚　華美的空間饗宴", 2,
+     "玄關地坪鋪設夏目樹石，仿古的質感刻劃出場域力度，銀箔端景牆則與人造皮革鞋櫃相互輝映，交織耀眼光芒。"),
+    ("light",    "質感入室　鋪敘大宅光感奢華", 3, ""),
+    ("bold",     "大膽打造　完美獨特", 2, ""),
+    ("profile",  "Design Notes　設計師專訪・黃瑞楨", 1,
+     "幸福空間設計師專欄：易向室內設計總監黃瑞楨談如何以人文觀點，為每個家找到屬於自己的樣子。"),
+]
+
+def press_html():
+    out = []
+    for slug, title, cnt, ex in PRESS:
+        d = 'assets/press/%s' % slug
+        t = title.replace('　', ' ')
+        pages = []
+        for i in range(1, cnt + 1):
+            pages.append(
+                '        <a class="card rv%s" href="%s/1600/%02d.jpg" data-full="%s/1600/%02d.jpg" data-title="%s｜幸福空間雜誌 第 %d 頁">'
+                '<div class="ph"><img src="%s/800/%02d.jpg" srcset="%s/800/%02d.jpg 800w, %s/1200/%02d.jpg 1200w, %s/1600/%02d.jpg 1600w" '
+                'sizes="(max-width:720px) 92vw, (max-width:1080px) 46vw, 30vw" alt="%s 雜誌內頁 %d" loading="lazy" decoding="async"></div></a>'
+                % (' rv-d%d' % i if i > 1 else '', d, i, d, i, t, i,
+                   d, i, d, i, d, i, d, i, t, i))
+        extra = ('        <p>%s</p>\n' % ex) if ex else ''
+        out.append('    <article class="press-a rv" id="press-%s">\n'
+                   '      <div class="press-tx">\n'
+                   '        <p class="k">幸福空間雜誌</p>\n'
+                   '        <h3>%s</h3>\n'
+                   '%s'
+                   '        <p class="hint">點圖翻閱雜誌內頁 →</p>\n'
+                   '      </div>\n'
+                   '      <div class="press-pg%s" data-lightbox>\n'
+                   '%s\n'
+                   '      </div>\n'
+                   '    </article>' % (slug, title, extra, ' one' if cnt == 1 else '', "\n".join(pages)))
+    return "\n".join(out)
+
 # ============================================================ 關於易向
 VIDS = [("E9b6lGOiFKQ", "【空間設計秘訣開箱】輕工業風格居家設計"),
         ("WYuW_FUWt28", "【空間設計秘訣開箱】莫蘭迪色低調奢華設計專訪"),
@@ -424,14 +473,8 @@ write('about.html',
     <div class="vids">
 ''' + vid_html + '''
     </div>
-    <div class="press rv">
-      <p class="press-h">幸福空間雜誌報導</p>
-      <ul>
-        <li>人文時尚　華美的空間饗宴</li>
-        <li>質感入室　鋪敘大宅光感奢華</li>
-        <li>大膽打造　完美獨特</li>
-        <li>框塑古典　生活愜意退休寓所</li>
-      </ul>
+    <div class="btn-row center rv">
+      <a class="btn btn-brand" href="video.html#press"><span>翻閱幸福空間雜誌報導</span><span>→</span></a>
     </div>
   </div>
 </section>
@@ -455,14 +498,18 @@ write('video.html',
     <div class="vids">
 ''' + vid_html + '''
     </div>
-    <div class="press rv">
-      <p class="press-h">幸福空間雜誌報導</p>
-      <ul>
-        <li>人文時尚　華美的空間饗宴</li>
-        <li>質感入室　鋪敘大宅光感奢華</li>
-        <li>大膽打造　完美獨特</li>
-        <li>框塑古典　生活愜意退休寓所</li>
-      </ul>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="press">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">Magazine</p>
+      <h2 class="h-sec rv rv-d1">幸福空間雜誌報導</h2>
+      <p class="lede rv rv-d2" style="text-align:center">這幾年被雜誌記錄下來的家。點任一張內頁，就能像翻雜誌一樣往下看。</p>
+    </div>
+    <div class="press-list">
+''' + press_html() + '''
     </div>
   </div>
 </section>
