@@ -296,9 +296,8 @@ write('index.html',
 <section class="sec">
   <div class="wrap">
     <div class="philo">
-      <div class="philo-fig rv"><img src="assets/philo/home-1200.jpg"
-        srcset="assets/philo/home-900.jpg 900w, assets/philo/home-1200.jpg 1200w"
-        sizes="(max-width:1080px) 92vw, 46vw" alt="易向室內設計 作品實景" loading="lazy" width="1200" height="800"></div>
+      <div class="philo-fig rv"><img src="assets/philo/home-award.jpg"
+        alt="易向室內設計 A' Design Award 銀獎作品" loading="lazy" width="715" height="715"></div>
       <div class="philo-body">
         <p class="eyebrow rv">About Us</p>
         <h2 class="h-sec rv rv-d1">設計理念 <span class="thin">Philosophy</span></h2>
