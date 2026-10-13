@@ -136,7 +136,7 @@ FOOT = f'''
       <div>
         <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
         <p class="co">易向室內設計｜澤向室內裝修工程有限公司</p>
-        <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計二十餘年。</p>
+        <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計近三十年。</p>
       </div>
       <div>
         <p class="foot-h">Sitemap</p>
@@ -266,7 +266,7 @@ def write(name, body):
 # ============================================================ 首頁（精簡版）
 write('index.html',
   head('index.html', f'{SITE}｜台北室內設計・桃園室內設計',
-       '易向室內設計（澤向室內裝修工程有限公司），深耕室內設計二十餘年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
+       '易向室內設計（澤向室內裝修工程有限公司），深耕室內設計近三十年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
        preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
   + '''
 <script type="application/ld+json">
@@ -284,7 +284,7 @@ write('index.html',
       <h1>讓家　成為情感與心靈的寄託</h1>
       <p class="sub">Image Design</p>
     </div>
-    <p class="tag">台北 ・ 桃園　｜　二十餘年專業經驗</p>
+    <p class="tag">台北 ・ 桃園　｜　近三十年專業經驗</p>
   </div>
   <div class="hero-badges">
     <img src="assets/brand/award_muse.png" alt="MUSE Design Awards 金獎" loading="lazy">
@@ -303,7 +303,7 @@ write('index.html',
         <h2 class="h-sec rv rv-d1">設計理念 <span class="thin">Philosophy</span></h2>
         <p class="philo-q rv rv-d2">室內設計的真諦不在譁眾取寵，而是來自於居住者<em>發自內心的認同與肯定</em>。</p>
         <div class="rv rv-d3" style="margin-top:32px">
-          <p>從事室內設計二十多個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
+          <p>從事室內設計近三十個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
           <p>注重完美的線條比例，更在乎客戶的生活體驗與需求。</p>
         </div>
         <div class="btn-row rv rv-d4">
@@ -312,10 +312,10 @@ write('index.html',
       </div>
     </div>
     <div class="stats rv">
-      <div><p class="n">20<small>餘年</small></p><p class="k">專業經驗</p></div>
-      <div><p class="n">86<small>件</small></p><p class="k">完工實績</p></div>
-      <div><p class="n">03<small>項</small></p><p class="k">國際設計獎</p></div>
-      <div><p class="n">02<small>處</small></p><p class="k">台北・桃園據點</p></div>
+      <div><p class="n"><small class="pre">近</small>30<small>年</small></p><p class="k">專業經驗</p></div>
+      <div><p class="n">數百<small>件</small></p><p class="k">完工實績</p></div>
+      <div><p class="n">10<span class="plus">+</span></p><p class="k">國際設計獎・雜誌報導</p></div>
+      <div><p class="n"><small class="pre">近</small>1000<small>位</small></p><p class="k">服務客戶</p></div>
     </div>
   </div>
 </section>
@@ -379,7 +379,7 @@ vid_html = "\n".join(
 
 write('about.html',
   head('about.html', f'關於易向｜{SITE}',
-       '易向室內設計（澤向室內裝修工程有限公司）深耕二十餘年，榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
+       '易向室內設計（澤向室內裝修工程有限公司）深耕近三十年，榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
        'assets/hero/1600/h11.jpg', bg=('.page-head', 'h11.jpg'))
   + page_head('assets/hero/1600/h11.jpg', 'About Us', '關於易向', '關於易向')
   + '''
@@ -394,7 +394,7 @@ write('about.html',
         <h2 class="h-sec rv rv-d1">設計理念</h2>
         <p class="philo-q rv rv-d2">室內設計的真諦不在譁眾取寵，而是來自於居住者<em>發自內心的認同與肯定</em>。</p>
         <div class="rv rv-d3" style="margin-top:32px">
-          <p>從事室內設計二十多個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
+          <p>從事室內設計近三十個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
           <p>多一份設想溝通，多一份細膩思維。以人性為室內設計的主軸，創造空間設計新價值。</p>
           <p>以無限的巧思及創新讓家的收納與美感合而為一，從細膩動人的設計觀點及高品質的施工，重新定義家人的互動。</p>
           <p>注重完美的線條比例，更在乎客戶的生活體驗與需求。我們不會強迫您的感官定義，更不會堅持學院派的理論。</p>
@@ -402,10 +402,10 @@ write('about.html',
       </div>
     </div>
     <div class="stats rv">
-      <div><p class="n">20<small>餘年</small></p><p class="k">專業經驗</p></div>
-      <div><p class="n">86<small>件</small></p><p class="k">完工實績</p></div>
-      <div><p class="n">03<small>項</small></p><p class="k">國際設計獎</p></div>
-      <div><p class="n">02<small>處</small></p><p class="k">台北・桃園據點</p></div>
+      <div><p class="n"><small class="pre">近</small>30<small>年</small></p><p class="k">專業經驗</p></div>
+      <div><p class="n">數百<small>件</small></p><p class="k">完工實績</p></div>
+      <div><p class="n">10<span class="plus">+</span></p><p class="k">國際設計獎・雜誌報導</p></div>
+      <div><p class="n"><small class="pre">近</small>1000<small>位</small></p><p class="k">服務客戶</p></div>
     </div>
   </div>
 </section>
