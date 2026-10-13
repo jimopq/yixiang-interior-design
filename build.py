@@ -35,7 +35,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
  '&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">')
 
-SITE = "易向室內設計・澤向室內裝修工程有限公司"
+SITE = "易向室內設計 IMAGE DESIGN・澤向室內裝修工程有限公司"
 
 
 
