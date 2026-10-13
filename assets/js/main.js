@@ -176,9 +176,15 @@
         all.innerHTML = slice.map(function (w, n) {
           return cardHTML(w, 'g-w' + (n % 3 ? ' rv-d' + (n % 3) : ''), n < 3);
         }).join('');
-        reveal(all); bindCards(all, slice);
+        /* 燈箱吃整個篩選結果，不只這一頁：點一張就能往下滑完同類全部 */
+        reveal(all); bindCards(all, list);
 
-        var n = $('#wcount'); if (n) n.textContent = list.length;
+        var t = $('#wtitle');
+        if (t) {
+          var c = null;
+          for (var k = 0; k < d.categories.length; k++) if (d.categories[k].slug === cat) c = d.categories[k];
+          t.textContent = c ? c.name : '完工實績';
+        }
         drawPager(pages);
       }
 
@@ -223,23 +229,27 @@
     });
   });
 
-  /* ---- 燈箱 ---- */
-  var lb = $('#lb'), lbImg = $('#lbImg'), lbK = $('#lbK'), lbT = $('#lbT');
-  var pool = [], cur = 0;
+  /* ---- 燈箱：從點到的那張開始，直向排到底，一口氣往下滑 ---- */
+  var lb = $('#lb'), lbCol = $('#lbCol');
 
-  var show = function (n) {
-    if (!pool.length) return;
-    cur = (n + pool.length) % pool.length;
-    var w = pool[cur];
-    lbImg.src = w.img; lbImg.alt = w.title;
-    lbK.textContent = w.catEn; lbT.textContent = w.title + '｜' + w.catName;
-  };
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   function open(list, id) {
-    pool = list;
+    if (!lb || !lbCol) return;
     var n = 0; for (var j = 0; j < list.length; j++) if (list[j].id === id) { n = j; break; }
-    show(n); lb.classList.add('on'); document.body.style.overflow = 'hidden';
+    var order = list.slice(n).concat(list.slice(0, n));
+    lbCol.innerHTML = order.map(function (w, i) {
+      return '<figure><img src="' + w.img + '" alt="' + esc(w.title) + '"' +
+             (i < 2 ? '' : ' loading="lazy"') + ' decoding="async">' +
+             '<figcaption><p class="k">' + esc(w.catEn) + '</p><h3>' + esc(w.title) +
+             (w.catName ? '｜' + esc(w.catName) : '') + '</h3></figcaption></figure>';
+    }).join('');
+    lb.scrollTop = 0;
+    lb.classList.add('on'); document.body.style.overflow = 'hidden';
   }
-  var close = function () { lb.classList.remove('on'); document.body.style.overflow = ''; lbImg.src = ''; };
+  var close = function () {
+    lb.classList.remove('on'); document.body.style.overflow = '';
+    lbCol.innerHTML = '';
+  };
 
   function bindCards(root, list) {
     $$('.card', root).forEach(function (c) {
@@ -249,14 +259,9 @@
 
   if (lb) {
     $('#lbX').addEventListener('click', close);
-    $('#lbPrev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
-    $('#lbNext').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
-    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lbCol) close(); });
     document.addEventListener('keydown', function (e) {
-      if (!lb.classList.contains('on')) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') show(cur - 1);
-      if (e.key === 'ArrowRight') show(cur + 1);
+      if (lb.classList.contains('on') && e.key === 'Escape') close();
     });
   }
 })();

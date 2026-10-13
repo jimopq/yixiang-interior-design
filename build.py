@@ -27,6 +27,7 @@ NAV = [
     ("service.html", "Service", "服務收費"),
     ("process.html", "Process", "設計流程"),
     ("blog.html",    "Blog",    "設計筆記"),
+    ("video.html",   "Video",   "影音專區"),
     ("contact.html", "Contact", "聯絡我們"),
 ]
 
@@ -85,6 +86,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
     <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
     <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
+    <span class="brand-co">澤向室內裝修工程有限公司</span>
   </a>
   <nav class="nav">
 {nav}
@@ -147,6 +149,7 @@ FOOT = f'''
           <li><a href="service.html">服務與收費</a></li>
           <li><a href="process.html">設計流程</a></li>
           <li><a href="blog.html">設計筆記</a></li>
+          <li><a href="video.html">影音專區</a></li>
           <li><a href="contact.html">聯絡我們</a></li>
         </ul>
       </div>
@@ -175,10 +178,7 @@ FOOT = f'''
 
 <div class="lb" id="lb">
   <button class="lb-x" id="lbX" aria-label="關閉"></button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="上一件"></button>
-  <img id="lbImg" src="" alt="">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="下一件"></button>
-  <div class="lb-cap"><p class="k" id="lbK"></p><h3 id="lbT"></h3></div>
+  <div class="lb-col" id="lbCol"></div>
 </div>
 
 <script src="assets/js/config.js?v={CFG_V}"></script>
@@ -219,12 +219,12 @@ SERVICES = [
 ]
 
 AWARDS = [
+    ("2020", "義大利 A′ Design Award", "Silver Winner 銀獎",
+     "歐洲歷史最悠久、規模最大的國際設計競賽之一，為全球設計品質的重要指標。"),
     ("2019", "美國 MUSE Design Awards", "Gold Winner 金獎",
      "全球具指標性的國際設計獎項，表彰建築、室內、產品與品牌設計領域之創新與卓越表現。"),
     ("2020", "法國 Novum Design Award", "Gold Winner 金獎",
      "評選涵蓋設計品質、創新性、原創性、技術性與執行力五項標準，金獎為最高等級。"),
-    ("2020", "義大利 A′ Design Award", "Silver Winner 銀獎",
-     "歐洲歷史最悠久、規模最大的國際設計競賽之一，為全球設計品質的重要指標。"),
 ]
 
 
@@ -253,9 +253,9 @@ def awards_html():
     out = []
     for n, (yr, t, lv, d) in enumerate(AWARDS):
         delay = ' rv-d%d' % n if n else ''
-        out.append('      <article class="award rv%s">\n'
+        out.append('      <article class="award rv%s%s">\n'
                    '        <p class="yr">%s</p><h3>%s</h3>\n'
-                   '        <p class="lv">%s</p><p>%s</p></article>' % (delay, yr, t, lv, d))
+                   '        <p class="lv">%s</p><p>%s</p></article>' % (delay, ' award-top' if n == 0 else '', yr, t, lv, d))
     return "\n".join(out)
 
 
@@ -301,10 +301,10 @@ write('index.html',
       <div class="philo-body">
         <p class="eyebrow rv">About Us</p>
         <h2 class="h-sec rv rv-d1">設計理念 <span class="thin">Philosophy</span></h2>
-        <p class="philo-q rv rv-d2">室內設計的真諦不在譁眾取寵，而是來自於居住者<em>發自內心的認同與肯定</em>。</p>
+        <p class="philo-q rv rv-d2">好的設計不用張揚，<em>住進去的人覺得舒服、覺得這就是家</em>，才是我們最在意的事。</p>
         <div class="rv rv-d3" style="margin-top:32px">
-          <p>從事室內設計近三十個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
-          <p>注重完美的線條比例，更在乎客戶的生活體驗與需求。</p>
+          <p>做室內設計快三十年了，我們一直相信，家是情感與心靈安放的地方。每一次規劃，都是先聽您怎麼生活，再把空間慢慢調整成您的樣子。</p>
+          <p>線條與比例我們很講究，但更在乎的，是您每天回到家時的那份自在。</p>
         </div>
         <div class="btn-row rv rv-d4">
           <a class="btn btn-brand" href="about.html"><span>了解易向</span><span>→</span></a>
@@ -323,8 +323,8 @@ write('index.html',
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="sec-head center">
-      <p class="eyebrow center rv">Selected Works</p>
-      <h2 class="h-sec rv rv-d1">精選作品</h2>
+      <p class="eyebrow center rv">Recent Works</p>
+      <h2 class="h-sec rv rv-d1">近期作品</h2>
       <p class="lede rv rv-d2" style="text-align:center">從奢華新古典到自然人文禪風，每一件作品都始於一次完整的傾聽。</p>
     </div>
     <div class="grid" id="featured"></div>
@@ -332,18 +332,6 @@ write('index.html',
       <a class="btn" href="works.html"><span>瀏覽全部 86 件作品</span><span>→</span></a>
     </div>
   </div>
-</section>
-
-<section class="sec-teaser">
-  <a class="teaser" href="case-''' + FEAT['slug'] + '''.html">
-    <img src="''' + FEAT['dir'] + '''/800/''' + FEAT['cover'] + '''" srcset="''' + FEAT['dir'] + '''/800/''' + FEAT['cover'] + ''' 800w, ''' + FEAT['dir'] + '''/1200/''' + FEAT['cover'] + ''' 1200w" sizes="100vw" alt="''' + FEAT['name'] + ''' ''' + FEAT['sub'] + '''" loading="lazy">
-    <div class="teaser-tx">
-      <p class="k">Featured Project</p>
-      <h2>''' + FEAT['name'] + '''</h2>
-      <p class="st">''' + FEAT['sub'] + '''　｜　''' + FEAT['area'] + '''　｜　''' + FEAT['ping'] + '''</p>
-      <span class="more">看完整案例　→</span>
-    </div>
-  </a>
 </section>
 
 <section class="sec sec-dark">
@@ -356,7 +344,7 @@ write('index.html',
 ''' + awards_html() + '''
     </div>
     <div class="btn-row center rv rv-d3">
-      <a class="btn btn-light" href="about.html#press"><span>媒體專訪與影片</span><span>→</span></a>
+      <a class="btn btn-light" href="video.html"><span>媒體專訪與影片</span><span>→</span></a>
     </div>
   </div>
 </section>
@@ -392,12 +380,12 @@ write('about.html',
       <div class="philo-body">
         <p class="eyebrow rv">Philosophy</p>
         <h2 class="h-sec rv rv-d1">設計理念</h2>
-        <p class="philo-q rv rv-d2">室內設計的真諦不在譁眾取寵，而是來自於居住者<em>發自內心的認同與肯定</em>。</p>
+        <p class="philo-q rv rv-d2">好的設計不用張揚，<em>住進去的人覺得舒服、覺得這就是家</em>，才是我們最在意的事。</p>
         <div class="rv rv-d3" style="margin-top:32px">
-          <p>從事室內設計近三十個年頭，如何讓家成為情感與心靈的寄託，一直是整個設計團隊所秉持的原則。</p>
-          <p>多一份設想溝通，多一份細膩思維。以人性為室內設計的主軸，創造空間設計新價值。</p>
-          <p>以無限的巧思及創新讓家的收納與美感合而為一，從細膩動人的設計觀點及高品質的施工，重新定義家人的互動。</p>
-          <p>注重完美的線條比例，更在乎客戶的生活體驗與需求。我們不會強迫您的感官定義，更不會堅持學院派的理論。</p>
+          <p>做室內設計快三十年了，我們一直相信，家是情感與心靈安放的地方。每一次規劃，都是先聽您怎麼生活，再把空間慢慢調整成您的樣子。</p>
+          <p>多聊一點、多想一步。我們把人放在設計的中心，空間自然就會有溫度。</p>
+          <p>收納與美感不必二選一，一點巧思加上扎實的施工，就能讓家人每天多一些自在的互動。</p>
+          <p>線條與比例我們很講究，但不會把自己的喜好硬套在您身上，也不會拿學院派的理論說服您。您的生活怎麼過，家就怎麼長。</p>
         </div>
       </div>
     </div>
@@ -449,6 +437,37 @@ write('about.html',
 </section>
 ''' + line_band() + FOOT)
 
+
+# ============================================================ 影音專區
+write('video.html',
+  head('video.html', f'影音專區｜{SITE}',
+       '易向室內設計（澤向室內裝修工程有限公司）影音專區：設計師親自開箱的空間設計秘訣、媒體專訪與幸福空間雜誌報導。',
+       'assets/hero/1600/h15.jpg', bg=('.page-head', 'h15.jpg'))
+  + page_head('assets/hero/1600/h15.jpg', 'Video', '影音專區', '影音專區')
+  + '''
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">Press &amp; Video</p>
+      <h2 class="h-sec rv rv-d1">設計師開箱・媒體專訪</h2>
+      <p class="lede rv rv-d2" style="text-align:center">把設計時在想什麼、住進去之後怎麼用，直接說給您聽。</p>
+    </div>
+    <div class="vids">
+''' + vid_html + '''
+    </div>
+    <div class="press rv">
+      <p class="press-h">幸福空間雜誌報導</p>
+      <ul>
+        <li>人文時尚　華美的空間饗宴</li>
+        <li>質感入室　鋪敘大宅光感奢華</li>
+        <li>大膽打造　完美獨特</li>
+        <li>框塑古典　生活愜意退休寓所</li>
+      </ul>
+    </div>
+  </div>
+</section>
+''' + line_band('看完影片，想聊聊自己的家嗎', '加 LINE 傳張平面圖或現況照片，我們會先給您初步方向，不收費。') + FOOT)
+
 # ============================================================ 作品總覽（分頁）
 write('works.html',
   head('works.html', f'作品總覽｜{SITE}',
@@ -460,8 +479,8 @@ write('works.html',
   <div class="wrap">
     <div class="sec-head center">
       <p class="eyebrow center rv">Portfolio</p>
-      <h2 class="h-sec rv rv-d1">完工實績 <span class="thin">共 <span id="wcount">86</span> 件</span></h2>
-      <p class="lede rv rv-d2" style="text-align:center">點選任一件作品可放大檢視，左右方向鍵可連續瀏覽。</p>
+      <h2 class="h-sec rv rv-d1" id="wtitle">完工實績</h2>
+      <p class="lede rv rv-d2" style="text-align:center">點選任一件作品即可放大，往下滑就能一口氣看完同系列的空間。</p>
     </div>
     <div class="filters" id="filters"></div>
     <div class="grid" id="allworks"></div>
@@ -508,7 +527,7 @@ INDEX_BODY = """
   <div class="wrap">
     <div class="sec-head center">
       <p class="eyebrow center rv">Case Studies</p>
-      <h2 class="h-sec rv rv-d1">完整案例 <span class="thin">共 %d 件</span></h2>
+      <h2 class="h-sec rv rv-d1">完整案例</h2>
       <p class="lede rv rv-d2" style="text-align:center">每一個家，都從一次好好的傾聽開始。走進這些空間，看看光線、材質與日常，是怎麼被溫柔地安放。</p>
     </div>
     <div class="grid">
@@ -516,7 +535,7 @@ INDEX_BODY = """
     </div>
   </div>
 </section>
-""" % (len(CASES), "\n".join(case_card(c, n) for n, c in enumerate(CASES)))
+""" % "\n".join(case_card(c, n) for n, c in enumerate(CASES))
 
 write('case.html',
   head('case.html', '精選案例｜' + SITE,
