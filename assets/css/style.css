@@ -24,8 +24,8 @@
   --gold-soft:#C7A971;
 
   /* 深色區塊 */
-  --dark:#2F2521;           /* 溫暖的深咖，取代黑色（頁尾、獎項、燈箱） */
-  --dark-2:#3B2F2A;
+  --dark:#3F2F27;           /* 深咖啡，取代黑色（頁尾、獎項、案例資訊） */
+  --dark-2:#4C3B32;
 
   /* 字體 */
   --serif:"Noto Serif TC","Songti TC","Times New Roman",serif;
@@ -473,7 +473,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* --- 燈箱：直向一次看完，不用左右切換 ------------------------------- */
 .lb{
-  position:fixed;inset:0;z-index:200;background:rgba(36,28,24,.97);
+  position:fixed;inset:0;z-index:200;background:rgba(52,40,33,.97);
   display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
   padding:clamp(64px,8vw,96px) clamp(16px,4vw,60px) clamp(40px,6vw,80px);
 }
@@ -485,7 +485,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .lb-col figcaption{margin-top:16px;color:#fff}
 .lb-col figcaption .k{font-family:var(--display);font-size:10px;letter-spacing:.34em;color:var(--gold-soft);margin:0 0 8px}
 .lb-col figcaption h3{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.6vw,20px);letter-spacing:.22em;margin:0}
-.lb-x{position:fixed;top:clamp(14px,2.4vw,28px);right:clamp(14px,2.4vw,28px);width:44px;height:44px;color:#fff;z-index:2;background:rgba(36,28,24,.6);border-radius:50%}
+.lb-x{position:fixed;top:clamp(14px,2.4vw,28px);right:clamp(14px,2.4vw,28px);width:44px;height:44px;color:#fff;z-index:2;background:rgba(52,40,33,.6);border-radius:50%}
 .lb-x::before,.lb-x::after{content:"";position:absolute;left:12px;right:12px;top:21px;height:1px;background:#fff}
 .lb-x::before{transform:rotate(45deg)}.lb-x::after{transform:rotate(-45deg)}
 
