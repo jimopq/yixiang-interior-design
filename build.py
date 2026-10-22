@@ -3,7 +3,9 @@
 
 import hashlib
 import json
-CASES = json.load(open('data/cases.json', encoding='utf-8'))['cases']
+_CD = json.load(open('data/cases.json', encoding='utf-8'))
+CASES = _CD['cases']
+STYLES = _CD.get('styles', [])
 FEAT = CASES[0]
 
 
@@ -463,6 +465,29 @@ write('about.html',
   </div>
 </section>
 
+<section class="sec" id="license">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">License</p>
+      <h2 class="h-sec rv rv-d1">專業證照</h2>
+      <p class="lede rv rv-d2" style="text-align:center">設計與施工都由內政部登記在案的專業技術人員負責，您的家交給有證照的人。</p>
+    </div>
+    <article class="press-a rv" style="border-top:0;padding-top:0">
+      <div class="press-tx">
+        <p class="k">內政部核發</p>
+        <h3>建築物室內裝修專業技術人員登記證</h3>
+        <p>登記資格：專業設計技術人員、專業施工技術人員<br>登記證字號：內營室技字第 40EC021327 號<br>有效期限：民國 116 年 4 月 27 日</p>
+        <p class="hint">點圖放大檢視 →</p>
+      </div>
+      <div class="press-pg one" data-lightbox style="max-width:520px">
+        <a class="card rv" href="assets/cert/license-1600.jpg" data-full="assets/cert/license-1600.jpg" data-title="建築物室內裝修專業技術人員登記證｜內政部">
+          <div class="ph" style="aspect-ratio:707/1000"><img src="assets/cert/license-900.jpg" srcset="assets/cert/license-900.jpg 900w, assets/cert/license-1600.jpg 1600w" sizes="(max-width:720px) 92vw, 520px" alt="建築物室內裝修專業技術人員登記證" loading="lazy" decoding="async"></div>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="sec sec-alt" id="press">
   <div class="wrap">
     <div class="sec-head center">
@@ -547,12 +572,13 @@ def case_img(c, f, eager=False, alt=''):
             % (d, f, d, f, d, f, alt, '' if eager else ' loading="lazy"'))
 
 def case_card(c, n):
-    return ('      <a class="card g-w rv%s" href="case-%s.html">'
+    meta = '　·　'.join(x for x in (c.get('area'), c.get('ping')) if x) or c.get('style', '')
+    return ('      <a class="card g-w rv%s" href="case-%s.html" data-cat="%s">'
             '<div class="ph">%s</div>'
-            '<div class="card-txt"><p class="k">%s　·　%s</p><h3>%s</h3><p class="m">%s</p></div></a>'
-            % (' rv-d%d' % (n % 3) if n % 3 else '', c['slug'],
-               case_img(c, c['cover'], eager=n < 3, alt=c['name'] + ' ' + c['sub']),
-               c['area'], c['ping'], c['name'], c['style']))
+            '<div class="card-txt"><p class="k">%s</p><h3>%s</h3><p class="m">%s</p></div></a>'
+            % (' rv-d%d' % (n % 3) if n % 3 else '', c['slug'], ' '.join(c.get('cats', [])),
+               case_img(c, c['cover'], eager=n < 6, alt=c['name'] + ' ' + c['sub']),
+               meta, c['name'], c['style']))
 
 def case_gallery(c):
     out = []; last = None; n = 0
@@ -569,20 +595,28 @@ def case_gallery(c):
 
 CASE_LB = line_band('想要類似的規劃嗎', '加 LINE 傳給我們您的平面圖或現況照片，我們會依您的坪數與需求給出初步方向。')
 
+CASE_LEDE = "每一個家，都從一次好好的傾聽開始。走進這些空間，看看光線、材質與日常，是怎麼被溫柔地安放。"
 INDEX_BODY = """
 <section class="sec">
   <div class="wrap">
     <div class="sec-head center">
       <p class="eyebrow center rv">Case Studies</p>
-      <h2 class="h-sec rv rv-d1">完整案例</h2>
-      <p class="lede rv rv-d2" style="text-align:center">每一個家，都從一次好好的傾聽開始。走進這些空間，看看光線、材質與日常，是怎麼被溫柔地安放。</p>
+      <h2 class="h-sec rv rv-d1" id="ctitle">完整案例</h2>
+      <p class="lede rv rv-d2" id="clede" data-default="%s" style="text-align:center">%s</p>
     </div>
-    <div class="grid">
+    <div class="filters" id="cfilters">
+      <button class="on" data-c="all" data-name="完整案例"><span class="en">All</span>全部案例</button>
+%s
+    </div>
+    <div class="grid" id="casegrid">
 %s
     </div>
   </div>
 </section>
-""" % "\n".join(case_card(c, n) for n, c in enumerate(CASES))
+""" % (CASE_LEDE, CASE_LEDE,
+       "\n".join('      <button data-c="%s" data-name="%s" data-desc="%s"><span class="en">%s</span>%s</button>'
+                 % (st['slug'], st['name'], st['desc'], st['en'], st['name']) for st in STYLES),
+       "\n".join(case_card(c, n) for n, c in enumerate(CASES)))
 
 write('case.html',
   head('case.html', '精選案例｜' + SITE,

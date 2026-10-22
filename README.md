@@ -187,8 +187,23 @@ gh repo edit --visibility private --accept-visibility-change-consequences
 次臥 → 更衣室 → 衛浴。
 
 圖片放 `assets/cases/<slug>/01.jpg …`（主檔 1600px），跑 `tools/make-thumbs.sh`
-產生 800／1200。`python3 build.py` 會產出索引 `case.html` 與每案的 `case-<slug>.html`，
-首頁導引讀第一案。
+產生 800／1200。`python3 build.py` 會產出索引 `case.html` 與每案的 `case-<slug>.html`。
+
+### 四種風格分類（2026/10 業主雲端四個分頁）
+
+`data/cases.json` 頂層多了 `styles`（warm 侘寂溫馨風／wood 現代木質風／elegant 輕奢優雅風／
+classic 奢華新古典風），每案的 `cats` 是它所屬的分類（可多個，業主的分頁有重複案場）。
+索引頁的分類列由 `styles` 產生，前端只做顯示切換，不重新抓資料。
+
+來源：業主 Google Drive 四個分頁，每案只取最多 12 張（檔名自然排序後等距抽樣），
+用 Drive 的 `thumbnail?sz=w1600` 端點抓圖，避免搬動數 GB 原檔。規格（地區／格局／坪數／
+風格／材質）轉錄自四份 PDF 案場列表；分頁裡有、PDF 沒有的案場只有名稱與風格。
+網頁一律用意境案名，不露建案名稱。
+
+### 專業證照
+
+`assets/cert/license-900.jpg`／`license-1600.jpg` 為內政部「建築物室內裝修專業技術人員
+登記證」掃描，身分證字號已遮蔽後才上線。顯示在 `about.html` 的「專業證照」區塊。
 
 ## LINE 設定
 

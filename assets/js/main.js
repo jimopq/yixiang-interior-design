@@ -218,6 +218,22 @@
     });
   }
 
+  /* ---- 精選案例：四種風格分類（靜態卡片，前端只做顯示切換） ---- */
+  var cf = $('#cfilters'), cg = $('#casegrid');
+  if (cf && cg) cf.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    $$('button', cf).forEach(function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    var c = b.dataset.c;
+    $$('.card', cg).forEach(function (k) {
+      var on = c === 'all' || (' ' + (k.dataset.cat || '') + ' ').indexOf(' ' + c + ' ') >= 0;
+      k.classList.toggle('hide', !on);
+      if (on) k.classList.add('in');
+    });
+    var t = $('#ctitle'); if (t) t.textContent = b.dataset.name || '完整案例';
+    var l = $('#clede'); if (l) l.textContent = b.dataset.desc || l.dataset.default || '';
+  });
+
   /* ---- 精選案例圖庫：HTML 已靜態輸出，這裡只接燈箱 ---- */
   $$('[data-lightbox]').forEach(function (root) {
     var list = $$('.card[data-full]', root).map(function (a, n) {
