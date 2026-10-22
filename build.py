@@ -86,9 +86,9 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 
 <header class="site-head">
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
-    <img class="l-white" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
-    <img class="l-ink" src="assets/brand/logo-ink.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
-    <span class="brand-co">澤向室內裝修工程有限公司</span>
+    <img class="l-white" src="assets/brand/logo-white-v2.png" alt="易向室內設計" width="992" height="158">
+    <img class="l-ink" src="assets/brand/logo-ink-v2.png" alt="易向室內設計" width="992" height="158">
+    <span class="brand-co" aria-label="澤向室內裝修工程有限公司">澤向室內裝修</span>
   </a>
   <nav class="nav">
 {nav}
@@ -138,7 +138,7 @@ FOOT = f'''
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <img class="logo" src="assets/brand/logo-white.png" alt="易向室內設計 澤向室內裝修工程有限公司" width="916" height="164">
+        <img class="logo" src="assets/brand/logo-white-v2.png" alt="易向室內設計" width="992" height="158">
         <p class="co">易向室內設計｜澤向室內裝修工程有限公司</p>
         <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計近三十年。</p>
       </div>
@@ -152,6 +152,7 @@ FOOT = f'''
           <li><a href="process.html">設計流程</a></li>
           <li><a href="blog.html">設計筆記</a></li>
           <li><a href="video.html">影音專區</a></li>
+          <li><a href="awards.html">得獎作品</a></li>
           <li><a href="contact.html">聯絡我們</a></li>
         </ul>
       </div>
@@ -190,47 +191,47 @@ FOOT = f'''
 '''
 
 FLOW = [
-    ("01", "初步溝通", "Consultation",
-     ["瞭解目前房屋狀況及基本生活需求", "討論業主起居習慣、特殊喜好收藏",
-      "提出初步專業建議及工程預算溝通", "風格初步討論"]),
-    ("02", "現場丈量", "Site Measurement",
-     ["對工程現場進行丈量，並拍照留底", "了解工地現場並初步告知注意事項",
-      "資料蒐集完整後進行平面繪製"]),
-    ("03", "圖面繪製", "Drafting",
-     ["繪製平面規劃配置圖", "討論平面配置並簽訂設計合約"]),
-    ("04", "立面及建材討論", "Materials",
-     ["解說立面設計圖設計理念", "提供設計材質的相關樣板及性質討論",
-      "提供工程報價單，並解說內容", "簽訂工程合約"]),
-    ("05", "進場施工", "Construction",
-     ["現場立面圖放樣，再次確認細節後簽認放樣驗收單", "排定工程進度表進行施工",
-      "施工期間不定期與業主現場溝通", "以嚴謹的態度控管施工品質"]),
-    ("06", "完成交屋", "Handover",
-     ["相關工程完工後，確認無誤雙方簽認交屋驗收單",
-      "保固期內，非人為因素之損壞提供維修保固",
-      "保固期後若有維修皆可派工處理，酌收工料費用"]),
+    ("01", "先聊聊", "Consultation",
+     ["聽您說說現在的房子，和每天是怎麼生活的", "起居習慣、喜歡的東西、想收藏的物件，都可以聊",
+      "我們會先給一些專業建議，也一起把預算的方向抓出來", "順便聊聊喜歡的風格，不用急著決定"]),
+    ("02", "到現場看看", "Site Measurement",
+     ["到現場丈量、拍照，把每個尺寸都記清楚", "看看現場狀況，先告訴您哪些地方要特別留意",
+      "資料齊全後，就開始畫平面圖"]),
+    ("03", "把家畫出來", "Drafting",
+     ["繪製平面配置圖，把動線和收納先安排好", "一起討論平面配置，確定方向後簽訂設計合約"]),
+    ("04", "挑材質、談細節", "Materials",
+     ["用立面圖跟您說明每一面牆的想法", "拿實際的材質樣板給您摸摸看、比比看",
+      "提供工程報價單，一項一項說清楚", "確認沒問題後簽訂工程合約"]),
+    ("05", "開工了", "Construction",
+     ["先在現場放樣，再一次確認細節後請您簽認", "排好進度表，按部就班施工",
+      "施工期間會常常跟您在現場碰面、更新進度", "每個環節都盯著品質，不馬虎"]),
+    ("06", "交屋，開始新生活", "Handover",
+     ["完工後一起驗收，確認沒問題再簽認交屋",
+      "保固期內，非人為因素的損壞我們負責修",
+      "保固期後若需要維修也可以找我們，只酌收工料費"]),
 ]
 
 SERVICES = [
-    ("01", "住宅空間", "依生活動線與收納需求量身規劃，兼顧美感與日常實用。"),
-    ("02", "客變設計", "預售屋交屋前的格局、水電與建材變更規劃，省下交屋後拆除重做的成本。"),
-    ("03", "舊屋翻新", "從管線結構到格局重整，讓老屋重新符合現代生活需求。"),
-    ("04", "商業空間", "以品牌調性為核心，打造具識別度且符合營運效率的場域。"),
-    ("05", "建築公共空間", "大廳、交誼廳與公設整體規劃，提升建案整體質感與價值。"),
-    ("06", "接待中心・實品屋", "掌握銷售節奏與客層想像，以空間敘事創造成交動能。"),
-    ("07", "免費初步諮詢", "初次需求溝通不收費，先了解您的想法與預算方向，再談後續。"),
+    ("01", "住宅空間", "從您每天怎麼走、東西放哪裡開始想，讓家好看，也好住。"),
+    ("02", "客變設計", "預售屋交屋前先把格局、水電和建材調整好，省下交屋後再拆再做的辛苦與花費。"),
+    ("03", "舊屋翻新", "從管線到格局一起整理，讓住了很多年的老房子，重新跟上現在的生活。"),
+    ("04", "商業空間", "把品牌的個性放進空間裡，讓客人一進門就有感覺，也讓團隊工作起來更順手。"),
+    ("05", "建築公共空間", "大廳、交誼廳與公設一起規劃，讓住戶每天回家的路都舒服。"),
+    ("06", "接待中心・實品屋", "用空間說故事，讓來看房的人想像得到住進去的樣子。"),
+    ("07", "免費初步諮詢", "第一次聊天不收費。先聽聽您的想法和預算，再一起決定接下來怎麼走。"),
 ]
 
 AWARDS = [
     ("2020", "義大利 A′ Design Award", "Silver Winner 銀獎",
-     "歐洲歷史最悠久、規模最大的國際設計競賽之一，為全球設計品質的重要指標。"),
+     "歐洲歷史最久、規模最大的設計競賽之一。一個台灣的家，在這裡被世界看見。"),
     ("2019", "美國 MUSE Design Awards", "Gold Winner 金獎",
-     "全球具指標性的國際設計獎項，表彰建築、室內、產品與品牌設計領域之創新與卓越表現。"),
+     "跨越建築、室內與品牌設計的國際獎項。得獎的那個家，叫「木的從容」。"),
     ("2020", "法國 Novum Design Award", "Gold Winner 金獎",
-     "評選涵蓋設計品質、創新性、原創性、技術性與執行力五項標準，金獎為最高等級。"),
+     "從設計品質到施工執行力一起評。金獎是最高等級，我們很珍惜。"),
     ("", "ADA 第八屆亞洲設計獎", "獲獎作品",
-     "由二十一世紀室內設計與建築協會主辦，匯集亞洲各地住宅與商業空間作品的年度設計競賽。"),
+     "亞洲各地的住宅與商業空間一起比。能入列，是對我們日常工作的一種肯定。"),
     ("", "北京創新中國設計獎", "獲獎作品",
-     "聚焦華人設計圈的創新表現，表彰空間設計領域具原創性與實踐力的作品。"),
+     "聚焦華人設計圈的創新表現。謝謝評審，也謝謝願意把家交給我們的屋主。"),
 ]
 
 
@@ -255,13 +256,21 @@ def svc_html():
     return "\n".join(out)
 
 
+AWARD_LINK = {"義大利 A′ Design Award": "awards.html#ada", "美國 MUSE Design Awards": "awards.html#muse",
+              "法國 Novum Design Award": "awards.html#novum"}
+
 def awards_html():
     out = []
     for n, (yr, t, lv, d) in enumerate(AWARDS):
         delay = ' rv-d%d' % n if n else ''
-        out.append('      <article class="award rv%s%s">\n'
+        href = AWARD_LINK.get(t)
+        tag = 'a' if href else 'article'
+        more = '<span class="more">看得獎作品　→</span>' if href else ''
+        out.append('      <%s class="award rv%s%s"%s>\n'
                    '        <p class="yr">%s</p><h3>%s</h3>\n'
-                   '        <p class="lv">%s</p><p>%s</p></article>' % (delay, ' award-top' if n == 0 else '', yr, t, lv, d))
+                   '        <p class="lv">%s</p><p>%s</p>%s</%s>'
+                   % (tag, delay, ' award-top' if n == 0 else '', (' href="%s"' % href) if href else '',
+                      yr, t, lv, d, more, tag))
     return "\n".join(out)
 
 
@@ -290,7 +299,7 @@ write('index.html',
       <h1>讓家　成為情感與心靈的寄託</h1>
       <p class="sub">Image Design</p>
     </div>
-    <p class="tag">台北 ・ 桃園　｜　近三十年專業經驗</p>
+    <p class="tag">台北 ・ 桃園　｜　近三十年，陪很多家庭把家住成自己的樣子</p>
   </div>
   <div class="hero-badges">
     <img src="assets/brand/award_muse.png" alt="MUSE Design Awards 金獎" loading="lazy">
@@ -331,7 +340,7 @@ write('index.html',
     <div class="sec-head center">
       <p class="eyebrow center rv">Recent Works</p>
       <h2 class="h-sec rv rv-d1">近期作品</h2>
-      <p class="lede rv rv-d2" style="text-align:center">從奢華新古典到自然人文禪風，每一件作品都始於一次完整的傾聽。</p>
+      <p class="lede rv rv-d2" style="text-align:center">從奢華新古典到自然人文禪風，每一個家都是從一次好好的聊天開始的。</p>
     </div>
     <div class="grid" id="featured"></div>
     <div class="btn-row center rv">
@@ -505,6 +514,55 @@ write('about.html',
 </section>
 ''' + line_band() + FOOT)
 
+
+
+# ============================================================ 得獎作品
+# 三個國際獎項的得獎作品與證書，圖來自舊站 /news/1501、1502、1503。
+AWARD_PAGES = [
+    ("ada", "2020", "義大利 A′ Design Award", "Silver Winner 銀獎", "Essence of Excellence・住宅空間",
+     "一個台北的家，用木皮、鍍鈦與石材把日常收得安靜而有層次。這件作品在義大利 A′ Design Award 的室內空間類拿下銀獎，也是我們第一次在歐洲最大的設計競賽裡，被世界看見。",
+     ["得獎證書與媒體頁", "得獎證書與媒體頁", "餐廳", "餐廳", "客廳", "主臥", "書房臥室"]),
+    ("muse", "2019", "美國 MUSE Design Awards", "Gold Winner 金獎", "Composed Charms of Woods・木的從容",
+     "屋主想要一個像木頭一樣溫潤、不喧嘩的家。我們用木作、線板與一點點藍，把客餐廳、書房和每個房間都安排得剛剛好。這件作品獲得美國 MUSE Design Awards 室內設計金獎。",
+     ["得獎證書", "客廳", "客廳", "餐廳", "餐廳", "主臥", "次臥", "次臥", "書房臥室"]),
+    ("novum", "2020", "法國 Novum Design Award", "Gold Winner 金獎", "Essence of Excellence・新古典住宅",
+     "線板、雕刻與水晶燈把古典說得從容，灰白色調讓大宅有了現代的呼吸。法國 Novum Design Award 從設計品質到施工執行力一起評分，這件作品拿到最高等級的金獎。",
+     ["得獎證書", "客廳", "玄關", "走道", "書房", "客廳", "客餐廳", "主臥", "書房臥室"]),
+]
+
+def award_page_html():
+    out = []
+    for slug, yr, t, lv, work, lead, caps in AWARD_PAGES:
+        d = 'assets/awards/%s' % slug
+        cards = []
+        for i, cap in enumerate(caps, 1):
+            cards.append(
+                '      <a class="card g-w rv%s" href="%s/%02d.jpg" data-full="%s/%02d.jpg" data-title="%s｜%s">'
+                '<div class="ph"><img src="%s/800/%02d.jpg" srcset="%s/800/%02d.jpg 800w, %s/1200/%02d.jpg 1200w" '
+                'sizes="(max-width:720px) 92vw, (max-width:1080px) 46vw, 30vw" alt="%s %s" loading="lazy" decoding="async"></div></a>'
+                % (' rv-d%d' % (i % 3) if i % 3 else '', d, i, d, i, t, cap, d, i, d, i, d, i, t, cap))
+        out.append('''<section class="award-sec" id="%s">
+  <div class="wrap">
+    <div class="award-lead rv">
+      <p class="eyebrow center">%s</p>
+      <h2 class="h-sec">%s</h2>
+      <p class="lv">%s</p>
+      <p class="lede" style="margin-inline:auto;text-align:center"><b>%s</b><br>%s</p>
+    </div>
+    <div class="case-grid grid" data-lightbox>
+%s
+    </div>
+  </div>
+</section>''' % (slug, yr, t, lv, work, lead, "\n".join(cards)))
+    return "\n".join(out)
+
+write('awards.html',
+  head('awards.html', f'得獎作品｜{SITE}',
+       '易向室內設計（澤向室內裝修工程有限公司）得獎作品：義大利 A′ Design Award 銀獎、美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎的完整作品與證書。',
+       'assets/awards/muse/02.jpg', bg=('.page-head', 'h27.jpg'))
+  + page_head('assets/hero/1600/h27.jpg', 'Awards', '得獎作品', '<a href="about.html#awards">國際設計獎項</a> ／ 得獎作品')
+  + award_page_html()
+  + line_band('也想要一個被看見的家嗎', '加 LINE 傳張平面圖或現況照片，我們會先給您初步方向，不收費。') + FOOT)
 
 # ============================================================ 影音專區
 write('video.html',
@@ -688,7 +746,7 @@ write('service.html',
     <div class="sec-head">
       <p class="eyebrow rv">Service</p>
       <h2 class="h-sec rv rv-d1">服務項目</h2>
-      <p class="lede rv rv-d2">從住宅到商業空間，從預售屋客變、新成屋到舊屋翻新，易向提供完整的設計與工程一條龍服務。</p>
+      <p class="lede rv rv-d2">不管是新家、老屋，還是還在蓋的預售屋，從設計到施工我們都會陪您走完。</p>
     </div>
     <div class="svc">
 ''' + svc_html() + '''
@@ -701,18 +759,18 @@ write('service.html',
     <div class="sec-head">
       <p class="eyebrow rv">Charges</p>
       <h2 class="h-sec rv rv-d1">收費標準</h2>
-      <p class="lede rv rv-d2">收費透明，簽約前完整說明。以下為一般情況的計價方式，實際金額依現場條件與設計內容調整。</p>
+      <p class="lede rv rv-d2">錢的事我們先講清楚，簽約前會完整說明。下面是一般情況的計價方式，實際金額會依現場狀況和設計內容調整。</p>
     </div>
     <div class="fees">
       <article class="fee rv"><p class="no">01</p><h3>初步諮詢</h3>
         <p class="amt">免費</p>
-        <ul><li>初步需求溝通不收費</li><li>提供初步專業建議與預算方向</li><li>說明後續設計與工程的計價方式</li></ul></article>
+        <ul><li>第一次聊天不收費</li><li>先給您專業建議和預算方向</li><li>把後續設計與工程怎麼計價說清楚</li></ul></article>
       <article class="fee rv rv-d1"><p class="no">02</p><h3>設計合約</h3>
         <p class="amt">6,000 – 8,000<small>元 / 坪</small></p>
-        <ul><li>住宅依室內面積計價</li><li>依實際施作面積及風格差異不同計算</li><li>商業空間、辦公室需視個案而定</li></ul></article>
+        <ul><li>住宅依室內面積計價</li><li>實際施作面積與風格不同，費用會有差</li><li>商業空間、辦公室另外依個案討論</li></ul></article>
       <article class="fee rv rv-d2"><p class="no">03</p><h3>工程合約</h3>
         <p class="amt">個案報價</p>
-        <ul><li>依高質感的施工品質</li><li>再依據坪數大小、風格規劃</li><li>施工項目及立面材質的差異</li><li>完整提報工程總預算</li></ul></article>
+        <ul><li>以高質感的施工品質為前提</li><li>依坪數大小與風格規劃估算</li><li>施工項目和立面材質不同，價格也不同</li><li>會給您一份完整的工程總預算</li></ul></article>
     </div>
     <p class="note rv">※ 以上為易向室內設計（澤向室內裝修工程有限公司）之計價原則，實際金額以雙方簽訂之設計合約與工程合約為準。</p>
     <div class="btn-row rv">
@@ -734,7 +792,7 @@ write('process.html',
     <div class="sec-head center">
       <p class="eyebrow center rv">Design Flow</p>
       <h2 class="h-sec rv rv-d1">六個階段</h2>
-      <p class="lede rv rv-d2" style="text-align:center">每一步都留下可以確認的紀錄，讓您隨時知道進度走到哪裡。</p>
+      <p class="lede rv rv-d2" style="text-align:center">每一步都會跟您確認、留下紀錄，您隨時都知道家走到哪裡了。</p>
     </div>
     <div class="flow">
 ''' + flow_html() + '''
@@ -758,7 +816,7 @@ write('contact.html',
     <div class="sec-head center">
       <p class="eyebrow center rv">Our Offices</p>
       <h2 class="h-sec rv rv-d1">台北 ・ 桃園 雙據點</h2>
-      <p class="lede rv rv-d2" style="text-align:center">初次諮詢不收費，歡迎先加 LINE 或直接來電。</p>
+      <p class="lede rv rv-d2" style="text-align:center">第一次聊聊不收費。加 LINE 或直接打電話來，我們都在。</p>
     </div>
     <div class="offices rv">
       <div class="office">

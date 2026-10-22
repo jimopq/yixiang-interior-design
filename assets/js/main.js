@@ -253,8 +253,11 @@
     if (!lb || !lbCol) return;
     var n = 0; for (var j = 0; j < list.length; j++) if (list[j].id === id) { n = j; break; }
     var order = list.slice(n).concat(list.slice(0, n));
+    var last = null;
     lbCol.innerHTML = order.map(function (w, i) {
-      return '<figure><img src="' + w.img + '" alt="' + esc(w.title) + '"' +
+      var h = '';
+      if (w.catName && w.catName !== last) { h = '<h3 class="lb-h">' + esc(w.catName) + '</h3>'; last = w.catName; }
+      return h + '<figure><img src="' + w.img + '" alt="' + esc(w.title) + '"' +
              (i < 2 ? '' : ' loading="lazy"') + ' decoding="async">' +
              '<figcaption><p class="k">' + esc(w.catEn) + '</p><h3>' + esc(w.title) +
              (w.catName ? '｜' + esc(w.catName) : '') + '</h3></figcaption></figure>';
