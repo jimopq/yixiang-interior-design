@@ -96,17 +96,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .site-head.solid{background:rgba(246,241,230,.94);backdrop-filter:blur(14px);padding-block:14px}
 .site-head.solid::after{opacity:1}
 
-.brand{display:flex;flex-direction:row;align-items:center;gap:14px;flex:none}
+.brand{display:flex;flex-direction:row;align-items:center;gap:12px;flex:none}
 .brand img{height:34px;width:auto;transition:opacity .4s var(--ease)}
 .brand .l-white{display:block}
 .brand .l-ink{display:none}
-.brand-co{
-  font-size:15px;letter-spacing:.22em;color:#fff;white-space:nowrap;line-height:1;font-weight:500;
-  border-left:1px solid rgba(255,255,255,.45);padding-left:14px;
-  transition:color .4s var(--ease),border-color .4s var(--ease);
-}
-.site-head.solid .brand-co{color:var(--ink);border-color:var(--line)}
-.site-head.nav-open .brand-co{color:#fff}
+/* 文字兩行直排，兩行同一套字體，字距拉開以貼近 Logo 標準字 */
+.brand-tx{display:flex;flex-direction:column;gap:5px;line-height:1;color:#fff;transition:color .4s var(--ease)}
+.brand-tx b{font-size:15.5px;font-weight:500;letter-spacing:.42em}
+.brand-co{font-size:12.5px;font-weight:500;letter-spacing:.42em;opacity:.85}
+.site-head.solid .brand-tx{color:var(--ink)}
+.site-head.nav-open .brand-tx{color:#fff}
 .site-head.solid .l-white{display:none}
 .site-head.solid .l-ink{display:block}
 
@@ -526,9 +525,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:900px){
   .nav,.head-cta{display:none}
   .burger{display:block}
-  .brand{gap:10px}
-  .brand img{height:26px}
-  .brand-co{font-size:12px;letter-spacing:.16em;padding-left:10px}
+  .brand{gap:9px}
+  .brand img{height:28px}
+  .brand-tx{gap:4px}
+  .brand-tx b{font-size:13.5px;letter-spacing:.36em}
+  .brand-co{font-size:11px;letter-spacing:.36em}
   .nav.open{
     display:flex;position:fixed;inset:0;background:rgba(112,104,98,.985);
     flex-direction:column;align-items:center;justify-content:center;gap:30px;z-index:90;
