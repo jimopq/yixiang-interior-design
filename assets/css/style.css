@@ -102,8 +102,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .brand .l-ink{display:none}
 /* 文字兩行直排，兩行同一套字體，字距拉開以貼近 Logo 標準字 */
 .brand-tx{display:flex;flex-direction:column;gap:5px;line-height:1;color:#fff;transition:color .4s var(--ease)}
-.brand-tx b{font-size:15.5px;font-weight:500;letter-spacing:.42em}
-.brand-co{font-size:12.5px;font-weight:500;letter-spacing:.42em;opacity:.85}
+.brand-tx b,.brand-co{font-size:14.5px;font-weight:500;letter-spacing:.42em;opacity:1}
 .site-head.solid .brand-tx{color:var(--ink)}
 .site-head.nav-open .brand-tx{color:#fff}
 .site-head.solid .l-white{display:none}
@@ -529,8 +528,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .brand{gap:9px}
   .brand img{height:28px}
   .brand-tx{gap:4px}
-  .brand-tx b{font-size:13.5px;letter-spacing:.36em}
-  .brand-co{font-size:11px;letter-spacing:.36em}
+  .brand-tx b,.brand-co{font-size:12.5px;letter-spacing:.36em}
   .nav.open{
     display:flex;position:fixed;inset:0;background:rgba(112,104,98,.985);
     flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(12px,2.4vh,24px);z-index:90;
