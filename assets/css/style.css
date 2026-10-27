@@ -168,13 +168,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero-frame{
   display:inline-block;
   border:1px solid rgba(255,255,255,.34);
-  padding:clamp(30px,5vw,54px) clamp(30px,8vw,96px);
+  padding:clamp(30px,5vw,54px) clamp(30px,6vw,76px);
   backdrop-filter:blur(1.5px);
 }
 .hero h1{
   font-family:var(--serif);font-weight:400;
-  font-size:clamp(31px,5.4vw,60px);line-height:1.5;letter-spacing:.3em;
-  margin:0;text-indent:.3em;
+  /* 手機才換行 */
+  font-size:clamp(31px,4.6vw,54px);line-height:1.5;letter-spacing:.26em;
+  margin:0;text-indent:.26em;white-space:nowrap;
 }
 .hero .sub{
   font-family:var(--display);font-size:clamp(11px,1.2vw,13px);
@@ -532,13 +533,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .brand-co{font-size:11px;letter-spacing:.36em}
   .nav.open{
     display:flex;position:fixed;inset:0;background:rgba(112,104,98,.985);
-    flex-direction:column;align-items:center;justify-content:center;gap:30px;z-index:90;
+    flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(12px,2.4vh,24px);z-index:90;
+    padding:96px var(--gut) 110px;overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
   .nav.open a,.site-head.solid .nav.open a{color:#fff}
   .nav.open a:hover .ch{background:transparent;color:#fff}
   .nav.open a.on::after{background:#fff}
-  .nav.open a .ch{font-size:22px;letter-spacing:.26em}
-  .nav.open a .en{font-size:11.5px}
+  .nav.open a .ch{font-size:19px;letter-spacing:.24em}
+  .nav.open a .en{font-size:10.5px}
   .burger.x{z-index:95}
   .burger.x i{background:#fff}
   .burger.x i:nth-child(1){top:7px;transform:rotate(45deg)}
@@ -554,8 +556,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .g-c .ph,.g-w .ph{aspect-ratio:4/3}
   .flow-i{grid-template-columns:1fr;gap:14px}
   .flow-i .idx{font-size:30px}
-  .hero h1{letter-spacing:.22em;text-indent:.22em}
-  .hero-frame{padding:30px 26px}
+  .hero h1{font-size:25px;letter-spacing:.14em;text-indent:.14em;line-height:1.75;white-space:normal}
+  .hero h1 .h-sp{display:none}
+  .hero h1 .m-br{display:inline}
+  .hero .sub{margin-top:16px;font-size:10.5px;letter-spacing:.42em}
+  .hero-frame{padding:26px 22px}
+  .hero-in{padding-top:72px}
+  .hero .tag{margin-top:22px;font-size:13px;letter-spacing:.12em;line-height:2;display:flex;flex-direction:column;gap:2px}
+  .hero .tag .tag-sep{display:none}
   .dock a{width:46px;height:46px;font-size:10.5px}
   .office dl{grid-template-columns:1fr;gap:4px 0}
   .office dt{margin-top:12px}
@@ -660,10 +668,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .nav.open{
     /* 不透明，且獨立於頁首的堆疊脈絡；灰底而非黑底（10/13 會議） */
     background:#6E6660;
-    padding:0 var(--gut);
+    padding:96px var(--gut) 110px;
     overscroll-behavior:contain;
   }
-  .nav.open a .ch{font-size:23px}
+  .nav.open a .ch{font-size:19px}
 }
 
 /* --- LINE 導流 ---------------------------------------------------------- */
@@ -890,3 +898,5 @@ a.award:hover h3{color:var(--gold-soft)}
 .award-lead{max-width:62em;margin:0 auto clamp(28px,3.5vw,48px);text-align:center}
 .award-lead .lv{font-family:var(--display);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
 .award-lead .lv::before,.award-lead .lv::after{content:"";display:inline-block;width:22px;height:1px;background:var(--gold);vertical-align:middle;margin:0 12px}
+
+.m-br{display:none}

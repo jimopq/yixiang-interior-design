@@ -296,10 +296,10 @@ write('index.html',
   </div>
   <div class="hero-in">
     <div class="hero-frame">
-      <h1>讓家　成為情感與心靈的寄託</h1>
+      <h1>讓家<span class="h-sp">　</span><br class="m-br">成為情感與心靈的寄託</h1>
       <p class="sub">Image Design</p>
     </div>
-    <p class="tag">台北 ・ 桃園　｜　近三十年，陪很多家庭把家住成自己的樣子</p>
+    <p class="tag"><span>台北 ・ 桃園</span><span class="tag-sep">　｜　</span><span>近三十年，陪很多家庭把家住成自己的樣子</span></p>
   </div>
   <div class="hero-badges">
     <img src="assets/brand/award_muse.png" alt="MUSE Design Awards 金獎" loading="lazy">
