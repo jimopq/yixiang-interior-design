@@ -25,7 +25,6 @@ NAV = [
     ("index.html",   "Home",    "首頁"),
     ("about.html",   "About",   "關於易向"),
     ("works.html",   "Works",   "作品總覽"),
-    ("case.html",    "Case",    "精選案例"),
     ("service.html", "Service", "服務收費"),
     ("process.html", "Process", "設計流程"),
     ("blog.html",    "Blog",    "設計筆記"),
@@ -63,7 +62,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
         pl = ''
     nav = "\n".join(
         '    <a href="%s"%s><span class="en">%s</span><span class="ch">%s</span></a>'
-        % (h, ' class="on"' if (h == cur or (h == 'blog.html' and cur.startswith('blog-'))) else '', e, c)
+        % (h, ' class="on"' if (h == cur or (h == 'blog.html' and cur.startswith('blog-')) or (h == 'works.html' and cur.startswith('case-'))) else '', e, c)
         for h, e, c in NAV)
     return f'''<!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -147,7 +146,6 @@ FOOT = f'''
         <ul class="foot-list">
           <li><a href="about.html">關於易向</a></li>
           <li><a href="works.html">作品總覽</a></li>
-          <li><a href="case.html">精選案例</a></li>
           <li><a href="service.html">服務與收費</a></li>
           <li><a href="process.html">設計流程</a></li>
           <li><a href="blog.html">設計筆記</a></li>
@@ -599,26 +597,6 @@ write('video.html',
 ''' + line_band('看完影片，想聊聊自己的家嗎', '加 LINE 傳張平面圖或現況照片，我們會先給您初步方向，不收費。') + FOOT)
 
 # ============================================================ 作品總覽（分頁）
-write('works.html',
-  head('works.html', f'作品總覽｜{SITE}',
-       '易向室內設計（澤向室內裝修工程有限公司）作品總覽，收錄奢華新古典風、自然人文禪風、現代素雅休閒風、小坪數溫馨宅與公共空間共 86 件完工實績。',
-       'assets/hero/1600/h09.jpg', bg=('.page-head', 'h09.jpg'))
-  + page_head('assets/hero/1600/h09.jpg', 'Works', '作品總覽', '作品總覽')
-  + '''
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head center">
-      <p class="eyebrow center rv">Portfolio</p>
-      <h2 class="h-sec rv rv-d1" id="wtitle">完工實績</h2>
-      <p class="lede rv rv-d2" style="text-align:center">點選任一件作品即可放大，往下滑就能一口氣看完同系列的空間。</p>
-    </div>
-    <div class="filters" id="filters"></div>
-    <div class="grid" id="allworks"></div>
-    <nav class="pager" id="pager" aria-label="作品分頁"></nav>
-  </div>
-</section>
-''' + line_band('看到喜歡的空間了嗎', '加 LINE 告訴我們您的坪數與格局，我們會給您初步的規劃方向與預算範圍。') + FOOT)
-
 # ============================================================ 精選案例
 # 資料在 data/cases.json：案名、規格、材質、設計概念與已排序的圖庫。
 # 索引頁 case.html 列出全部；每案產生 case-<slug>.html。
@@ -655,15 +633,15 @@ CASE_LB = line_band('想要類似的規劃嗎', '加 LINE 傳給我們您的平�
 
 CASE_LEDE = "每一個家，都從一次好好的傾聽開始。走進這些空間，看看光線、材質與日常，是怎麼被溫柔地安放。"
 INDEX_BODY = """
-<section class="sec">
+<section class="sec" id="cases">
   <div class="wrap">
     <div class="sec-head center">
       <p class="eyebrow center rv">Case Studies</p>
-      <h2 class="h-sec rv rv-d1" id="ctitle">完整案例</h2>
+      <h2 class="h-sec rv rv-d1" id="ctitle">精選案例</h2>
       <p class="lede rv rv-d2" id="clede" data-default="%s" style="text-align:center">%s</p>
     </div>
     <div class="filters" id="cfilters">
-      <button class="on" data-c="all" data-name="完整案例"><span class="en">All</span>全部案例</button>
+      <button class="on" data-c="all" data-name="精選案例"><span class="en">All</span>全部案例</button>
 %s
     </div>
     <div class="grid" id="casegrid">
@@ -676,12 +654,37 @@ INDEX_BODY = """
                  % (st['slug'], st['name'], st['desc'], st['en'], st['name']) for st in STYLES),
        "\n".join(case_card(c, n) for n, c in enumerate(CASES)))
 
-write('case.html',
-  head('case.html', '精選案例｜' + SITE,
-       '易向室內設計（澤向室內裝修工程有限公司）精選案例：台北、桃園住宅空間完整實績，含格局、坪數、風格與使用材質。',
-       CASES[0]['dir'] + '/' + CASES[0]['cover'], bg=('.page-head', 'h23.jpg'))
-  + page_head('assets/hero/h23.jpg', 'Projects', '精選案例', '精選案例')
-  + INDEX_BODY + CASE_LB + FOOT)
+
+WORKS_BODY = '''
+<section class="sec sec-alt" id="works">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow center rv">Portfolio</p>
+      <h2 class="h-sec rv rv-d1" id="wtitle">完工實績</h2>
+      <p class="lede rv rv-d2" style="text-align:center">歷年完工的作品都在這裡。點選任一件即可放大，往下滑就能一口氣看完同系列的空間。</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="allworks"></div>
+    <nav class="pager" id="pager" aria-label="作品分頁"></nav>
+  </div>
+</section>
+'''
+
+# 作品總覽 = 上半部精選案例（四種風格、每案一頁）＋下半部歷年完工實績（舊站 86 件）
+write('works.html',
+  head('works.html', f'作品總覽｜{SITE}',
+       '易向室內設計（澤向室內裝修工程有限公司）作品總覽：侘寂溫馨、輕奢優雅、現代木質、奢華新古典四種風格的精選案例，以及歷年完工實績。',
+       CASES[0]['dir'] + '/' + CASES[0]['cover'], bg=('.page-head', 'h09.jpg'))
+  + page_head('assets/hero/1600/h09.jpg', 'Works', '作品總覽', '作品總覽')
+  + INDEX_BODY + WORKS_BODY + CASE_LB + FOOT)
+
+# 舊網址 case.html 轉到合併後的作品總覽
+write('case.html', '''<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8"><title>作品總覽｜''' + SITE + '''</title>
+<meta name="robots" content="noindex"><link rel="canonical" href="works.html">
+<meta http-equiv="refresh" content="0;url=works.html#cases"><script>location.replace("works.html#cases")</script>
+</head><body><a href="works.html#cases">作品總覽</a></body></html>
+''')
 
 CASE_BODY = """
 <section class="sec">
@@ -717,7 +720,7 @@ for n, c in enumerate(CASES):
     spec = [('地區', c['area']), ('格局', c.get('layout', '')), ('坪數', c['ping']), ('風格', c['style'])]
     nav = '<nav class="case-nav rv">'
     nav += ('<a class="prev" href="case-%s.html"><span class="k">上一案</span><b>%s</b></a>' % (prev_['slug'], prev_['name'])) if prev_ else '<span></span>'
-    nav += '<a class="all" href="case.html">全部案例</a>'
+    nav += '<a class="all" href="works.html#cases">全部案例</a>'
     nav += ('<a class="next" href="case-%s.html"><span class="k">下一案</span><b>%s</b></a>' % (next_['slug'], next_['name'])) if next_ else '<span></span>'
     nav += '</nav>'
     body = CASE_BODY % dict(
@@ -726,12 +729,12 @@ for n, c in enumerate(CASES):
         tags="".join('<span>%s</span>' % m for m in c.get('materials', [])),
         gallery=case_gallery(c), nav=nav)
     write('case-%s.html' % c['slug'],
-      head('case-%s.html' % c['slug'], '%s｜%s｜精選案例｜%s' % (c['name'], c['sub'], SITE),
+      head('case-%s.html' % c['slug'], '%s｜%s｜作品總覽｜%s' % (c['name'], c['sub'], SITE),
            '%s・%s，%s %s，%s。%s' % (c['name'], c['sub'], c['area'], c['ping'], c['style'], c['concept'][:60]),
            c['dir'] + '/' + c['cover'])
       + '<style>.page-head{background-image:url(%s/1200/%s)}@media(max-width:720px){.page-head{background-image:url(%s/800/%s)}}</style>'
         % (c['dir'], c['cover'], c['dir'], c['cover'])
-      + page_head('', 'Case Study', c['name'], '<a href="case.html">精選案例</a> ／ ' + c['name'])
+      + page_head('', 'Case Study', c['name'], '<a href="works.html#cases">作品總覽</a> ／ ' + c['name'])
       + body + CASE_LB + FOOT)
 
 # ============================================================ 服務與收費

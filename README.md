@@ -12,7 +12,7 @@ image-design-web/
 ├─ index.html            首頁（首屏／理念／精選作品／案例導引／獎項／LINE）
 ├─ about.html            關於易向（理念、數字、國際獎項、媒體專訪影片）
 ├─ works.html            作品總覽（86 件・五類篩選・每頁 12 件分頁・燈箱）
-├─ case.html             精選案例 合輝大璽（規格、設計概念、14 張圖庫）
+├─ case.html             舊網址，轉向 works.html#cases（作品總覽＝精選案例＋完工實績）
 ├─ service.html          服務項目與收費標準
 ├─ process.html          設計流程（六階段）
 ├─ contact.html          雙據點資訊、LINE、地圖
@@ -187,7 +187,7 @@ gh repo edit --visibility private --accept-visibility-change-consequences
 次臥 → 更衣室 → 衛浴。
 
 圖片放 `assets/cases/<slug>/01.jpg …`（主檔 1600px），跑 `tools/make-thumbs.sh`
-產生 800／1200。`python3 build.py` 會產出索引 `case.html` 與每案的 `case-<slug>.html`。
+產生 800／1200。`python3 build.py` 會把案例索引併入 `works.html`（上半精選案例、下半舊站完工實績），並產出每案的 `case-<slug>.html`；`case.html` 只保留轉址。
 
 ### 四種風格分類（2026/10 業主雲端四個分頁）
 
