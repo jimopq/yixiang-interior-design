@@ -697,10 +697,7 @@ CASE_BODY = """
       </div>
       <dl class="case-spec rv rv-d1">%(spec)s</dl>
     </div>
-    <div class="case-mat rv rv-d2">
-      <p class="k">Materials　使用材質</p>
-      <div class="case-tags">%(tags)s</div>
-    </div>
+%(mat)s
   </div>
 </section>
 
@@ -726,7 +723,8 @@ for n, c in enumerate(CASES):
     body = CASE_BODY % dict(
         name=c['name'], sub=c['sub'], concept=c['concept'],
         spec="".join('<dt>%s</dt><dd>%s</dd>' % kv for kv in spec if kv[1]),
-        tags="".join('<span>%s</span>' % m for m in c.get('materials', [])),
+        mat=('    <div class="case-mat rv rv-d2">\n      <p class="k">Materials　使用材質</p>\n      <div class="case-tags">%s</div>\n    </div>'
+             % "".join('<span>%s</span>' % m for m in c['materials'])) if c.get('materials') else '',
         gallery=case_gallery(c), nav=nav)
     write('case-%s.html' % c['slug'],
       head('case-%s.html' % c['slug'], '%s｜%s｜作品總覽｜%s' % (c['name'], c['sub'], SITE),
