@@ -797,7 +797,7 @@ write('service.html',
     <div class="sec-head">
       <p class="eyebrow rv">Charges</p>
       <h2 class="h-sec rv rv-d1">收費標準</h2>
-      <p class="lede rv rv-d2">每個家的條件都不一樣，預算也是陪您一起規劃出來的。以下是一般的計價方式，讓您先有個概念；正式報價會在丈量與討論之後細細列出，每一項都會在簽約前說明清楚，讓您安心。</p>
+      <p class="lede rv rv-d2">每個家的需求不同，費用也會有些差異。下面是我們大致的計價方式，給您先參考；實際費用等丈量、聊過之後，會再一項一項跟您說清楚。</p>
     </div>
     <div class="fees">
       <article class="fee rv"><p class="no">01</p><h3>初步諮詢</h3>
