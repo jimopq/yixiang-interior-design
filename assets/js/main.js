@@ -142,13 +142,17 @@
   /* ---- 首頁精選 ---- */
   var feat = $('#featured');
   if (feat) {
-    var rhythm = ['g-a', 'g-b', 'g-c', 'g-d', 'g-e', 'g-e'];
-    load(function (d) {
-      var list = d.works.filter(function (w) { return w.featured; }).slice(0, 6);
-      feat.innerHTML = list.map(function (w, n) {
-        return cardHTML(w, rhythm[n % rhythm.length] + (n > 1 ? ' rv-d' + ((n % 3) + 1) : ''), n < 2);
-      }).join('');
-      reveal(feat); bindCards(feat, list);
+    /* 首頁卡片由 build.py 靜態產生；個案卡直接連到個案頁，
+       只有帶 data-id 的完工實績卡在這裡接上燈箱（一路往下滑看完同類作品） */
+    var wk = $$('.card[data-id]', feat);
+    if (wk.length) load(function (d) {
+      wk.forEach(function (c) {
+        var w0 = null;
+        for (var i = 0; i < d.works.length; i++) if (d.works[i].id === c.dataset.id) w0 = d.works[i];
+        if (!w0) return;
+        var list = d.works.filter(function (w) { return w.cat === w0.cat; });
+        c.addEventListener('click', function (e) { e.preventDefault(); open(list, w0.id); });
+      });
     });
   }
 

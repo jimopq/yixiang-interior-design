@@ -19,6 +19,6 @@ window.SITE_CONFIG = {
   lineId: '@633qonhi',
 
   /* 沒有 LINE 時的退路，以及頁尾聯絡資訊 */
-  fallbackTel: '0225955532',
+  fallbackTel: '0225955535',
   contactEmail: 'image238@hotmail.com'
 };

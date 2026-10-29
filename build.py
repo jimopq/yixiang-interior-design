@@ -125,7 +125,7 @@ def line_band(title="想聊聊您的空間嗎", sub="加 LINE 直接對話，不
         <span class="ico" aria-hidden="true"></span>
         <span class="tx"><b>加入官方 LINE</b><i data-line-id>@易向室內設計</i></span>
       </a>
-      <p class="line-alt">或直接來電　<a href="tel:0225955532">台北 02-2595-5532</a>　·　<a href="tel:0333585835">桃園 03-358-5835</a></p>
+      <p class="line-alt"><span class="la-k">直接來電</span><a href="tel:0225955535">台北 02-2595-5535</a><a href="tel:0333585835">桃園 03-358-5835</a></p>
     </div>
   </div>
 </section>
@@ -138,7 +138,7 @@ FOOT = f'''
     <div class="foot-top">
       <div>
         <img class="logo" src="assets/brand/logo-white-v2.png" alt="易向室內設計" width="992" height="158">
-        <p class="co">易向室內設計｜澤向室內裝修工程有限公司</p>
+        <p class="co">易向室內設計有限公司<br>澤向室內裝修工程有限公司</p>
         <p>讓家成為情感與心靈的寄託。<br>台北・桃園雙據點，深耕室內設計近三十年。</p>
       </div>
       <div>
@@ -157,7 +157,7 @@ FOOT = f'''
       <div>
         <p class="foot-h">Contact</p>
         <ul class="foot-list">
-          <li><a href="tel:0225955532">台北 02-2595-5532</a></li>
+          <li><a href="tel:0225955535">台北 02-2595-5535</a></li>
           <li><a href="tel:0333585835">桃園 03-358-5835</a></li>
           <li><a href="mailto:image238@hotmail.com">image238@hotmail.com</a></li>
           <li><a data-line href="#" target="_blank" rel="noopener">官方 LINE</a></li>
@@ -174,7 +174,7 @@ FOOT = f'''
 
 <div class="dock">
   <a class="line" data-line href="#" target="_blank" rel="noopener" aria-label="LINE 諮詢">LINE</a>
-  <a href="tel:0225955532" aria-label="撥打電話">撥打電話</a>
+  <a href="tel:0225955535" aria-label="撥打電話">撥打電話</a>
 </div>
 
 <div class="lb" id="lb">
@@ -276,6 +276,40 @@ def write(name, body):
     open(name, 'w', encoding='utf-8').write(body)
     print('  ✓', name, f'{len(body):,} bytes')
 
+# ============================================================ 首頁近期作品
+# 業主指定的順序：侘寂溫馨四案 → 莫蘭迪古典（個案頁）→ 古典餘韻（完工實績，點開看同類燈箱）
+HOME_FEAT = ['misty-garden', 'south-wind', 'youlin', 'xinghui', 'morandi', 'w:63']
+HOME_RHYTHM = ['g-a', 'g-b', 'g-c', 'g-d', 'g-e', 'g-e']
+
+def home_featured():
+    works = {w['id']: w for w in json.load(open('data/works.json', encoding='utf-8'))['works']}
+    bys = {c['slug']: c for c in CASES}
+    out = []
+    for n, key in enumerate(HOME_FEAT):
+        cls = HOME_RHYTHM[n % len(HOME_RHYTHM)] + (' rv-d%d' % (n % 3 + 1) if n > 1 else '')
+        lazy = '' if n < 2 else ' loading="lazy"'
+        if key.startswith('w:'):
+            w = works[key[2:]]
+            f = w['img'].split('/')[-1]; d = w['img'][:-len(f)]
+            out.append('      <a class="card card-case %s rv" href="works.html#works" data-id="%s">'
+                       '<div class="ph"><img src="%s800/%s" srcset="%s400/%s 400w, %s800/%s 800w, %s1200/%s 1200w" '
+                       'sizes="(max-width:720px) 92vw, (max-width:1080px) 46vw, 28vw" alt="%s｜%s"%s decoding="async">'
+                       '<div class="card-txt"><h3>%s</h3><p class="m">%s</p></div></div>'
+                       '<p class="card-meta">%s</p></a>'
+                       % (cls, w['id'], d, f, d, f, d, f, d, f, w['title'], w['catName'], lazy,
+                          w['title'], w['catName'], w['catName']))
+        else:
+            c = bys[key]; dd = c['dir']; f = c['cover']
+            meta = '　·　'.join(x for x in (c.get('area'), c.get('ping')) if x) or c.get('style', '')
+            out.append('      <a class="card card-case %s rv" href="case-%s.html">'
+                       '<div class="ph"><img src="%s/800/%s" srcset="%s/800/%s 800w, %s/1200/%s 1200w" '
+                       'sizes="(max-width:720px) 92vw, (max-width:1080px) 46vw, 28vw" alt="%s %s"%s decoding="async">'
+                       '<div class="card-txt"><h3>%s</h3><p class="m">%s</p></div></div>'
+                       '<p class="card-meta">%s</p></a>'
+                       % (cls, c['slug'], dd, f, dd, f, dd, f, c['name'], c['sub'], lazy,
+                          c['name'], c['style'], meta))
+    return '\n'.join(out)
+
 # ============================================================ 首頁（精簡版）
 write('index.html',
   head('index.html', f'{SITE}｜台北室內設計・桃園室內設計',
@@ -283,7 +317,7 @@ write('index.html',
        preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
   + '''
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5532","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5535","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
 </script>
 <section class="hero">
   <div class="hero-bg">
@@ -338,11 +372,13 @@ write('index.html',
     <div class="sec-head center">
       <p class="eyebrow center rv">Recent Works</p>
       <h2 class="h-sec rv rv-d1">近期作品</h2>
-      <p class="lede rv rv-d2" style="text-align:center">從奢華新古典到自然人文禪風，每一個家都是從一次好好的聊天開始的。</p>
+      <p class="lede rv rv-d2" style="text-align:center">從侘寂溫馨到奢華新古典，每一個家都是從一次好好的聊天開始的。</p>
     </div>
-    <div class="grid" id="featured"></div>
+    <div class="grid" id="featured">
+''' + home_featured() + '''
+    </div>
     <div class="btn-row center rv">
-      <a class="btn" href="works.html"><span>瀏覽全部 86 件作品</span><span>→</span></a>
+      <a class="btn" href="works.html"><span>瀏覽全部作品</span><span>→</span></a>
     </div>
   </div>
 </section>
@@ -609,12 +645,13 @@ def case_img(c, f, eager=False, alt=''):
 
 def case_card(c, n):
     meta = '　·　'.join(x for x in (c.get('area'), c.get('ping')) if x) or c.get('style', '')
-    return ('      <a class="card g-w rv%s" href="case-%s.html" data-cat="%s">'
-            '<div class="ph">%s</div>'
-            '<div class="card-txt"><p class="k">%s</p><h3>%s</h3><p class="m">%s</p></div></a>'
+    # 地區與坪數放在照片下方，不壓在照片上，長輩在手機上也看得清楚
+    return ('      <a class="card card-case g-w rv%s" href="case-%s.html" data-cat="%s">'
+            '<div class="ph">%s<div class="card-txt"><h3>%s</h3><p class="m">%s</p></div></div>'
+            '<p class="card-meta">%s</p></a>'
             % (' rv-d%d' % (n % 3) if n % 3 else '', c['slug'], ' '.join(c.get('cats', [])),
                case_img(c, c['cover'], eager=n < 6, alt=c['name'] + ' ' + c['sub']),
-               meta, c['name'], c['style']))
+               c['name'], c['style'], meta))
 
 def case_gallery(c):
     out = []; last = None; n = 0
@@ -760,7 +797,7 @@ write('service.html',
     <div class="sec-head">
       <p class="eyebrow rv">Charges</p>
       <h2 class="h-sec rv rv-d1">收費標準</h2>
-      <p class="lede rv rv-d2">錢的事我們先講清楚，簽約前會完整說明。下面是一般情況的計價方式，實際金額會依現場狀況和設計內容調整。</p>
+      <p class="lede rv rv-d2">每個家的條件都不一樣，預算也是陪您一起規劃出來的。以下是一般的計價方式，讓您先有個概念；正式報價會在丈量與討論之後細細列出，每一項都會在簽約前說明清楚，讓您安心。</p>
     </div>
     <div class="fees">
       <article class="fee rv"><p class="no">01</p><h3>初步諮詢</h3>
@@ -808,7 +845,7 @@ write('process.html',
 # ============================================================ 聯絡我們
 write('contact.html',
   head('contact.html', f'聯絡我們｜{SITE}',
-       '易向室內設計（澤向室內裝修工程有限公司）台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
+       '易向室內設計（澤向室內裝修工程有限公司）台北公司：台北市南京東路二段137號14樓 02-2595-5535；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
        'assets/hero/1600/h17.jpg', bg=('.page-head', 'h17.jpg'))
   + page_head('assets/hero/1600/h17.jpg', 'Contact', '聯絡我們', '聯絡我們')
   + '''
@@ -825,7 +862,7 @@ write('contact.html',
         <h3>台北公司</h3>
         <dl>
           <dt>地址</dt><dd>台北市南京東路二段 137 號 14 樓</dd>
-          <dt>電話</dt><dd><a href="tel:0225955532">02-2595-5532</a></dd>
+          <dt>電話</dt><dd><a href="tel:0225955535">02-2595-5535</a></dd>
           <dt>信箱</dt><dd><a href="mailto:image238@hotmail.com">image238@hotmail.com</a></dd>
         </dl>
       </div>

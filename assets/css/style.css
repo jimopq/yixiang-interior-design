@@ -298,6 +298,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card:hover .card-txt .m{opacity:.85;transform:translateY(0)}
 .card-txt .m::before{content:"";width:20px;height:1px;background:var(--gold-soft)}
 
+/* 個案卡片：漸層與文字只壓在照片上，地區與坪數放在照片下方 */
+.card-case{background:transparent;overflow:visible}
+.card-case::after{display:none}
+.card-case .ph::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(40,28,22,0) 52%,rgba(40,28,22,.18) 72%,rgba(40,28,22,.66) 100%);
+}
+.card-meta{
+  margin:14px 2px 0;font-size:15px;letter-spacing:.2em;color:var(--muted);line-height:1.6;
+}
+
 /* 首頁精選：刻意不等分，讀起來才像設計過 */
 .g-a{grid-column:span 7}   .g-a .ph{aspect-ratio:4/3}
 .g-b{grid-column:span 5}   .g-b .ph{aspect-ratio:4/3}
@@ -705,7 +716,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btn-line b{font-size:18.5px;font-weight:500;letter-spacing:.2em}
 .btn-line i{font-style:normal;font-size:13px;letter-spacing:.16em;opacity:.86}
 .btn-line.no-line{background:var(--accent);border-color:var(--accent);box-shadow:0 10px 34px rgba(99,104,63,.22)}
-.line-alt{margin:0;font-size:15px;letter-spacing:.1em;color:var(--muted)}
+.line-alt{margin:0;font-size:15px;letter-spacing:.1em;color:var(--muted);line-height:1.9;
+  display:flex;flex-wrap:wrap;justify-content:center;column-gap:28px}
+.line-alt .la-k{flex-basis:100%;text-align:center}
+.line-alt a{white-space:nowrap}
+@media (max-width:720px){.line-alt{flex-direction:column;align-items:center}}
 .line-alt a{color:var(--accent);text-underline-offset:4px}
 .line-alt a:hover{text-decoration:underline}
 .line-note{margin:4px 0 0;font-size:14px;letter-spacing:.08em;color:var(--faint);max-width:34em;text-align:center;line-height:1.9}
@@ -858,7 +873,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .case-nav{grid-template-columns:1fr 1fr}
   .case-nav .all{grid-column:1/-1;justify-self:center;order:3}
 }
-.site-foot .co{font-size:14.5px;letter-spacing:.14em;color:#C9BCB0;margin:0 0 10px}
+.site-foot .co{font-size:14.5px;letter-spacing:.14em;color:#C9BCB0;margin:0 0 10px;line-height:1.9}
 
 
 /* --- 雜誌報導（影音專區） ---------------------------------------------- */
