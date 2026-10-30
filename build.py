@@ -658,7 +658,7 @@ def case_gallery(c):
     for g in c['gallery']:
         if g.get('room') and g['room'] != last:
             out.append('      <h3 class="room-h">%s</h3>' % g['room']); last = g['room']
-        out.append('      <a class="card g-w rv%s" href="%s/%s" data-full="%s/%s" data-title="%s">'
+        out.append('      <a class="card g-w rv%s" href="%s/1200/%s" data-full="%s/1200/%s" data-title="%s">'
                    '<div class="ph">%s</div></a>'
                    % (' rv-d%d' % (n % 3) if n % 3 else '', c['dir'], g['f'], c['dir'], g['f'],
                       c['name'] + '｜' + (g.get('room') or c['sub']),
@@ -711,7 +711,7 @@ WORKS_BODY = '''
 write('works.html',
   head('works.html', f'作品總覽｜{SITE}',
        '易向室內設計（澤向室內裝修工程有限公司）作品總覽：侘寂溫馨、輕奢優雅、現代木質、奢華新古典四種風格的精選案例，以及歷年完工實績。',
-       CASES[0]['dir'] + '/' + CASES[0]['cover'], bg=('.page-head', 'h09.jpg'))
+       CASES[0]['dir'] + '/1200/' + CASES[0]['cover'], bg=('.page-head', 'h09.jpg'))
   + page_head('assets/hero/1600/h09.jpg', 'Works', '作品總覽', '作品總覽')
   + INDEX_BODY + WORKS_BODY + CASE_LB + FOOT)
 
@@ -766,7 +766,7 @@ for n, c in enumerate(CASES):
     write('case-%s.html' % c['slug'],
       head('case-%s.html' % c['slug'], '%s｜%s｜作品總覽｜%s' % (c['name'], c['sub'], SITE),
            '%s・%s，%s %s，%s。%s' % (c['name'], c['sub'], c['area'], c['ping'], c['style'], c['concept'][:60]),
-           c['dir'] + '/' + c['cover'])
+           c['dir'] + '/1200/' + c['cover'])
       + '<style>.page-head{background-image:url(%s/1200/%s)}@media(max-width:720px){.page-head{background-image:url(%s/800/%s)}}</style>'
         % (c['dir'], c['cover'], c['dir'], c['cover'])
       + page_head('', 'Case Study', c['name'], '<a href="works.html#cases">作品總覽</a> ／ ' + c['name'])
