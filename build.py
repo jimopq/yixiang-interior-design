@@ -3,6 +3,7 @@
 
 import hashlib
 import json
+import os
 _CD = json.load(open('data/cases.json', encoding='utf-8'))
 CASES = _CD['cases']
 STYLES = _CD.get('styles', [])
@@ -37,6 +38,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
  '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600'
  '&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">')
 
+DOMAIN = "https://www.image.net.tw/"
 SITE = "易向室內設計 IMAGE DESIGN・澤向室內裝修工程有限公司"
 
 
@@ -74,7 +76,9 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{og}">
+<meta property="og:image" content="{DOMAIN}{og}">
+<meta property="og:url" content="{DOMAIN}{'' if cur == 'index.html' else cur}">
+<link rel="canonical" href="{DOMAIN}{'' if cur == 'index.html' else cur}">
 <link rel="icon" href="assets/brand/favicon.png">
 {FONTS}
 {pl}
@@ -1024,3 +1028,48 @@ for n, p_ in enumerate(POSTS):
        p_['cover_sm'], p_['cover_sm'], p_['cover'], p_['title'], p_['body'], video,
        "\n".join(post_card(q, i) for i, q in enumerate(others)))
       + line_band() + FOOT)
+
+
+# ============================================================ 舊網址轉址
+# 舊站是 Joomla，網址像 /about、/index.php/news/1501、/portfolio/portfolio4/117。
+# GitHub Pages 不支援伺服器端 301，改用「資料夾 + index.html」的轉址頁：
+# meta refresh + canonical 指向新頁，Google 會把排名移轉過去，舊書籤也不會 404。
+OLD_MAP = {
+    '': 'index.html', 'about': 'about.html', 'contact': 'contact.html',
+    'service': 'service.html', 'process': 'process.html',
+    'msg': 'blog.html', 'msg3': 'blog.html', 'msg2': 'video.html#press',
+    'news/1501': 'awards.html#ada', 'news/1502': 'awards.html#muse', 'news/1503': 'awards.html#novum',
+    'news/1751': 'video.html', 'news/1752': 'blog-morandi-quiet-luxury.html',
+    'news/1753': 'blog-morandi-quiet-luxury.html', 'news/1754': 'blog-storage-entry-living-study.html',
+    'news/483': 'video.html#press', 'news/484': 'video.html#press', 'news/485': 'video.html#press',
+    'news/幸福空間雜誌報導1': 'video.html#press', 'news/幸福空間雜誌報導2': 'video.html#press',
+    'news/幸福空間雜誌報導3': 'video.html#press',
+}
+for _n in range(1, 6):
+    OLD_MAP['portfolio/portfolio%d' % _n] = 'works.html#works'
+# 個別作品頁（/portfolio/portfolioN/<id>）清單來自舊站備份爬到的網址
+if os.path.exists('data/old-urls.json'):
+    for _u in json.load(open('data/old-urls.json', encoding='utf-8')):
+        OLD_MAP.setdefault(_u, 'works.html#works')
+
+def redirect_page(depth, target):
+    up = '../' * depth
+    url = DOMAIN + ('' if target == 'index.html' else target.split('#')[0])
+    return ('<!DOCTYPE html>\n<html lang="zh-Hant-TW"><head><meta charset="utf-8">'
+            '<meta name="robots" content="noindex"><title>頁面已搬家｜易向室內設計</title>'
+            '<link rel="canonical" href="%s"><meta http-equiv="refresh" content="0; url=%s%s">'
+            '<script>location.replace("%s%s")</script></head>'
+            '<body><p>頁面已搬家，<a href="%s%s">請點這裡前往新頁面</a>。</p></body></html>\n'
+            % (url, up, target, up, target, up, target))
+
+_made = 0
+for _old, _to in OLD_MAP.items():
+    for _pre in ('', 'index.php/'):
+        _p = (_pre + _old).strip('/')
+        if not _p:
+            continue
+        _depth = _p.count('/') + 1
+        os.makedirs(_p, exist_ok=True)
+        open(os.path.join(_p, 'index.html'), 'w', encoding='utf-8').write(redirect_page(_depth, _to))
+        _made += 1
+print('  ✓ 舊網址轉址頁', _made, '個')
