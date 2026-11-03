@@ -128,7 +128,7 @@ def line_band(title="想聊聊您的空間嗎", sub="加 LINE 直接對話，不
         <span class="ico" aria-hidden="true"></span>
         <span class="tx"><b>加入官方 LINE</b><i data-line-id>@易向室內設計</i></span>
       </a>
-      <p class="line-alt"><span class="la-k">直接來電</span><a href="tel:0225955535">台北 02-2595-5535</a><a href="tel:0333585835">桃園 03-358-5835</a></p>
+      <p class="line-alt"><span class="la-k">直接來電</span><a href="tel:0225955532">台北 02-2595-5532</a><a href="tel:0333585835">桃園 03-358-5835</a></p>
     </div>
   </div>
 </section>
@@ -160,7 +160,7 @@ FOOT = f'''
       <div>
         <p class="foot-h">Contact</p>
         <ul class="foot-list">
-          <li><a href="tel:0225955535">台北 02-2595-5535</a></li>
+          <li><a href="tel:0225955532">台北 02-2595-5532</a></li>
           <li><a href="tel:0333585835">桃園 03-358-5835</a></li>
           <li><a href="mailto:image238@hotmail.com">image238@hotmail.com</a></li>
           <li><a data-line href="#" target="_blank" rel="noopener">官方 LINE</a></li>
@@ -177,7 +177,7 @@ FOOT = f'''
 
 <div class="dock">
   <a class="line" data-line href="#" target="_blank" rel="noopener" aria-label="LINE 諮詢">LINE</a>
-  <a href="tel:0225955535" aria-label="撥打電話">撥打電話</a>
+  <a href="tel:0225955532" aria-label="撥打電話">撥打電話</a>
 </div>
 
 <div class="lb" id="lb">
@@ -320,7 +320,7 @@ write('index.html',
        preload='assets/hero/1600/home-1.jpg', bg=('.hero-bg figure:first-child', 'home-1.jpg'))
   + '''
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5535","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5532","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
 </script>
 <section class="hero">
   <div class="hero-bg">
@@ -848,7 +848,7 @@ write('process.html',
 # ============================================================ 聯絡我們
 write('contact.html',
   head('contact.html', f'聯絡我們｜{SITE}',
-       '易向室內設計（澤向室內裝修工程有限公司）台北公司：台北市南京東路二段137號14樓 02-2595-5535；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
+       '易向室內設計（澤向室內裝修工程有限公司）台北公司：台北市南京東路二段137號14樓 02-2595-5532；桃園公司：桃園市桃園區經國路719號1樓 03-358-5835。加 LINE 免費初步諮詢。',
        'assets/hero/1600/h17.jpg', bg=('.page-head', 'h17.jpg'))
   + page_head('assets/hero/1600/h17.jpg', 'Contact', '聯絡我們', '聯絡我們')
   + '''
@@ -865,7 +865,7 @@ write('contact.html',
         <h3>台北公司</h3>
         <dl>
           <dt>地址</dt><dd>台北市南京東路二段 137 號 14 樓</dd>
-          <dt>電話</dt><dd><a href="tel:0225955535">02-2595-5535</a></dd>
+          <dt>電話</dt><dd><a href="tel:0225955532">02-2595-5532</a></dd>
           <dt>信箱</dt><dd><a href="mailto:image238@hotmail.com">image238@hotmail.com</a></dd>
         </dl>
       </div>
@@ -878,8 +878,8 @@ write('contact.html',
           <dt>傳真</dt><dd>03-358-0377</dd>
         </dl>
         <figure class="office-fig">
-          <img src="assets/office/taoyuan-700.jpg"
-            srcset="assets/office/taoyuan-700.jpg 700w, assets/office/taoyuan.jpg 1200w"
+          <img src="assets/office/taoyuan-700.jpg?v=2"
+            srcset="assets/office/taoyuan-700.jpg?v=2 700w, assets/office/taoyuan.jpg?v=2 1200w"
             sizes="(max-width:720px) 92vw, 42vw" width="1200" height="900"
             alt="易向室內設計 桃園公司外觀，經國路 719 號" loading="lazy">
           <figcaption>桃園公司外觀</figcaption>
