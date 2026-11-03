@@ -89,8 +89,7 @@ def head(cur, title, desc, og="assets/hero/1600/h05.jpg", preload=None, bg=None)
 
 <header class="site-head">
   <a class="brand" href="index.html" aria-label="易向室內設計 首頁">
-    <img class="l-white" src="assets/brand/mark-white.png" alt="" width="284" height="158">
-    <img class="l-ink" src="assets/brand/mark-ink.png" alt="" width="284" height="158">
+    <img class="l-purple" src="assets/brand/mark-purple.png" alt="" width="340" height="240">
     <span class="brand-tx"><b>易向室內設計</b><span class="brand-co" aria-label="澤向室內裝修工程有限公司">澤向室內裝修</span></span>
   </a>
   <nav class="nav">

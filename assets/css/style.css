@@ -98,6 +98,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 .brand{display:flex;flex-direction:row;align-items:center;gap:12px;flex:none}
 .brand img{height:34px;width:auto;transition:opacity .4s var(--ease)}
+/* 紫色方塊 IM 標誌（沿用舊站品牌色 #4F0E5E），深淺底色都用同一張 */
+.brand img.l-purple{height:42px;border-radius:2px}
 .brand .l-white{display:block}
 .brand .l-ink{display:none}
 /* 文字兩行直排，兩行同一套字體，字距拉開以貼近 Logo 標準字 */
@@ -538,6 +540,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .burger{display:block}
   .brand{gap:9px}
   .brand img{height:28px}
+  .brand img.l-purple{height:36px}
   .brand-tx{gap:4px}
   .brand-tx b,.brand-co{font-size:12.5px;letter-spacing:.36em}
   .nav.open{
@@ -565,7 +568,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .g-c .ph,.g-w .ph{aspect-ratio:4/3}
   .flow-i{grid-template-columns:1fr;gap:14px}
   .flow-i .idx{font-size:30px}
-  .hero h1{font-size:25px;letter-spacing:.14em;text-indent:.14em;line-height:1.75;white-space:normal}
+  /* 依螢幕寬度縮放並禁止換行，避免手機（或系統字放大時）把「託」擠到第三行 */
+  .hero h1{font-size:min(25px,5.8vw);letter-spacing:.14em;text-indent:.14em;line-height:1.75;white-space:nowrap}
   .hero h1 .h-sp{display:none}
   .hero h1 .m-br{display:inline}
   .hero .sub{margin-top:16px;font-size:10.5px;letter-spacing:.42em}
