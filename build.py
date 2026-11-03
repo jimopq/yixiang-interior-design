@@ -318,7 +318,7 @@ def home_featured():
 write('index.html',
   head('index.html', f'{SITE}｜台北室內設計・桃園室內設計',
        '易向室內設計（澤向室內裝修工程有限公司），深耕室內設計近三十年。台北、桃園雙據點，專營住宅空間、客變設計、舊屋翻新、商業空間與接待中心實品屋。榮獲美國 MUSE Design Awards 金獎、法國 Novum Design Award 金獎、義大利 A′ Design Award 銀獎。',
-       preload='assets/hero/1600/h05.jpg', bg=('.hero-bg figure:first-child', 'h05.jpg'))
+       preload='assets/hero/1600/home-1.jpg', bg=('.hero-bg figure:first-child', 'home-1.jpg'))
   + '''
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"易向室內設計","legalName":"澤向室內裝修工程有限公司","alternateName":"IMAGE DESIGN","url":"https://www.image.net.tw/","email":"image238@hotmail.com","telephone":["02-2595-5535","03-358-5835"],"address":[{"@type":"PostalAddress","streetAddress":"南京東路二段137號14樓","addressLocality":"台北市","addressCountry":"TW"},{"@type":"PostalAddress","streetAddress":"桃園區經國路719號1樓","addressLocality":"桃園市","addressCountry":"TW"}],"award":["2020 義大利 A′ Design Award 銀獎","2019 美國 MUSE Design Awards 金獎","2020 法國 Novum Design Award 金獎","ADA 第八屆亞洲設計獎","北京創新中國設計獎"]}
@@ -326,9 +326,9 @@ write('index.html',
 <section class="hero">
   <div class="hero-bg">
     <figure class="on"></figure>
-    <figure data-bg="h02.jpg"></figure>
-    <figure data-bg="h13.jpg"></figure>
-    <figure data-bg="h09.jpg"></figure>
+    <figure data-bg="home-2.jpg"></figure>
+    <figure data-bg="home-3.jpg"></figure>
+    <figure data-bg="home-4.jpg"></figure>
   </div>
   <div class="hero-in">
     <div class="hero-frame">
