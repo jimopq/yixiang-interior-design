@@ -280,8 +280,8 @@ def write(name, body):
     print('  ✓', name, f'{len(body):,} bytes')
 
 # ============================================================ 首頁近期作品
-# 業主指定的順序：侘寂溫馨四案 → 莫蘭迪古典（個案頁）→ 古典餘韻（完工實績，點開看同類燈箱）
-HOME_FEAT = ['misty-garden', 'south-wind', 'youlin', 'xinghui', 'morandi', 'w:63']
+# 業主指定的順序：侘寂溫馨四案 → 莫蘭迪古典 → 古典餘韻（皆為個案頁）
+HOME_FEAT = ['misty-garden', 'south-wind', 'youlin', 'xinghui', 'morandi', 'crystal']
 HOME_RHYTHM = ['g-a', 'g-b', 'g-c', 'g-d', 'g-e', 'g-e']
 
 def home_featured():

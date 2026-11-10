@@ -39,7 +39,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-103.jpg",
-   "featured": true
+   "featured": true,
+   "case": "morandi"
   },
   {
    "id": "63",
@@ -48,7 +49,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-63.jpg",
-   "featured": true
+   "featured": true,
+   "case": "crystal"
   },
   {
    "id": "97",
@@ -57,7 +59,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-97.jpg",
-   "featured": true
+   "featured": true,
+   "case": "romantic"
   },
   {
    "id": "102",
@@ -66,7 +69,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-102.jpg",
-   "featured": false
+   "featured": false,
+   "case": "sea-mountain"
   },
   {
    "id": "64",
@@ -84,7 +88,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-18.jpg",
-   "featured": false
+   "featured": false,
+   "case": "grand-forest"
   },
   {
    "id": "92",
@@ -102,7 +107,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-96.jpg",
-   "featured": true
+   "featured": true,
+   "case": "layered"
   },
   {
    "id": "93",
@@ -111,7 +117,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-93.jpg",
-   "featured": false
+   "featured": false,
+   "case": "restrained"
   },
   {
    "id": "84",
@@ -120,7 +127,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-84.jpg",
-   "featured": false
+   "featured": false,
+   "case": "mellow-classic"
   },
   {
    "id": "74",
@@ -129,7 +137,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-74.jpg",
-   "featured": false
+   "featured": false,
+   "case": "intellectual"
   },
   {
    "id": "48",
@@ -138,7 +147,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-48.jpg",
-   "featured": false
+   "featured": false,
+   "case": "mellow-humanist"
   },
   {
    "id": "59",
@@ -156,7 +166,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-13.jpg",
-   "featured": false
+   "featured": false,
+   "case": "rainbow-top"
   },
   {
    "id": "12",
@@ -165,7 +176,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-12.jpg",
-   "featured": false
+   "featured": false,
+   "case": "essence"
   },
   {
    "id": "19",
@@ -192,7 +204,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-67.jpg",
-   "featured": false
+   "featured": false,
+   "case": "aesthetic"
   },
   {
    "id": "20",
@@ -201,7 +214,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-20.jpg",
-   "featured": false
+   "featured": false,
+   "case": "modern-classic"
   },
   {
    "id": "21",
@@ -219,7 +233,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-22.jpg",
-   "featured": false
+   "featured": false,
+   "case": "sky-light"
   },
   {
    "id": "23",
@@ -228,7 +243,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-23.jpg",
-   "featured": false
+   "featured": false,
+   "case": "yamato"
   },
   {
    "id": "24",
@@ -237,7 +253,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-24.jpg",
-   "featured": false
+   "featured": false,
+   "case": "one-hill"
   },
   {
    "id": "25",
@@ -246,7 +263,8 @@
    "catName": "奢華新古典風",
    "catEn": "NEO CLASSIC",
    "img": "assets/works/cover-25.jpg",
-   "featured": false
+   "featured": false,
+   "case": "refined"
   },
   {
    "id": "26",
@@ -273,7 +291,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-88.jpg",
-   "featured": false
+   "featured": false,
+   "case": "layered-light"
   },
   {
    "id": "90",
@@ -282,7 +301,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-90.jpg",
-   "featured": true
+   "featured": true,
+   "case": "grey-dawn"
   },
   {
    "id": "98",
@@ -291,7 +311,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-98.jpg",
-   "featured": true
+   "featured": true,
+   "case": "moon-shadow"
   },
   {
    "id": "106",
@@ -318,7 +339,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-107.jpg",
-   "featured": false
+   "featured": false,
+   "case": "simple-humanist"
   },
   {
    "id": "91",
@@ -327,7 +349,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-91.jpg",
-   "featured": false
+   "featured": false,
+   "case": "wood-whisper"
   },
   {
    "id": "101",
@@ -336,7 +359,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-101.jpg",
-   "featured": true
+   "featured": true,
+   "case": "humble-luxe"
   },
   {
    "id": "55",
@@ -345,7 +369,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-55.jpg",
-   "featured": false
+   "featured": false,
+   "case": "quiet-white"
   },
   {
    "id": "68",
@@ -354,7 +379,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-68.jpg",
-   "featured": false
+   "featured": false,
+   "case": "stone-hill"
   },
   {
    "id": "27",
@@ -372,7 +398,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-77.jpg",
-   "featured": false
+   "featured": false,
+   "case": "black-forest"
   },
   {
    "id": "46",
@@ -381,7 +408,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-46.jpg",
-   "featured": false
+   "featured": false,
+   "case": "raw-wood"
   },
   {
    "id": "62",
@@ -399,7 +427,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-66.jpg",
-   "featured": false
+   "featured": false,
+   "case": "wood-lines"
   },
   {
    "id": "71",
@@ -444,7 +473,8 @@
    "catName": "自然人文禪風",
    "catEn": "ZEN & NATURE",
    "img": "assets/works/cover-29.jpg",
-   "featured": false
+   "featured": false,
+   "case": "plain-days"
   },
   {
    "id": "47",
@@ -462,7 +492,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-114.jpg",
-   "featured": false
+   "featured": false,
+   "case": "book-scent"
   },
   {
    "id": "115",
@@ -471,7 +502,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-115.jpg",
-   "featured": true
+   "featured": true,
+   "case": "pushu-a5-04"
   },
   {
    "id": "105",
@@ -480,7 +512,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-105.jpg",
-   "featured": true
+   "featured": true,
+   "case": "junyue"
   },
   {
    "id": "61",
@@ -489,7 +522,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-61.jpg",
-   "featured": true
+   "featured": true,
+   "case": "simple-time"
   },
   {
    "id": "86",
@@ -498,7 +532,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-86.jpg",
-   "featured": true
+   "featured": true,
+   "case": "clear-light"
   },
   {
    "id": "110",
@@ -507,7 +542,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-110.jpg",
-   "featured": true
+   "featured": true,
+   "case": "harbor-night"
   },
   {
    "id": "113",
@@ -516,7 +552,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-113.jpg",
-   "featured": true
+   "featured": true,
+   "case": "light-classic"
   },
   {
    "id": "112",
@@ -525,7 +562,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-112.jpg",
-   "featured": false
+   "featured": false,
+   "case": "liyu"
   },
   {
    "id": "104",
@@ -534,7 +572,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-104.jpg",
-   "featured": false
+   "featured": false,
+   "case": "starry-grey"
   },
   {
    "id": "99",
@@ -543,7 +582,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-99.jpg",
-   "featured": false
+   "featured": false,
+   "case": "humble-luxe"
   },
   {
    "id": "70",
@@ -552,7 +592,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-70.jpg",
-   "featured": false
+   "featured": false,
+   "case": "crescent"
   },
   {
    "id": "94",
@@ -561,7 +602,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-94.jpg",
-   "featured": false
+   "featured": false,
+   "case": "layered"
   },
   {
    "id": "95",
@@ -570,7 +612,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-95.jpg",
-   "featured": false
+   "featured": false,
+   "case": "satin-wood"
   },
   {
    "id": "75",
@@ -579,7 +622,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-75.jpg",
-   "featured": false
+   "featured": false,
+   "case": "industrial-wood"
   },
   {
    "id": "15",
@@ -615,7 +659,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-31.jpg",
-   "featured": false
+   "featured": false,
+   "case": "clear-water"
   },
   {
    "id": "32",
@@ -633,7 +678,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-128.jpg",
-   "featured": true
+   "featured": true,
+   "case": "dalong"
   },
   {
    "id": "130",
@@ -642,7 +688,8 @@
    "catName": "現代素雅休閒風",
    "catEn": "MODERN CALM",
    "img": "assets/works/cover-130.jpg",
-   "featured": true
+   "featured": true,
+   "case": "liyu"
   },
   {
    "id": "129",
@@ -651,7 +698,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-129.jpg",
-   "featured": false
+   "featured": false,
+   "case": "zhuoyue"
   },
   {
    "id": "117",
@@ -660,7 +708,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-117.jpg",
-   "featured": false
+   "featured": false,
+   "case": "yipinyan"
   },
   {
    "id": "118",
@@ -669,7 +718,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-118.jpg",
-   "featured": false
+   "featured": false,
+   "case": "taolihong"
   },
   {
    "id": "119",
@@ -678,7 +728,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-119.jpg",
-   "featured": false
+   "featured": false,
+   "case": "pushu-a3-6f"
   },
   {
    "id": "120",
@@ -687,7 +738,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-120.jpg",
-   "featured": false
+   "featured": false,
+   "case": "hemu"
   },
   {
    "id": "121",
@@ -705,7 +757,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-122.jpg",
-   "featured": false
+   "featured": false,
+   "case": "pushu-a5-21"
   },
   {
    "id": "123",
@@ -723,7 +776,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-124.jpg",
-   "featured": false
+   "featured": false,
+   "case": "pushu-a1-4f"
   },
   {
    "id": "125",
@@ -732,7 +786,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-125.jpg",
-   "featured": false
+   "featured": false,
+   "case": "pushu-a2-16f"
   },
   {
    "id": "126",
@@ -741,7 +796,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-126.jpg",
-   "featured": false
+   "featured": false,
+   "case": "sunshine"
   },
   {
    "id": "127",
@@ -750,7 +806,8 @@
    "catName": "小坪數溫馨宅",
    "catEn": "COMPACT LIVING",
    "img": "assets/works/cover-127.jpg",
-   "featured": false
+   "featured": false,
+   "case": "junyue"
   },
   {
    "id": "108",

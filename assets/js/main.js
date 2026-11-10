@@ -129,7 +129,9 @@
 
   function cardHTML(w, cls, eager) {
     var v = srcset(w.img);
-    return '<a class="card ' + cls + ' rv" href="#" data-id="' + w.id + '">' +
+    /* 跟上方精選案例是同一個案子的，直接連到個案頁看完整照片；其餘才開燈箱 */
+    var href = w.case ? 'case-' + w.case + '.html' : '#';
+    return '<a class="card ' + cls + ' rv" href="' + href + '" data-id="' + w.id + '"' + (w.case ? ' data-case="1"' : '') + '>' +
              '<div class="ph"><img src="' + v.s800 + '" srcset="' + v.set + '" sizes="' + SIZES + '"' +
                ' alt="' + w.title + '｜' + w.catName + '"' +
                (eager ? '' : ' loading="lazy"') + ' decoding="async"></div>' +
@@ -276,6 +278,7 @@
 
   function bindCards(root, list) {
     $$('.card', root).forEach(function (c) {
+      if (c.dataset.case) return;
       c.addEventListener('click', function (e) { e.preventDefault(); open(list, c.dataset.id); });
     });
   }
